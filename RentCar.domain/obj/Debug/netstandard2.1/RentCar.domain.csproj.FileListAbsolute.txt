@@ -1,0 +1,10 @@
+C:\Users\batmw\RiderProjects\RentCar\RentCar.domain\bin\Debug\netstandard2.1\RentCar.domain.deps.json
+C:\Users\batmw\RiderProjects\RentCar\RentCar.domain\bin\Debug\netstandard2.1\RentCar.domain.dll
+C:\Users\batmw\RiderProjects\RentCar\RentCar.domain\bin\Debug\netstandard2.1\RentCar.domain.pdb
+C:\Users\batmw\RiderProjects\RentCar\RentCar.domain\obj\Debug\netstandard2.1\RentCar.domain.csproj.AssemblyReference.cache
+C:\Users\batmw\RiderProjects\RentCar\RentCar.domain\obj\Debug\netstandard2.1\RentCar.domain.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\batmw\RiderProjects\RentCar\RentCar.domain\obj\Debug\netstandard2.1\RentCar.domain.AssemblyInfoInputs.cache
+C:\Users\batmw\RiderProjects\RentCar\RentCar.domain\obj\Debug\netstandard2.1\RentCar.domain.AssemblyInfo.cs
+C:\Users\batmw\RiderProjects\RentCar\RentCar.domain\obj\Debug\netstandard2.1\RentCar.domain.csproj.CoreCompileInputs.cache
+C:\Users\batmw\RiderProjects\RentCar\RentCar.domain\obj\Debug\netstandard2.1\RentCar.domain.dll
+C:\Users\batmw\RiderProjects\RentCar\RentCar.domain\obj\Debug\netstandard2.1\RentCar.domain.pdb

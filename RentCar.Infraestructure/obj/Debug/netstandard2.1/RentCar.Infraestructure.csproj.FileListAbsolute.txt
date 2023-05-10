@@ -1,0 +1,13 @@
+C:\Users\batmw\RiderProjects\RentCar\RentCar.Infraestructure\bin\Debug\netstandard2.1\RentCar.Infraestructure.deps.json
+C:\Users\batmw\RiderProjects\RentCar\RentCar.Infraestructure\bin\Debug\netstandard2.1\RentCar.Infraestructure.dll
+C:\Users\batmw\RiderProjects\RentCar\RentCar.Infraestructure\bin\Debug\netstandard2.1\RentCar.Infraestructure.pdb
+C:\Users\batmw\RiderProjects\RentCar\RentCar.Infraestructure\obj\Debug\netstandard2.1\RentCar.Infraestructure.csproj.AssemblyReference.cache
+C:\Users\batmw\RiderProjects\RentCar\RentCar.Infraestructure\obj\Debug\netstandard2.1\RentCar.Infraestructure.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\batmw\RiderProjects\RentCar\RentCar.Infraestructure\obj\Debug\netstandard2.1\RentCar.Infraestructure.AssemblyInfoInputs.cache
+C:\Users\batmw\RiderProjects\RentCar\RentCar.Infraestructure\obj\Debug\netstandard2.1\RentCar.Infraestructure.AssemblyInfo.cs
+C:\Users\batmw\RiderProjects\RentCar\RentCar.Infraestructure\obj\Debug\netstandard2.1\RentCar.Infraestructure.csproj.CoreCompileInputs.cache
+C:\Users\batmw\RiderProjects\RentCar\RentCar.Infraestructure\obj\Debug\netstandard2.1\RentCar.Infraestructure.dll
+C:\Users\batmw\RiderProjects\RentCar\RentCar.Infraestructure\obj\Debug\netstandard2.1\RentCar.Infraestructure.pdb
+C:\Users\batmw\RiderProjects\RentCar\RentCar.Infraestructure\bin\Debug\netstandard2.1\RentCar.domain.dll
+C:\Users\batmw\RiderProjects\RentCar\RentCar.Infraestructure\bin\Debug\netstandard2.1\RentCar.domain.pdb
+C:\Users\batmw\RiderProjects\RentCar\RentCar.Infraestructure\obj\Debug\netstandard2.1\RentCar.Infraestructure.csproj.CopyComplete

@@ -1,0 +1,327 @@
+{
+  "format": 1,
+  "restore": {
+    "C:\\Users\\batmw\\RiderProjects\\RentCar\\RentCar.API\\RentCar.API.csproj": {}
+  },
+  "projects": {
+    "C:\\Users\\batmw\\RiderProjects\\RentCar\\RentCar.API\\RentCar.API.csproj": {
+      "version": "1.0.0",
+      "restore": {
+        "projectUniqueName": "C:\\Users\\batmw\\RiderProjects\\RentCar\\RentCar.API\\RentCar.API.csproj",
+        "projectName": "RentCar.API",
+        "projectPath": "C:\\Users\\batmw\\RiderProjects\\RentCar\\RentCar.API\\RentCar.API.csproj",
+        "packagesPath": "C:\\Users\\batmw\\.nuget\\packages\\",
+        "outputPath": "C:\\Users\\batmw\\RiderProjects\\RentCar\\RentCar.API\\obj\\",
+        "projectStyle": "PackageReference",
+        "configFilePaths": [
+          "C:\\Users\\batmw\\AppData\\Roaming\\NuGet\\NuGet.Config"
+        ],
+        "originalTargetFrameworks": [
+          "net6.0"
+        ],
+        "sources": {
+          "https://api.nuget.org/v3/index.json": {}
+        },
+        "frameworks": {
+          "net6.0": {
+            "targetAlias": "net6.0",
+            "projectReferences": {
+              "C:\\Users\\batmw\\RiderProjects\\RentCar\\RentCar.Infraestructure\\RentCar.Infraestructure.csproj": {
+                "projectPath": "C:\\Users\\batmw\\RiderProjects\\RentCar\\RentCar.Infraestructure\\RentCar.Infraestructure.csproj"
+              },
+              "C:\\Users\\batmw\\RiderProjects\\RentCar\\RentCar.IOC\\RentCar.IOC.csproj": {
+                "projectPath": "C:\\Users\\batmw\\RiderProjects\\RentCar\\RentCar.IOC\\RentCar.IOC.csproj"
+              },
+              "C:\\Users\\batmw\\RiderProjects\\RentCar\\RentCar.web\\RentCar.web.csproj": {
+                "projectPath": "C:\\Users\\batmw\\RiderProjects\\RentCar\\RentCar.web\\RentCar.web.csproj"
+              }
+            }
+          }
+        },
+        "warningProperties": {
+          "warnAsError": [
+            "NU1605"
+          ]
+        }
+      },
+      "frameworks": {
+        "net6.0": {
+          "targetAlias": "net6.0",
+          "dependencies": {
+            "Microsoft.EntityFrameworkCore": {
+              "target": "Package",
+              "version": "[5.0.5, )"
+            },
+            "Swashbuckle.AspNetCore": {
+              "target": "Package",
+              "version": "[6.2.3, )"
+            }
+          },
+          "imports": [
+            "net461",
+            "net462",
+            "net47",
+            "net471",
+            "net472",
+            "net48",
+            "net481"
+          ],
+          "assetTargetFallback": true,
+          "warn": true,
+          "frameworkReferences": {
+            "Microsoft.AspNetCore.App": {
+              "privateAssets": "none"
+            },
+            "Microsoft.NETCore.App": {
+              "privateAssets": "all"
+            }
+          },
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\6.0.402\\RuntimeIdentifierGraph.json"
+        }
+      }
+    },
+    "C:\\Users\\batmw\\RiderProjects\\RentCar\\RentCar.domain\\RentCar.domain.csproj": {
+      "version": "1.0.0",
+      "restore": {
+        "projectUniqueName": "C:\\Users\\batmw\\RiderProjects\\RentCar\\RentCar.domain\\RentCar.domain.csproj",
+        "projectName": "RentCar.domain",
+        "projectPath": "C:\\Users\\batmw\\RiderProjects\\RentCar\\RentCar.domain\\RentCar.domain.csproj",
+        "packagesPath": "C:\\Users\\batmw\\.nuget\\packages\\",
+        "outputPath": "C:\\Users\\batmw\\RiderProjects\\RentCar\\RentCar.domain\\obj\\",
+        "projectStyle": "PackageReference",
+        "configFilePaths": [
+          "C:\\Users\\batmw\\AppData\\Roaming\\NuGet\\NuGet.Config"
+        ],
+        "originalTargetFrameworks": [
+          "netstandard2.1"
+        ],
+        "sources": {
+          "https://api.nuget.org/v3/index.json": {}
+        },
+        "frameworks": {
+          "netstandard2.1": {
+            "targetAlias": "netstandard2.1",
+            "projectReferences": {}
+          }
+        },
+        "warningProperties": {
+          "warnAsError": [
+            "NU1605"
+          ]
+        }
+      },
+      "frameworks": {
+        "netstandard2.1": {
+          "targetAlias": "netstandard2.1",
+          "imports": [
+            "net461",
+            "net462",
+            "net47",
+            "net471",
+            "net472",
+            "net48",
+            "net481"
+          ],
+          "assetTargetFallback": true,
+          "warn": true,
+          "frameworkReferences": {
+            "NETStandard.Library": {
+              "privateAssets": "all"
+            }
+          },
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\6.0.402\\RuntimeIdentifierGraph.json"
+        }
+      }
+    },
+    "C:\\Users\\batmw\\RiderProjects\\RentCar\\RentCar.Infraestructure\\RentCar.Infraestructure.csproj": {
+      "version": "1.0.0",
+      "restore": {
+        "projectUniqueName": "C:\\Users\\batmw\\RiderProjects\\RentCar\\RentCar.Infraestructure\\RentCar.Infraestructure.csproj",
+        "projectName": "RentCar.Infraestructure",
+        "projectPath": "C:\\Users\\batmw\\RiderProjects\\RentCar\\RentCar.Infraestructure\\RentCar.Infraestructure.csproj",
+        "packagesPath": "C:\\Users\\batmw\\.nuget\\packages\\",
+        "outputPath": "C:\\Users\\batmw\\RiderProjects\\RentCar\\RentCar.Infraestructure\\obj\\",
+        "projectStyle": "PackageReference",
+        "configFilePaths": [
+          "C:\\Users\\batmw\\AppData\\Roaming\\NuGet\\NuGet.Config"
+        ],
+        "originalTargetFrameworks": [
+          "netstandard2.1"
+        ],
+        "sources": {
+          "https://api.nuget.org/v3/index.json": {}
+        },
+        "frameworks": {
+          "netstandard2.1": {
+            "targetAlias": "netstandard2.1",
+            "projectReferences": {
+              "C:\\Users\\batmw\\RiderProjects\\RentCar\\RentCar.domain\\RentCar.domain.csproj": {
+                "projectPath": "C:\\Users\\batmw\\RiderProjects\\RentCar\\RentCar.domain\\RentCar.domain.csproj"
+              }
+            }
+          }
+        },
+        "warningProperties": {
+          "warnAsError": [
+            "NU1605"
+          ]
+        }
+      },
+      "frameworks": {
+        "netstandard2.1": {
+          "targetAlias": "netstandard2.1",
+          "dependencies": {
+            "Microsoft.EntityFrameworkCore": {
+              "target": "Package",
+              "version": "[5.0.5, )"
+            },
+            "Pomelo.EntityFrameworkCore.MySql": {
+              "target": "Package",
+              "version": "[5.0.0, )"
+            }
+          },
+          "imports": [
+            "net461",
+            "net462",
+            "net47",
+            "net471",
+            "net472",
+            "net48",
+            "net481"
+          ],
+          "assetTargetFallback": true,
+          "warn": true,
+          "frameworkReferences": {
+            "NETStandard.Library": {
+              "privateAssets": "all"
+            }
+          },
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\6.0.402\\RuntimeIdentifierGraph.json"
+        }
+      }
+    },
+    "C:\\Users\\batmw\\RiderProjects\\RentCar\\RentCar.IOC\\RentCar.IOC.csproj": {
+      "version": "1.0.0",
+      "restore": {
+        "projectUniqueName": "C:\\Users\\batmw\\RiderProjects\\RentCar\\RentCar.IOC\\RentCar.IOC.csproj",
+        "projectName": "RentCar.IOC",
+        "projectPath": "C:\\Users\\batmw\\RiderProjects\\RentCar\\RentCar.IOC\\RentCar.IOC.csproj",
+        "packagesPath": "C:\\Users\\batmw\\.nuget\\packages\\",
+        "outputPath": "C:\\Users\\batmw\\RiderProjects\\RentCar\\RentCar.IOC\\obj\\",
+        "projectStyle": "PackageReference",
+        "configFilePaths": [
+          "C:\\Users\\batmw\\AppData\\Roaming\\NuGet\\NuGet.Config"
+        ],
+        "originalTargetFrameworks": [
+          "netstandard2.1"
+        ],
+        "sources": {
+          "https://api.nuget.org/v3/index.json": {}
+        },
+        "frameworks": {
+          "netstandard2.1": {
+            "targetAlias": "netstandard2.1",
+            "projectReferences": {
+              "C:\\Users\\batmw\\RiderProjects\\RentCar\\RentCar.Infraestructure\\RentCar.Infraestructure.csproj": {
+                "projectPath": "C:\\Users\\batmw\\RiderProjects\\RentCar\\RentCar.Infraestructure\\RentCar.Infraestructure.csproj"
+              }
+            }
+          }
+        },
+        "warningProperties": {
+          "warnAsError": [
+            "NU1605"
+          ]
+        }
+      },
+      "frameworks": {
+        "netstandard2.1": {
+          "targetAlias": "netstandard2.1",
+          "dependencies": {
+            "Microsoft.EntityFrameworkCore": {
+              "target": "Package",
+              "version": "[5.0.5, )"
+            },
+            "Pomelo.EntityFrameworkCore.MySql": {
+              "target": "Package",
+              "version": "[5.0.0, )"
+            }
+          },
+          "imports": [
+            "net461",
+            "net462",
+            "net47",
+            "net471",
+            "net472",
+            "net48",
+            "net481"
+          ],
+          "assetTargetFallback": true,
+          "warn": true,
+          "frameworkReferences": {
+            "NETStandard.Library": {
+              "privateAssets": "all"
+            }
+          },
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\6.0.402\\RuntimeIdentifierGraph.json"
+        }
+      }
+    },
+    "C:\\Users\\batmw\\RiderProjects\\RentCar\\RentCar.web\\RentCar.web.csproj": {
+      "version": "1.0.0",
+      "restore": {
+        "projectUniqueName": "C:\\Users\\batmw\\RiderProjects\\RentCar\\RentCar.web\\RentCar.web.csproj",
+        "projectName": "RentCar.web",
+        "projectPath": "C:\\Users\\batmw\\RiderProjects\\RentCar\\RentCar.web\\RentCar.web.csproj",
+        "packagesPath": "C:\\Users\\batmw\\.nuget\\packages\\",
+        "outputPath": "C:\\Users\\batmw\\RiderProjects\\RentCar\\RentCar.web\\obj\\",
+        "projectStyle": "PackageReference",
+        "configFilePaths": [
+          "C:\\Users\\batmw\\AppData\\Roaming\\NuGet\\NuGet.Config"
+        ],
+        "originalTargetFrameworks": [
+          "net6.0"
+        ],
+        "sources": {
+          "https://api.nuget.org/v3/index.json": {}
+        },
+        "frameworks": {
+          "net6.0": {
+            "targetAlias": "net6.0",
+            "projectReferences": {}
+          }
+        },
+        "warningProperties": {
+          "warnAsError": [
+            "NU1605"
+          ]
+        }
+      },
+      "frameworks": {
+        "net6.0": {
+          "targetAlias": "net6.0",
+          "imports": [
+            "net461",
+            "net462",
+            "net47",
+            "net471",
+            "net472",
+            "net48",
+            "net481"
+          ],
+          "assetTargetFallback": true,
+          "warn": true,
+          "frameworkReferences": {
+            "Microsoft.AspNetCore.App": {
+              "privateAssets": "none"
+            },
+            "Microsoft.NETCore.App": {
+              "privateAssets": "all"
+            }
+          },
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\6.0.402\\RuntimeIdentifierGraph.json"
+        }
+      }
+    }
+  }
+}

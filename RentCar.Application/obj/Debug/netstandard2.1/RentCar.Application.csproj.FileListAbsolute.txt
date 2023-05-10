@@ -1,0 +1,10 @@
+C:\Users\batmw\RiderProjects\RentCar\RentCar.Application\bin\Debug\netstandard2.1\RentCar.Application.deps.json
+C:\Users\batmw\RiderProjects\RentCar\RentCar.Application\bin\Debug\netstandard2.1\RentCar.Application.dll
+C:\Users\batmw\RiderProjects\RentCar\RentCar.Application\bin\Debug\netstandard2.1\RentCar.Application.pdb
+C:\Users\batmw\RiderProjects\RentCar\RentCar.Application\obj\Debug\netstandard2.1\RentCar.Application.csproj.AssemblyReference.cache
+C:\Users\batmw\RiderProjects\RentCar\RentCar.Application\obj\Debug\netstandard2.1\RentCar.Application.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\batmw\RiderProjects\RentCar\RentCar.Application\obj\Debug\netstandard2.1\RentCar.Application.AssemblyInfoInputs.cache
+C:\Users\batmw\RiderProjects\RentCar\RentCar.Application\obj\Debug\netstandard2.1\RentCar.Application.AssemblyInfo.cs
+C:\Users\batmw\RiderProjects\RentCar\RentCar.Application\obj\Debug\netstandard2.1\RentCar.Application.csproj.CoreCompileInputs.cache
+C:\Users\batmw\RiderProjects\RentCar\RentCar.Application\obj\Debug\netstandard2.1\RentCar.Application.dll
+C:\Users\batmw\RiderProjects\RentCar\RentCar.Application\obj\Debug\netstandard2.1\RentCar.Application.pdb

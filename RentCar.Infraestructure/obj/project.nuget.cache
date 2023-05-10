@@ -1,0 +1,31 @@
+{
+  "version": 2,
+  "dgSpecHash": "hqxSeqYwMPh3LI8mKlFOHDOOYesItYI3So0pGqARn1VYPu3EM1bQtHmWotTDPBIao1igbgss4y4+0eSkjm6HqA==",
+  "success": true,
+  "projectFilePath": "C:\\Users\\batmw\\RiderProjects\\RentCar\\RentCar.Infraestructure\\RentCar.Infraestructure.csproj",
+  "expectedPackageFiles": [
+    "C:\\Users\\batmw\\.nuget\\packages\\microsoft.entityframeworkcore\\5.0.5\\microsoft.entityframeworkcore.5.0.5.nupkg.sha512",
+    "C:\\Users\\batmw\\.nuget\\packages\\microsoft.entityframeworkcore.abstractions\\5.0.5\\microsoft.entityframeworkcore.abstractions.5.0.5.nupkg.sha512",
+    "C:\\Users\\batmw\\.nuget\\packages\\microsoft.entityframeworkcore.analyzers\\5.0.5\\microsoft.entityframeworkcore.analyzers.5.0.5.nupkg.sha512",
+    "C:\\Users\\batmw\\.nuget\\packages\\microsoft.entityframeworkcore.relational\\5.0.5\\microsoft.entityframeworkcore.relational.5.0.5.nupkg.sha512",
+    "C:\\Users\\batmw\\.nuget\\packages\\microsoft.extensions.caching.abstractions\\5.0.0\\microsoft.extensions.caching.abstractions.5.0.0.nupkg.sha512",
+    "C:\\Users\\batmw\\.nuget\\packages\\microsoft.extensions.caching.memory\\5.0.0\\microsoft.extensions.caching.memory.5.0.0.nupkg.sha512",
+    "C:\\Users\\batmw\\.nuget\\packages\\microsoft.extensions.configuration.abstractions\\5.0.0\\microsoft.extensions.configuration.abstractions.5.0.0.nupkg.sha512",
+    "C:\\Users\\batmw\\.nuget\\packages\\microsoft.extensions.dependencyinjection\\5.0.1\\microsoft.extensions.dependencyinjection.5.0.1.nupkg.sha512",
+    "C:\\Users\\batmw\\.nuget\\packages\\microsoft.extensions.dependencyinjection.abstractions\\5.0.0\\microsoft.extensions.dependencyinjection.abstractions.5.0.0.nupkg.sha512",
+    "C:\\Users\\batmw\\.nuget\\packages\\microsoft.extensions.logging\\5.0.0\\microsoft.extensions.logging.5.0.0.nupkg.sha512",
+    "C:\\Users\\batmw\\.nuget\\packages\\microsoft.extensions.logging.abstractions\\5.0.0\\microsoft.extensions.logging.abstractions.5.0.0.nupkg.sha512",
+    "C:\\Users\\batmw\\.nuget\\packages\\microsoft.extensions.options\\5.0.0\\microsoft.extensions.options.5.0.0.nupkg.sha512",
+    "C:\\Users\\batmw\\.nuget\\packages\\microsoft.extensions.primitives\\5.0.0\\microsoft.extensions.primitives.5.0.0.nupkg.sha512",
+    "C:\\Users\\batmw\\.nuget\\packages\\mysqlconnector\\1.3.7\\mysqlconnector.1.3.7.nupkg.sha512",
+    "C:\\Users\\batmw\\.nuget\\packages\\pomelo.entityframeworkcore.mysql\\5.0.0\\pomelo.entityframeworkcore.mysql.5.0.0.nupkg.sha512",
+    "C:\\Users\\batmw\\.nuget\\packages\\system.buffers\\4.5.1\\system.buffers.4.5.1.nupkg.sha512",
+    "C:\\Users\\batmw\\.nuget\\packages\\system.collections.immutable\\5.0.0\\system.collections.immutable.5.0.0.nupkg.sha512",
+    "C:\\Users\\batmw\\.nuget\\packages\\system.componentmodel.annotations\\5.0.0\\system.componentmodel.annotations.5.0.0.nupkg.sha512",
+    "C:\\Users\\batmw\\.nuget\\packages\\system.diagnostics.diagnosticsource\\5.0.1\\system.diagnostics.diagnosticsource.5.0.1.nupkg.sha512",
+    "C:\\Users\\batmw\\.nuget\\packages\\system.memory\\4.5.4\\system.memory.4.5.4.nupkg.sha512",
+    "C:\\Users\\batmw\\.nuget\\packages\\system.numerics.vectors\\4.4.0\\system.numerics.vectors.4.4.0.nupkg.sha512",
+    "C:\\Users\\batmw\\.nuget\\packages\\system.runtime.compilerservices.unsafe\\5.0.0\\system.runtime.compilerservices.unsafe.5.0.0.nupkg.sha512"
+  ],
+  "logs": []
+}
