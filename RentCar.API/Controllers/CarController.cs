@@ -23,13 +23,15 @@ public class CarController : ControllerBase
     [HttpGet("{brand}")]
     public async Task<IActionResult> GetByBrand(string brand)
     {
-        var cars = await this.carRepository.GetCarsByBrand(brand);
+        var cars = await this.carRepository.Find(c => c.Marca == brand);
+        //var cars = await this.carRepository.GetCarsByBrand(brand);
         return Ok(cars);
     }
     [HttpGet("{year:int}")]
     public async Task<IActionResult> GetByYear(int year)
     {
-        var cars = await this.carRepository.GetCarsByYear(year);
+        var cars = await this.carRepository.Find(c => c.Year == year);
+        //var cars = await this.carRepository.GetCarsByYear(year);
         return Ok(cars);
     }
 }

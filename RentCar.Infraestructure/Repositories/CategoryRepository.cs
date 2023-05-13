@@ -17,9 +17,9 @@ namespace RentCar.Infraestructure.Repositories
             this.context = context;
         }
 
-        public async Task<IEnumerable<Category>> GetCategoryByName(string name)
-        {
-            return await this.context.Categorias.Where(c => c.Nombre == name).ToListAsync();
-        }
+        // public async Task<IEnumerable<Category>> GetCategoryByName(string name)
+        // {
+        //     return await this.context.Categorias.Where(c => c.Nombre == name).ToListAsync();
+        // }
     }
 }

@@ -16,13 +16,13 @@ namespace RentCar.Infraestructure.Repositories
         {
             this.context = context;
         }
-        public async Task<IEnumerable<Car>> GetCarsByBrand(string brand)
-        {
-            return await this.context.Cars.Where(c => c.Marca == brand).ToListAsync();
-        }
-        public async Task<IEnumerable<Car>> GetCarsByYear(int year)
-        {
-            return await this.context.Cars.Where(c => c.Year == year).ToListAsync();
-        }
+        // public async Task<IEnumerable<Car>> GetCarsByBrand(string brand)
+        // {
+        //     return await this.context.Cars.Where(c => c.Marca == brand).ToListAsync();
+        // }
+        // public async Task<IEnumerable<Car>> GetCarsByYear(int year)
+        // {
+        //     return await this.context.Cars.Where(c => c.Year == year).ToListAsync();
+        // }
     }
 }

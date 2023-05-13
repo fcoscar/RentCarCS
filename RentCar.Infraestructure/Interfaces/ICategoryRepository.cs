@@ -7,7 +7,7 @@ namespace RentCar.Infraestructure.Interfaces
 {
     public interface ICategoryRepository : IBaseRepository<Category>
     {
-        Task<IEnumerable<Category>> GetCategoryByName(string name);
+        //Task<IEnumerable<Category>> GetCategoryByName(string name);
         // metodos exclusivos para categorias
     }
 }

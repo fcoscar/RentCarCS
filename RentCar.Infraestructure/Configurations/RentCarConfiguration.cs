@@ -48,7 +48,7 @@ namespace RentCar.Infraestructure.Configurations
                     .HasMaxLength(150)
                     .IsUnicode(false);
                 entity.Property(e => e.PricePerDay)
-                    .HasColumnType("decimal(5,3)");
+                    .HasColumnType("decimal(20,2)");
                 entity.Property(e => e.FechaElimino)
                     .HasColumnType("datetime");
                 entity.Property(e => e.From)

@@ -1,4 +1,5 @@
 using Microsoft.AspNetCore.Mvc;
+using RentCar.domain.Entity;
 using RentCar.Infraestructure.Interfaces;
 
 namespace RentCar.API.Controllers;
@@ -18,10 +19,11 @@ public class CategoryController : ControllerBase
         var categories = await this.categoryRepository.GetAll();
         return Ok(categories);
     }
+
     [HttpGet("{name}")]
     public async Task<IActionResult> GetByName(string name)
     {
-        var categories = await this.categoryRepository.GetCategoryByName(name);
+        var categories = await this.categoryRepository.Find(c => c.Nombre == name);
         return Ok(categories);
     }
 
