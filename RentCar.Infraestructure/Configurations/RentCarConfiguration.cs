@@ -10,6 +10,8 @@ namespace RentCar.Infraestructure.Configurations
         {
             modelBuilder.Entity<Category>(entity =>
             {
+                // En caso de que en la base de datos la table tenga un nombre diferente al entity
+                //entity.ToTable('NOMBRE DE LA TABLA EN BASE DE DATOS');
                 entity.Property(e => e.Nombre)
                     .HasMaxLength(50)
                     .IsUnicode(false);

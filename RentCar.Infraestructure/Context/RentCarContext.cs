@@ -1,5 +1,6 @@
 using Microsoft.EntityFrameworkCore;
 using RentCar.domain.Entity;
+using RentCar.Infraestructure.Configurations;
 
 namespace RentCar.Infraestructure.Context
 {
@@ -20,7 +21,7 @@ namespace RentCar.Infraestructure.Context
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
-            
+            modelBuilder.AddConfigurationRentCar();
         }
     }
 }
