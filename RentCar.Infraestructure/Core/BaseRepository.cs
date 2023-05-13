@@ -28,10 +28,11 @@ namespace RentCar.Infraestructure.Core
         {
             return await this.myDbSet.FindAsync(id);
         }
-
+                                           
         public async virtual Task<TEntity> Find(Expression<Func<TEntity, bool>> filter)
-        {
+        {                                      
             return await this.myDbSet.FindAsync(filter);
+            //se le pasa una expresion lambda como parametro ( c => c.Property == filter )
         }
 
         public async virtual Task Save(TEntity entity)
