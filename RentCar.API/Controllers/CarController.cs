@@ -8,7 +8,6 @@ namespace RentCar.API.Controllers;
 public class CarController : ControllerBase
 {
     private readonly ICarRepository carRepository;
-
     public CarController(ICarRepository carRepository)
     {
         this.carRepository = carRepository;
@@ -21,4 +20,16 @@ public class CarController : ControllerBase
         return Ok(cars);
     }
 
+    [HttpGet("{brand}")]
+    public async Task<IActionResult> GetByBrand(string brand)
+    {
+        var cars = await this.carRepository.GetCarsByBrand(brand);
+        return Ok(cars);
+    }
+    [HttpGet("{year:int}")]
+    public async Task<IActionResult> GetByYear(int year)
+    {
+        var cars = await this.carRepository.GetCarsByYear(year);
+        return Ok(cars);
+    }
 }

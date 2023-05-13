@@ -6,6 +6,6 @@ namespace RentCar.domain.Entity
     {
         public int Id { get; set; }
         public string? Nombre { get; set; }
-        public List<Car> Cars { get; set; }
+        //public List<Car> Cars { get; set; }
     }
 }

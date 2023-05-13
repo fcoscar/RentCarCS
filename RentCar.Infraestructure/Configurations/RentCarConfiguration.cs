@@ -24,9 +24,9 @@ namespace RentCar.Infraestructure.Configurations
                 entity.Property(e => e.FechaCreacion)
                     .HasColumnType("datetime")
                     .HasDefaultValueSql("(getdate())");
-                entity.HasOne<Car>(e => e.Car)
-                    .WithMany(g => g.Alquilers)
-                    .HasForeignKey(s => s.Id);
+                // entity.HasOne<Car>(e => e.Car)
+                //     .WithMany(g => g.Alquilers)
+                //     .HasForeignKey(s => s.Id);
                 entity.Property(e =>e.TotalPrice)
                     .HasColumnType("decimal(5,3)");
             });
@@ -40,11 +40,11 @@ namespace RentCar.Infraestructure.Configurations
                 entity.Property(e => e.Modelo)
                     .HasMaxLength(50)
                     .IsUnicode(false);
-                entity.HasOne<Category>(e => e.Category)
-                    .WithMany(g => g.Cars)
-                    .HasForeignKey(s => s.Id)
-                    .OnDelete(DeleteBehavior.SetNull);
-                entity.Property(e => e.Descipcion)
+                // entity.HasOne<Category>(e => e.Category)
+                //     .WithMany(g => g.Cars)
+                //     .HasForeignKey(s => s.Id)
+                //     .OnDelete(DeleteBehavior.SetNull);
+                entity.Property(e => e.Descripcion)
                     .HasMaxLength(150)
                     .IsUnicode(false);
                 entity.Property(e => e.PricePerDay)

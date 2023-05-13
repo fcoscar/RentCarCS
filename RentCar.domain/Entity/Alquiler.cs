@@ -10,6 +10,6 @@ namespace RentCar.domain.Entity
         public decimal TotalPrice { get; set; }
         public DateTime From { get; set; }
         public DateTime To { get; set; }
-        public Car? Car { get; set; }
+        //public Car? Car { get; set; }
     }
 }
