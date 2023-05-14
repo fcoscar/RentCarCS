@@ -1,3 +1,4 @@
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
@@ -17,9 +18,24 @@ namespace RentCar.Infraestructure.Repositories
             this.context = context;
         }
 
-        // public async Task<IEnumerable<Category>> GetCategoryByName(string name)
-        // {
-        //     return await this.context.Categorias.Where(c => c.Nombre == name).ToListAsync();
-        // }
+        public async Task<IEnumerable<Category>> GetCategoryByName(string name)
+        {
+            return await this.context.Category.Where(c => c.Nombre == name).ToListAsync();
+        }
+
+        public async override Task Save(Category entity)
+        {
+            await base.Save(entity);
+            await base.SaveChanges();
+        }
+
+        public async override Task Delete(int id)
+        {
+            if (await this.context.Category.AnyAsync(cd => cd.Id == id))
+            {
+                await base.Delete(id);
+                await base.SaveChanges();
+            }
+        }
     }
 }

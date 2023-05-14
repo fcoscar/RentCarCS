@@ -1,5 +1,6 @@
 using System;
 using System.Collections.Generic;
+using System.Linq;
 using System.Linq.Expressions;
 using System.Threading.Tasks;
 using Microsoft.EntityFrameworkCore;
@@ -8,7 +9,7 @@ using RentCar.Infraestructure.Context;
 
 namespace RentCar.Infraestructure.Core
 {
-    public abstract class BaseRepository<TEntity> : domain.Repository.IBaseRepository<TEntity> where TEntity : class
+    public abstract class BaseRepository<TEntity> : IBaseRepository<TEntity> where TEntity : class
     {
         private readonly RentCarContext context;
         private readonly DbSet<TEntity> myDbSet;
@@ -63,6 +64,12 @@ namespace RentCar.Infraestructure.Core
         public async virtual Task SaveChanges()
         {
             await this.context.SaveChangesAsync();
+        }
+
+        public async virtual Task Delete(int id)
+        {
+            var entity = await this.myDbSet.FindAsync(id);
+            this.myDbSet.Remove(entity);
         }
     }
 }

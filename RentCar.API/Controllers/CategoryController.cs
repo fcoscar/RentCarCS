@@ -12,7 +12,6 @@ public class CategoryController : ControllerBase
     {
         this.categoryRepository = categoryRepository;
     }
-
     [HttpGet]
     public async Task<IActionResult> Get()
     {
@@ -20,11 +19,29 @@ public class CategoryController : ControllerBase
         return Ok(categories);
     }
 
+    [HttpGet("{id:int}")]
+    public async Task<IActionResult> GetById(int id)
+    {
+        var category = await this.categoryRepository.GetEntityById(id);
+        return Ok(category);
+    }
     [HttpGet("{name}")]
     public async Task<IActionResult> GetByName(string name)
     {
-        var categories = await this.categoryRepository.Find(c => c.Nombre == name);
+        var categories = await this.categoryRepository.GetCategoryByName(name);
+        Console.WriteLine(categories);
         return Ok(categories);
     }
-
+    [HttpPost]
+    public async Task<IActionResult> Post([FromBody] Category category)
+    {
+        await categoryRepository.Save(category);
+        return Ok();
+    }
+    [HttpDelete("{id}")]
+    public async Task<IActionResult> Delete(int id)
+    {
+        await categoryRepository.Delete(id);
+        return Ok();
+    }
 }

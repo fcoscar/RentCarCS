@@ -40,14 +40,13 @@ namespace RentCar.Infraestructure.Configurations
                     .HasMaxLength(50)
                     .IsUnicode(false);
                 entity.Property(e => e.Modelo)
-                    .HasMaxLength(50)
+                    .HasMaxLength(100)
                     .IsUnicode(false);
                 // entity.HasOne<Category>(e => e.Category)
                 //     .WithMany(g => g.Cars)
                 //     .HasForeignKey(s => s.Id)
                 //     .OnDelete(DeleteBehavior.SetNull);
                 entity.Property(e => e.Descripcion)
-                    .HasMaxLength(150)
                     .IsUnicode(false);
                 entity.Property(e => e.PricePerDay)
                     .HasColumnType("decimal(20,2)");

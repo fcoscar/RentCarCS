@@ -16,5 +16,6 @@ namespace RentCar.domain.Repository
         Task Update(params TEntity[] entities);
         Task<bool> Exist(Expression<Func<TEntity, bool>> filter);
         Task SaveChanges(); //para dar el commit para la base de datos
+        Task Delete(int id);
     }
 }

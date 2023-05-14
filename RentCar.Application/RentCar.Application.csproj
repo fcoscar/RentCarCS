@@ -5,4 +5,14 @@
         <Nullable>enable</Nullable>
     </PropertyGroup>
 
+    <ItemGroup>
+      <Folder Include="Exceptions\" />
+      <Folder Include="Extensions\" />
+      <Folder Include="Responses\" />
+    </ItemGroup>
+
+    <ItemGroup>
+      <ProjectReference Include="..\RentCar.Infraestructure\RentCar.Infraestructure.csproj" />
+    </ItemGroup>
+
 </Project>

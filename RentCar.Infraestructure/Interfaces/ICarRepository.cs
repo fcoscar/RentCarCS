@@ -8,8 +8,8 @@ namespace RentCar.Infraestructure.Interfaces
 {
     public interface ICarRepository : IBaseRepository<Car>
     {
-        //Task<IEnumerable<Car>> GetCarsByBrand(string brand);
-        //Task<IEnumerable<Car>> GetCarsByYear(int year);
+        Task<IEnumerable<Car>> GetCarsByBrand(string brand);
+        Task<IEnumerable<Car>> GetCarsByYear(int year);
 
         //metodos exclusivos para cars
     }
