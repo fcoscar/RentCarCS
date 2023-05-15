@@ -8,6 +8,7 @@ using RentCar.Application.Core;
 using RentCar.Application.Dtos.Car;
 using RentCar.Application.Models;
 using RentCar.Application.Responses;
+using RentCar.domain.Entity;
 using RentCar.Infraestructure.Interfaces;
 
 namespace RentCar.Application.Services
@@ -43,7 +44,7 @@ namespace RentCar.Application.Services
             {
                 result.Succes = false;
                 result.Message = "Error Obteniendo los carros";
-                logger.Log(LogLevel.Error ,"Error", e.ToString());
+                this.logger.Log(LogLevel.Error ,"Error", e.ToString());
             }
 
             return result;
@@ -71,7 +72,7 @@ namespace RentCar.Application.Services
             {
                 result.Succes = false;
                 result.Message = "Error Obteniendo carro";
-                logger.Log(LogLevel.Error ,"Error", e.ToString());
+                logger.Log(LogLevel.Error ,$"{result.Message}", e.ToString());
             }
 
             return result;
@@ -87,9 +88,49 @@ namespace RentCar.Application.Services
             throw new System.NotImplementedException();
         }
 
-        public Task<CarAddResponse> SaveCar(CarAddDto carAddDto)
+        public async Task<CarAddResponse> SaveCar(CarAddDto carAddDto)
         {
-            throw new System.NotImplementedException();
+            CarAddResponse carAddResponse = new CarAddResponse();
+
+            try
+            {
+                if (string.IsNullOrEmpty(carAddDto.Modelo))
+                {
+                    carAddResponse.Message = "Necesita Agregar Un Modelo";
+                    carAddResponse.Succes = false;
+                    return carAddResponse;
+                }
+
+                if (carAddDto.Marca.Length > 50)
+                {
+                    carAddResponse.Message = "Longitud Invalida";
+                    carAddResponse.Succes = false;
+                    return carAddResponse;
+                }
+
+                Car car = new Car()
+                {
+                    Marca = carAddDto.Marca,
+                    Modelo = carAddDto.Modelo,
+                    Year = carAddDto.Year,
+                    Pasajeros = carAddDto.Pasajeros,
+                    Descripcion = carAddDto.Descripcion,
+                    PricePerDay = carAddDto.PricePerDay,
+                    IdUsuarioCreacion = carAddDto.IdUsuario,
+                    FechaCreacion = DateTime.Now,
+                    Eliminado = false,
+                    IsBusy = false
+                };
+                await this.carRepository.Save(car);
+            }
+            catch (Exception e)
+            {
+                carAddResponse.Succes = false;
+                carAddResponse.Message = "Error Agregando carro";
+                logger.Log(LogLevel.Error ,$"{carAddResponse.Message}", e.ToString());
+            }
+
+            return carAddResponse;
         }
 
         public Task<CarAddResponse> ModifyCar(CarUpdateDto carUpdateDto)

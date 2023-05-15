@@ -1,6 +1,7 @@
 using Microsoft.AspNetCore.Authentication;
 using Microsoft.AspNetCore.Mvc;
 using RentCar.Application.Contract;
+using RentCar.Application.Dtos.Car;
 using RentCar.domain.Entity;
 using RentCar.Infraestructure.Interfaces;
 
@@ -25,6 +26,8 @@ public class CarController : ControllerBase
     public async Task<IActionResult> GetById(int id)
     {
         var car = await this.carService.GetById(id);
+        if (!car.Succes)
+            return BadRequest(car);
         return Ok(car);
     }
     [HttpGet("brand/{brand}")]
@@ -42,16 +45,11 @@ public class CarController : ControllerBase
         return Ok(cars);
     }
     [HttpPost]
-    public async Task<IActionResult> Post([FromBody] Car car)
+    public async Task<IActionResult> Post([FromBody] CarAddDto carAddDto)
     {
-        try
-        {
-            //await this.carService.SaveCar(car);
-        }
-        catch (Exception pex)
-        {
-            var mensaje = pex.Message;
-        }
+        var result = await this.carService.SaveCar(carAddDto);
+        if (!result.Succes)
+            return BadRequest(result);
         return Ok();
     }
     [HttpDelete("{id:int}")]
