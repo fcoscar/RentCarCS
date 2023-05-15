@@ -8,7 +8,7 @@ var builder = WebApplication.CreateBuilder(args);
 
 builder.Services.AddControllers();
 builder.Services.AddContextDependecy(builder.Configuration.GetConnectionString("RentCarContext"));
-builder.Services.AddRepoDependency();
+builder.Services.AddRentCarDependency();
 // Learn more about configuring Swagger/OpenAPI at https://aka.ms/aspnetcore/swashbuckle
 builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();

@@ -11,6 +11,7 @@
         "dependencies": {
           "Microsoft.EntityFrameworkCore": "5.0.10",
           "Pomelo.EntityFrameworkCore.MySql": "5.0.4",
+          "RentCar.Application": "1.0.0",
           "RentCar.Infraestructure": "1.0.0"
         },
         "runtime": {
@@ -249,6 +250,14 @@
           }
         }
       },
+      "RentCar.Application/1.0.0": {
+        "dependencies": {
+          "RentCar.Infraestructure": "1.0.0"
+        },
+        "runtime": {
+          "RentCar.Application.dll": {}
+        }
+      },
       "RentCar.domain/1.0.0": {
         "runtime": {
           "RentCar.domain.dll": {}
@@ -425,6 +434,11 @@
       "sha512": "sha512-ZD9TMpsmYJLrxbbmdvhwt9YEgG5WntEnZ/d1eH8JBX9LBp+Ju8BSBhUGbZMNVHHomWo2KVImJhTDl2hIgw/6MA==",
       "path": "system.runtime.compilerservices.unsafe/5.0.0",
       "hashPath": "system.runtime.compilerservices.unsafe.5.0.0.nupkg.sha512"
+    },
+    "RentCar.Application/1.0.0": {
+      "type": "project",
+      "serviceable": false,
+      "sha512": ""
     },
     "RentCar.domain/1.0.0": {
       "type": "project",

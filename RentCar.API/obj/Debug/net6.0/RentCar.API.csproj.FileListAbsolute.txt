@@ -88,3 +88,5 @@ C:\Users\Oscar\RiderProjects\RentCarCS\RentCar.API\obj\Debug\net6.0\refint\RentC
 C:\Users\Oscar\RiderProjects\RentCarCS\RentCar.API\obj\Debug\net6.0\RentCar.API.pdb
 C:\Users\Oscar\RiderProjects\RentCarCS\RentCar.API\obj\Debug\net6.0\RentCar.API.genruntimeconfig.cache
 C:\Users\Oscar\RiderProjects\RentCarCS\RentCar.API\obj\Debug\net6.0\ref\RentCar.API.dll
+C:\Users\Oscar\RiderProjects\RentCarCS\RentCar.API\bin\Debug\net6.0\RentCar.Application.dll
+C:\Users\Oscar\RiderProjects\RentCarCS\RentCar.API\bin\Debug\net6.0\RentCar.Application.pdb

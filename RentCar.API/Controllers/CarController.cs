@@ -1,5 +1,6 @@
 using Microsoft.AspNetCore.Authentication;
 using Microsoft.AspNetCore.Mvc;
+using RentCar.Application.Contract;
 using RentCar.domain.Entity;
 using RentCar.Infraestructure.Interfaces;
 
@@ -8,36 +9,36 @@ namespace RentCar.API.Controllers;
 [Route("api/[controller]")]
 public class CarController : ControllerBase
 {
-    private readonly ICarRepository carRepository;
-    public CarController(ICarRepository carRepository)
+    private readonly ICarService carService;
+    public CarController(ICarService carService)
     {
-        this.carRepository = carRepository;
+        this.carService = carService;
     }
     [HttpGet]
     public async Task<IActionResult> Get()
     {
-        var cars = await this.carRepository.GetAll();
+        var cars = await this.carService.Get();
         return Ok(cars);
     }
 
     [HttpGet("{id:int}")]
     public async Task<IActionResult> GetById(int id)
     {
-        var car = await this.carRepository.GetEntityById(id);
+        var car = await this.carService.GetById(id);
         return Ok(car);
     }
     [HttpGet("brand/{brand}")]
     public async Task<IActionResult> GetByBrand(string brand)
     {
         //var cars = await this.carRepository.Find(c => c.Marca == brand);
-        var cars = await this.carRepository.GetCarsByBrand(brand);
+        var cars = await this.carService.GetByBrand(brand);
         return Ok(cars);
     }
     [HttpGet("year/{year:int}")]
     public async Task<IActionResult> GetByYear(int year)
     {
         //var cars = await this.carRepository.Find(c => c.Year == year);
-        var cars = await this.carRepository.GetCarsByYear(year);
+        var cars = await this.carService.GetByYear(year);
         return Ok(cars);
     }
     [HttpPost]
@@ -45,7 +46,7 @@ public class CarController : ControllerBase
     {
         try
         {
-            await this.carRepository.Save(car);
+            //await this.carService.SaveCar(car);
         }
         catch (Exception pex)
         {
@@ -56,7 +57,7 @@ public class CarController : ControllerBase
     [HttpDelete("{id:int}")]
     public async Task<IActionResult> Delete(int id)
     {
-        await this.carRepository.Delete(id);
+        await this.carService.Delete(id);
         return Ok();
     }
     

@@ -364,6 +364,19 @@
           }
         }
       },
+      "RentCar.Application/1.0.0": {
+        "type": "project",
+        "framework": ".NETStandard,Version=v2.1",
+        "dependencies": {
+          "RentCar.Infraestructure": "1.0.0"
+        },
+        "compile": {
+          "bin/placeholder/RentCar.Application.dll": {}
+        },
+        "runtime": {
+          "bin/placeholder/RentCar.Application.dll": {}
+        }
+      },
       "RentCar.domain/1.0.0": {
         "type": "project",
         "framework": ".NETStandard,Version=v2.1",
@@ -395,6 +408,7 @@
         "dependencies": {
           "Microsoft.EntityFrameworkCore": "5.0.10",
           "Pomelo.EntityFrameworkCore.MySql": "5.0.4",
+          "RentCar.Application": "1.0.0",
           "RentCar.Infraestructure": "1.0.0"
         },
         "compile": {
@@ -980,6 +994,11 @@
         "version.txt"
       ]
     },
+    "RentCar.Application/1.0.0": {
+      "type": "project",
+      "path": "../RentCar.Application/RentCar.Application.csproj",
+      "msbuildProject": "../RentCar.Application/RentCar.Application.csproj"
+    },
     "RentCar.domain/1.0.0": {
       "type": "project",
       "path": "../RentCar.domain/RentCar.domain.csproj",
@@ -1004,6 +1023,7 @@
   "projectFileDependencyGroups": {
     "net6.0": [
       "Microsoft.EntityFrameworkCore >= 5.0.10",
+      "RentCar.Application >= 1.0.0",
       "RentCar.IOC >= 1.0.0",
       "RentCar.Infraestructure >= 1.0.0",
       "RentCar.web >= 1.0.0",
@@ -1035,6 +1055,9 @@
         "net6.0": {
           "targetAlias": "net6.0",
           "projectReferences": {
+            "C:\\Users\\Oscar\\RiderProjects\\RentCarCS\\RentCar.Application\\RentCar.Application.csproj": {
+              "projectPath": "C:\\Users\\Oscar\\RiderProjects\\RentCarCS\\RentCar.Application\\RentCar.Application.csproj"
+            },
             "C:\\Users\\Oscar\\RiderProjects\\RentCarCS\\RentCar.Infraestructure\\RentCar.Infraestructure.csproj": {
               "projectPath": "C:\\Users\\Oscar\\RiderProjects\\RentCarCS\\RentCar.Infraestructure\\RentCar.Infraestructure.csproj"
             },

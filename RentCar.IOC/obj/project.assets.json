@@ -347,6 +347,19 @@
           }
         }
       },
+      "RentCar.Application/1.0.0": {
+        "type": "project",
+        "framework": ".NETStandard,Version=v2.1",
+        "dependencies": {
+          "RentCar.Infraestructure": "1.0.0"
+        },
+        "compile": {
+          "bin/placeholder/RentCar.Application.dll": {}
+        },
+        "runtime": {
+          "bin/placeholder/RentCar.Application.dll": {}
+        }
+      },
       "RentCar.domain/1.0.0": {
         "type": "project",
         "framework": ".NETStandard,Version=v2.1",
@@ -939,6 +952,11 @@
         "version.txt"
       ]
     },
+    "RentCar.Application/1.0.0": {
+      "type": "project",
+      "path": "../RentCar.Application/RentCar.Application.csproj",
+      "msbuildProject": "../RentCar.Application/RentCar.Application.csproj"
+    },
     "RentCar.domain/1.0.0": {
       "type": "project",
       "path": "../RentCar.domain/RentCar.domain.csproj",
@@ -954,6 +972,7 @@
     ".NETStandard,Version=v2.1": [
       "Microsoft.EntityFrameworkCore >= 5.0.10",
       "Pomelo.EntityFrameworkCore.MySql >= 5.0.4",
+      "RentCar.Application >= 1.0.0",
       "RentCar.Infraestructure >= 1.0.0"
     ]
   },
@@ -982,6 +1001,9 @@
         "netstandard2.1": {
           "targetAlias": "netstandard2.1",
           "projectReferences": {
+            "C:\\Users\\Oscar\\RiderProjects\\RentCarCS\\RentCar.Application\\RentCar.Application.csproj": {
+              "projectPath": "C:\\Users\\Oscar\\RiderProjects\\RentCarCS\\RentCar.Application\\RentCar.Application.csproj"
+            },
             "C:\\Users\\Oscar\\RiderProjects\\RentCarCS\\RentCar.Infraestructure\\RentCar.Infraestructure.csproj": {
               "projectPath": "C:\\Users\\Oscar\\RiderProjects\\RentCarCS\\RentCar.Infraestructure\\RentCar.Infraestructure.csproj"
             }
