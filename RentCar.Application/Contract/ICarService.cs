@@ -1,8 +1,6 @@
-using System.Collections.Generic;
 using System.Threading.Tasks;
 using RentCar.Application.Core;
 using RentCar.Application.Dtos.Car;
-using RentCar.Application.Models;
 using RentCar.Application.Responses;
 
 namespace RentCar.Application.Contract

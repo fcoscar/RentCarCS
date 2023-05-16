@@ -1,5 +1,4 @@
 using System;
-using System.Collections.Generic;
 using RentCar.domain.Core;
 
 namespace RentCar.domain.Entity
@@ -14,9 +13,9 @@ namespace RentCar.domain.Entity
         public string? Descripcion { get; set; }
         public decimal PricePerDay { get; set; }
         public bool IsBusy { get; set; } = false;
-        public DateTime From { get; set; }
-        public DateTime To { get; set; }
-        public DateTime FechaElimino { get; set; }
+        public DateTime? From { get; set; }
+        public DateTime? To { get; set; }
+        public DateTime? FechaElimino { get; set; }
         public bool Eliminado { get; set; } = false;
         public int CategoriaId { get; set; }
     }

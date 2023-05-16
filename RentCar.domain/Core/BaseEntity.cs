@@ -6,5 +6,6 @@ namespace RentCar.domain.Core
     {
         public int IdUsuarioCreacion { get; set; }
         public DateTime FechaCreacion { get; set; }
+        public DateTime FechaMod { get; set; }
     }
 }

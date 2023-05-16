@@ -52,6 +52,13 @@ public class CarController : ControllerBase
             return BadRequest(result);
         return Ok();
     }
+
+    [HttpPut]
+    public async Task<IActionResult> Put([FromBody] CarUpdateDto carUpdateDto)
+    {
+        var result = await this.carService.ModifyCar(carUpdateDto);
+        return Ok();
+    }
     [HttpDelete("{id:int}")]
     public async Task<IActionResult> Delete(int id)
     {

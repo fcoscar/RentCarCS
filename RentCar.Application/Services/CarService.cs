@@ -1,12 +1,10 @@
 using System;
 using System.Linq;
 using System.Threading.Tasks;
-using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Logging;
 using RentCar.Application.Contract;
 using RentCar.Application.Core;
 using RentCar.Application.Dtos.Car;
-using RentCar.Application.Models;
 using RentCar.Application.Responses;
 using RentCar.domain.Entity;
 using RentCar.Infraestructure.Interfaces;
@@ -75,34 +73,81 @@ namespace RentCar.Application.Services
                         PricePerDay = car.PricePerDay,
                         Categoria = cat.Nombre
                     }).FirstOrDefault();
-                    
                 //var car = await this.carRepository.GetEntityById(id);
                 result.Data = query;
             }
             catch (Exception e)
             {
                 result.Succes = false;
-                result.Message = "Error Obteniendo carro";
+                result.Message = "Error Obteniendo carro por Id";
                 logger.Log(LogLevel.Error ,$"{result.Message}", e.ToString());
             }
-
             return result;
         }
 
-        public Task<ServiceResult> GetByBrand(string brand)
+        public async Task<ServiceResult> GetByBrand(string brand)
         {
-            throw new System.NotImplementedException();
+            ServiceResult result = new ServiceResult();
+            try
+            {
+                var query = (from car in (await this.carRepository.GetAll())
+                    join cat in await this.categoryRepository.GetAll() on car.CategoriaId equals cat.Id
+                    where car.Marca == brand
+                    select new Models.CarGetModel()
+                    {
+                        Id = car.Id,
+                        Marca = car.Marca,
+                        Modelo = car.Modelo,
+                        Year = car.Year,
+                        Pasajeros = car.Pasajeros,
+                        Descripcion = car.Descripcion,
+                        PricePerDay = car.PricePerDay,
+                        Categoria = cat.Nombre
+                    }).ToList();
+                result.Data = query;
+            }
+            catch (Exception e)
+            {
+                result.Message = "Error Obteniendo carro por marca";
+                result.Succes = false;
+                logger.Log(LogLevel.Error,$"{result.Message}", e.ToString());
+            }
+            return result;
         }
 
-        public Task<ServiceResult> GetByYear(int year)
+        public async Task<ServiceResult> GetByYear(int year)
         {
-            throw new System.NotImplementedException();
+            ServiceResult result = new ServiceResult();
+            try
+            {
+                var query = (from car in (await this.carRepository.GetAll())
+                    join cat in await this.categoryRepository.GetAll() on car.CategoriaId equals cat.Id
+                    where car.Year == year
+                    select new Models.CarGetModel()
+                    {
+                        Id = car.Id,
+                        Marca = car.Marca,
+                        Modelo = car.Modelo,
+                        Year = car.Year,
+                        Pasajeros = car.Pasajeros,
+                        Descripcion = car.Descripcion,
+                        PricePerDay = car.PricePerDay,
+                        Categoria = cat.Nombre
+                    }).ToList();
+                result.Data = query;
+            }
+            catch (Exception e)
+            {
+                result.Message = "Error Obteniendo carro por marca";
+                result.Succes = false;
+                logger.Log(LogLevel.Error,$"{result.Message}", e.ToString());
+            }
+            return result;
         }
 
         public async Task<CarAddResponse> SaveCar(CarAddDto carAddDto)
         {
             CarAddResponse carAddResponse = new CarAddResponse();
-
             try
             {
                 if (string.IsNullOrEmpty(carAddDto.Modelo))
@@ -140,13 +185,36 @@ namespace RentCar.Application.Services
                 carAddResponse.Message = "Error Agregando carro";
                 logger.Log(LogLevel.Error ,$"{carAddResponse.Message}", e.ToString());
             }
-
             return carAddResponse;
         }
 
-        public Task<CarAddResponse> ModifyCar(CarUpdateDto carUpdateDto)
+        public async Task<CarAddResponse> ModifyCar(CarUpdateDto carUpdateDto)
         {
-            throw new System.NotImplementedException();
+            CarAddResponse carAddResponse = new CarAddResponse();
+            try
+            {
+                Car car = await this.carRepository.GetEntityById(carUpdateDto.Id);
+                car.Marca = carUpdateDto.Marca;
+                car.Modelo = carUpdateDto.Modelo;
+                car.Year = carUpdateDto.Year;
+                car.Pasajeros = carUpdateDto.Pasajeros;
+                car.Descripcion = carUpdateDto.Descripcion;
+                car.PricePerDay = carUpdateDto.PricePerDay;
+                car.FechaMod = carUpdateDto.Fecha;
+                car.IsBusy = carUpdateDto.IsBusy;
+                car.From = carUpdateDto.From;
+                car.To = carUpdateDto.To;
+                car.Eliminado = carUpdateDto.Eliminado;
+                car.CategoriaId = carUpdateDto.CategoriaId;
+                await this.carRepository.SaveChanges();
+            }
+            catch (Exception e)
+            {
+                carAddResponse.Succes = false;
+                carAddResponse.Message = "Error Agregando carro";
+                logger.Log(LogLevel.Error ,$"{carAddResponse.Message}", e.ToString());
+            }
+            return carAddResponse;
         }
 
         public Task<ServiceResult> Delete(int id)
