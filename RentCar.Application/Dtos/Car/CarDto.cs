@@ -10,5 +10,6 @@ namespace RentCar.Application.Dtos.Car
         public int Pasajeros { get; set; }
         public string? Descripcion { get; set; }
         public decimal PricePerDay { get; set; }
+        public int Categoria { get; set; }
     }
 }

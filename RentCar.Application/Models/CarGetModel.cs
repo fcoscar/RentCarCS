@@ -9,5 +9,6 @@ namespace RentCar.Application.Models
         public int Pasajeros { get; set; }
         public string? Descripcion { get; set; }
         public decimal PricePerDay { get; set; }
+        public string Categoria { get; set; }
     }
 }

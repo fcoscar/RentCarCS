@@ -16,10 +16,14 @@ namespace RentCar.Application.Services
     public class CarService : ICarService
     {
         private readonly ICarRepository carRepository;
+        private readonly ICategoryRepository categoryRepository;
         private readonly ILogger<CarService> logger;
-        public CarService(ICarRepository carRepository, ILogger<CarService> logger)
+        public CarService(ICarRepository carRepository,
+            ICategoryRepository categoryRepository,
+            ILogger<CarService> logger)
         {
             this.carRepository = carRepository;
+            this.categoryRepository = categoryRepository;
             this.logger = logger;
         }
         public async Task<ServiceResult> Get()
@@ -28,6 +32,7 @@ namespace RentCar.Application.Services
             try
             {
                 var query = (from cars in (await this.carRepository.GetAll())
+                    join cat in await this.categoryRepository.GetAll() on cars.CategoriaId equals cat.Id
                         select new Models.CarGetModel()
                         {
                             Id = cars.Id,
@@ -36,7 +41,8 @@ namespace RentCar.Application.Services
                             Year = cars.Year,
                             Pasajeros = cars.Pasajeros,
                             Descripcion = cars.Descripcion,
-                            PricePerDay = cars.PricePerDay
+                            PricePerDay = cars.PricePerDay,
+                            Categoria = cat.Nombre
                         }).ToList();
                 result.Data = query;
             }
@@ -44,7 +50,7 @@ namespace RentCar.Application.Services
             {
                 result.Succes = false;
                 result.Message = "Error Obteniendo los carros";
-                this.logger.Log(LogLevel.Error ,"Error", e.ToString());
+                this.logger.Log(LogLevel.Error ,$"{result.Message}", e.ToString());
             }
 
             return result;
@@ -55,18 +61,23 @@ namespace RentCar.Application.Services
             ServiceResult result = new ServiceResult();
             try
             {
-                var car = await this.carRepository.GetEntityById(id);
-                var carModel = new Models.CarGetModel()
-                {
-                    Id = car.Id,
-                    Marca = car.Marca,
-                    Modelo = car.Modelo,
-                    Year = car.Year,
-                    Pasajeros = car.Pasajeros,
-                    Descripcion = car.Descripcion,
-                    PricePerDay = car.PricePerDay                
-                };
-                result.Data = carModel;
+                var query = (from car in (await this.carRepository.GetAll())
+                    join cat in await this.categoryRepository.GetAll() on car.CategoriaId equals cat.Id
+                    where car.Id == id
+                    select new Models.CarGetModel()
+                    {
+                        Id = car.Id,
+                        Marca = car.Marca,
+                        Modelo = car.Modelo,
+                        Year = car.Year,
+                        Pasajeros = car.Pasajeros,
+                        Descripcion = car.Descripcion,
+                        PricePerDay = car.PricePerDay,
+                        Categoria = cat.Nombre
+                    }).FirstOrDefault();
+                    
+                //var car = await this.carRepository.GetEntityById(id);
+                result.Data = query;
             }
             catch (Exception e)
             {
