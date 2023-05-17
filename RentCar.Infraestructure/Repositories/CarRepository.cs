@@ -26,13 +26,13 @@ namespace RentCar.Infraestructure.Repositories
             return await this.context.Car.Where(c => c.Year == year).ToListAsync();
         }
 
-        public async override Task Save(Car entity)
+        public override async Task Save(Car entity)
         {
             await base.Save(entity);
             await base.SaveChanges();
         }
 
-        public async override Task Delete(int id)
+        public override async Task Delete(int id)
         {
             if (await this.context.Car.AnyAsync(cd => cd.Id == id))
             {

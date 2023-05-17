@@ -1,34 +1,34 @@
 using Microsoft.AspNetCore.Mvc;
-using RentCar.domain.Entity;
-using RentCar.Infraestructure.Interfaces;
+using RentCar.Application.Contract;
+using RentCar.Application.Dtos.Alquiler;
 
 namespace RentCar.API.Controllers;
 [ApiController]
 [Route("api/[controller]")]
 public class AlquilerController : ControllerBase
 {
-    private readonly IAlquilerRepository alquilerRepository;
-    public AlquilerController(IAlquilerRepository alquilerRepository)
+    private readonly IAlquilerService alquilerService;
+    public AlquilerController(IAlquilerService alquilerService)
     {
-        this.alquilerRepository = alquilerRepository;
+        this.alquilerService = alquilerService;
     }
     [HttpGet]
     public async Task<IActionResult> Get()
     {
-        var alquileres = await this.alquilerRepository.GetAll();
+        var alquileres = await this.alquilerService.Get();
         return Ok(alquileres);
     }
 
     [HttpGet("{id:int}")]
     public async Task<IActionResult> GetById(int id)
     {
-        var alquiler = await this.alquilerRepository.GetEntityById(id);
+        var alquiler = await this.alquilerService.GetById(id);
         return Ok(alquiler);
     }
     [HttpPost]
-    public async Task<IActionResult> Post([FromBody] Alquiler alquiler)
+    public async Task<IActionResult> Post([FromBody] AlquilerDto alquiler)
     {
-        await this.alquilerRepository.Save(alquiler);
+        await this.alquilerService.SaveAlquiler(alquiler);
         return Ok();
     }
 

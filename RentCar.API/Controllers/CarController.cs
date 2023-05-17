@@ -2,8 +2,6 @@ using Microsoft.AspNetCore.Authentication;
 using Microsoft.AspNetCore.Mvc;
 using RentCar.Application.Contract;
 using RentCar.Application.Dtos.Car;
-using RentCar.domain.Entity;
-using RentCar.Infraestructure.Interfaces;
 
 namespace RentCar.API.Controllers;
 [ApiController]

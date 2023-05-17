@@ -3,6 +3,7 @@ using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Logging;
 using RentCar.Application.Contract;
+using RentCar.Application.Dtos.Alquiler;
 using RentCar.Application.Services;
 using RentCar.Infraestructure.Context;
 using RentCar.Infraestructure.Interfaces;
@@ -20,6 +21,7 @@ namespace RentCar.IOC.Dependencies
             services.AddScoped<ICategoryRepository, CategoryRepository>();
             //Services
             services.AddTransient<ICarService, CarService>();
+            services.AddTransient<IAlquilerService, AlquilerService>();
         }
     
         public static void AddContextDependecy(this IServiceCollection services, string connString)
@@ -27,10 +29,7 @@ namespace RentCar.IOC.Dependencies
             services.AddDbContext<RentCarContext>(
                 options => options
                     .UseMySql(connString, ServerVersion.AutoDetect(connString))
-                    .LogTo(Console.WriteLine, LogLevel.Information)
-                    .EnableSensitiveDataLogging()
-                    .EnableDetailedErrors()
-                );
+            );
         }
     }
 }
