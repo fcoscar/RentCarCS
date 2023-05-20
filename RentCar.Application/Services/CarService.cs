@@ -145,6 +145,36 @@ namespace RentCar.Application.Services
             return result;
         }
 
+        public async Task<ServiceResult> GetByCategoria(int categoriaId)
+        {
+            ServiceResult result = new ServiceResult();
+            try
+            {
+                var query = (from cars in (await this.carRepository.GetAll())
+                        join cat in await  this.categoryRepository.GetAll() on cars.CategoriaId equals cat.Id
+                        where cars.CategoriaId == categoriaId
+                        select new Models.CarGetModel()
+                        {
+                            Id = cars.Id,
+                            Marca = cars.Marca,
+                            Modelo = cars.Modelo,
+                            Year = cars.Year,
+                            Pasajeros = cars.Pasajeros,
+                            Descripcion = cars.Descripcion,
+                            PricePerDay = cars.PricePerDay,
+                            Categoria = cat.Nombre
+                        }).ToList();
+                result.Data = query;
+            }
+            catch (Exception e)
+            {
+                result.Succes = false;
+                result.Message = "Error obteniendo carro por categoria";
+                logger.Log(LogLevel.Error, $"{result.Message}", e.ToString());
+            }
+            return result;
+        }
+
         public async Task<CarAddResponse> SaveCar(CarAddDto carAddDto)
         {
             CarAddResponse carAddResponse = new CarAddResponse();

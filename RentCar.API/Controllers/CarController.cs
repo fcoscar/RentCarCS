@@ -28,6 +28,14 @@ public class CarController : ControllerBase
             return BadRequest(car);
         return Ok(car);
     }
+    [HttpGet("categoria/{categoriaId:int}")]
+    public async Task<IActionResult> GetByCategoria(int categoriaId)
+    {
+        var car = await this.carService.GetById(categoriaId);
+        if (!car.Succes)
+            return BadRequest(car);
+        return Ok(car);
+    }
     [HttpGet("brand/{brand}")]
     public async Task<IActionResult> GetByBrand(string brand)
     {
