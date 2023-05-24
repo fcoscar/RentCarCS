@@ -23,3 +23,8 @@ C:\Users\Oscar\RiderProjects\RentCarCS\RentCar.Application\bin\Debug\netstandard
 C:\Users\Oscar\RiderProjects\RentCarCS\RentCar.Application\bin\Debug\netstandard2.1\RentCar.Infraestructure.pdb
 C:\Users\Oscar\RiderProjects\RentCarCS\RentCar.Application\bin\Debug\netstandard2.1\RentCar.domain.pdb
 C:\Users\Oscar\RiderProjects\RentCarCS\RentCar.Application\obj\Debug\netstandard2.1\RentCar.Application.csproj.CopyComplete
+C:\Users\batmw\RiderProjects\RentCar\RentCar.Application\bin\Debug\netstandard2.1\RentCar.domain.dll
+C:\Users\batmw\RiderProjects\RentCar\RentCar.Application\bin\Debug\netstandard2.1\RentCar.Infraestructure.dll
+C:\Users\batmw\RiderProjects\RentCar\RentCar.Application\bin\Debug\netstandard2.1\RentCar.Infraestructure.pdb
+C:\Users\batmw\RiderProjects\RentCar\RentCar.Application\bin\Debug\netstandard2.1\RentCar.domain.pdb
+C:\Users\batmw\RiderProjects\RentCar\RentCar.Application\obj\Debug\netstandard2.1\RentCar.Application.csproj.CopyComplete

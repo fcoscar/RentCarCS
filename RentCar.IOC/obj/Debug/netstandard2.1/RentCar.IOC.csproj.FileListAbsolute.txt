@@ -30,3 +30,5 @@ C:\Users\Oscar\RiderProjects\RentCarCS\RentCar.IOC\obj\Debug\netstandard2.1\Rent
 C:\Users\Oscar\RiderProjects\RentCarCS\RentCar.IOC\obj\Debug\netstandard2.1\RentCar.IOC.pdb
 C:\Users\Oscar\RiderProjects\RentCarCS\RentCar.IOC\bin\Debug\netstandard2.1\RentCar.Application.dll
 C:\Users\Oscar\RiderProjects\RentCarCS\RentCar.IOC\bin\Debug\netstandard2.1\RentCar.Application.pdb
+C:\Users\batmw\RiderProjects\RentCar\RentCar.IOC\bin\Debug\netstandard2.1\RentCar.Application.dll
+C:\Users\batmw\RiderProjects\RentCar\RentCar.IOC\bin\Debug\netstandard2.1\RentCar.Application.pdb

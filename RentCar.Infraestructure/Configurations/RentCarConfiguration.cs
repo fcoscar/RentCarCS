@@ -32,8 +32,7 @@ namespace RentCar.Infraestructure.Configurations
                 entity.Property(e =>e.TotalPrice)
                     .HasColumnType("decimal(5,3)");
             });
-                
-            
+
             modelBuilder.Entity<Car>(entity =>
             {
                 entity.Property(e => e.Marca)

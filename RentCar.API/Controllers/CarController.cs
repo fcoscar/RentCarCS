@@ -28,13 +28,12 @@ public class CarController : ControllerBase
             return BadRequest(car);
         return Ok(car);
     }
-    [HttpGet("categoria/{categoriaId:int}")]
-    public async Task<IActionResult> GetByCategoria(int categoriaId)
+    [HttpGet("category/{category:int}")]
+    public async Task<IActionResult> GetByBrand(int category)
     {
-        var car = await this.carService.GetById(categoriaId);
-        if (!car.Succes)
-            return BadRequest(car);
-        return Ok(car);
+        //var cars = await this.carRepository.Find(c => c.Marca == brand);
+        var cars = await this.carService.GetByCategory(category);
+        return Ok(cars);
     }
     [HttpGet("brand/{brand}")]
     public async Task<IActionResult> GetByBrand(string brand)
@@ -48,6 +47,13 @@ public class CarController : ControllerBase
     {
         //var cars = await this.carRepository.Find(c => c.Year == year);
         var cars = await this.carService.GetByYear(year);
+        return Ok(cars);
+    }
+
+    [HttpGet("year/{from:int}/{to:int}")]
+    public async Task<IActionResult> GetByYearRange(int from, int to)
+    {
+        var cars = await this.carService.GetByYearRange(from, to);
         return Ok(cars);
     }
     [HttpPost]

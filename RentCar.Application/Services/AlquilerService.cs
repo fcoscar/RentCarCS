@@ -41,7 +41,6 @@ namespace RentCar.Application.Services
                             From = alquiler.From,
                             To = alquiler.To,
                             Car = car.Id
-
                         }).ToList();
                 result.Data = query;
             }

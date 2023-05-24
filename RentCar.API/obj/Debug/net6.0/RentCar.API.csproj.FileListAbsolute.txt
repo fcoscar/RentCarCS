@@ -90,3 +90,5 @@ C:\Users\Oscar\RiderProjects\RentCarCS\RentCar.API\obj\Debug\net6.0\RentCar.API.
 C:\Users\Oscar\RiderProjects\RentCarCS\RentCar.API\obj\Debug\net6.0\ref\RentCar.API.dll
 C:\Users\Oscar\RiderProjects\RentCarCS\RentCar.API\bin\Debug\net6.0\RentCar.Application.dll
 C:\Users\Oscar\RiderProjects\RentCarCS\RentCar.API\bin\Debug\net6.0\RentCar.Application.pdb
+C:\Users\batmw\RiderProjects\RentCar\RentCar.API\bin\Debug\net6.0\RentCar.Application.dll
+C:\Users\batmw\RiderProjects\RentCar\RentCar.API\bin\Debug\net6.0\RentCar.Application.pdb

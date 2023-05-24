@@ -115,6 +115,36 @@ namespace RentCar.Application.Services
             return result;
         }
 
+        public async Task<ServiceResult> GetByYearRange(int since, int to)
+        {
+            ServiceResult result = new ServiceResult();
+            try
+            {
+                var query = (from cars in (await this.carRepository.GetAll())
+                    join cat in await this.categoryRepository.GetAll() on cars.CategoriaId equals cat.Id
+                    where cars.Year >= since
+                    where cars.Year <= to 
+                    select new Models.CarGetModel()
+                    {
+                        Id = cars.Id,
+                        Marca = cars.Marca,
+                        Modelo = cars.Modelo,
+                        Year = cars.Year,
+                        Pasajeros = cars.Pasajeros,
+                        Descripcion = cars.Descripcion,
+                        PricePerDay = cars.PricePerDay,
+                        Categoria = cat.Nombre
+                    }).ToList();
+                result.Data = query;
+            }
+            catch (Exception e)
+            {
+                result.Succes = false;
+                result.Message = "Error obtniendo carros por rango de anos";
+                this.logger.Log(LogLevel.Error, $"{result.Message}", e.ToString());
+            }
+            return result;
+        }
         public async Task<ServiceResult> GetByYear(int year)
         {
             ServiceResult result = new ServiceResult();
@@ -138,14 +168,14 @@ namespace RentCar.Application.Services
             }
             catch (Exception e)
             {
-                result.Message = "Error Obteniendo carro por marca";
+                result.Message = "Error Obteniendo carro por año";
                 result.Succes = false;
                 logger.Log(LogLevel.Error,$"{result.Message}", e.ToString());
             }
             return result;
         }
 
-        public async Task<ServiceResult> GetByCategoria(int categoriaId)
+        public async Task<ServiceResult> GetByCategory(int categoriaId)
         {
             ServiceResult result = new ServiceResult();
             try
@@ -174,6 +204,36 @@ namespace RentCar.Application.Services
             }
             return result;
         }
+
+        // public async Task<ServiceResult> GetByCategoria(int categoria)
+        // {
+        //     ServiceResult result = new ServiceResult();
+        //     try
+        //     {
+        //         var category = await categoryRepository.GetEntityById(categoria);
+        //         var query = (from car in (await this.carRepository.GetAll())
+        //             where car.CategoriaId == categoria
+        //             select new Models.CarGetModel()
+        //             {
+        //                 Id = car.Id,
+        //                 Marca = car.Marca,
+        //                 Modelo = car.Modelo,
+        //                 Year = car.Year,
+        //                 Pasajeros = car.Pasajeros,
+        //                 Descripcion = car.Descripcion,
+        //                 PricePerDay = car.PricePerDay,
+        //                 Categoria = category.Nombre,
+        //             }).ToList();
+        //         result.Data = query;
+        //     }
+        //     catch (Exception e)
+        //     {
+        //         result.Message = "Error obteniendo carro por categorira";
+        //         result.Succes = false;
+        //         logger.Log(LogLevel.Error, $"{result.Message}", e.ToString());
+        //     }
+        //     return result;
+        // }
 
         public async Task<CarAddResponse> SaveCar(CarAddDto carAddDto)
         {
@@ -212,7 +272,7 @@ namespace RentCar.Application.Services
             catch (Exception e)
             {
                 carAddResponse.Succes = false;
-                carAddResponse.Message = "Error Agregando carro";
+                carAddResponse.Message = "Error Actualizando carro";
                 logger.Log(LogLevel.Error ,$"{carAddResponse.Message}", e.ToString());
             }
             return carAddResponse;
@@ -230,13 +290,14 @@ namespace RentCar.Application.Services
                 car.Pasajeros = carUpdateDto.Pasajeros;
                 car.Descripcion = carUpdateDto.Descripcion;
                 car.PricePerDay = carUpdateDto.PricePerDay;
-                car.FechaMod = carUpdateDto.Fecha;
                 car.IsBusy = carUpdateDto.IsBusy;
                 car.From = carUpdateDto.From;
                 car.To = carUpdateDto.To;
                 car.Eliminado = carUpdateDto.Eliminado;
                 car.CategoriaId = carUpdateDto.CategoriaId;
-                await this.carRepository.SaveChanges();
+                car.FechaMod = carUpdateDto.Fecha;
+                //await this.carRepository.SaveChanges();
+                await this.carRepository.Update(car);
             }
             catch (Exception e)
             {

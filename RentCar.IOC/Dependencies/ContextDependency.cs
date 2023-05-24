@@ -19,6 +19,7 @@ namespace RentCar.IOC.Dependencies
             services.AddScoped<ICarRepository, CarRepository>();
             services.AddScoped<IAlquilerRepository, AlquilerRepository>();
             services.AddScoped<ICategoryRepository, CategoryRepository>();
+            services.AddScoped<IUserRepository, UserRepository>();
             //Services
             services.AddTransient<ICarService, CarService>();
             services.AddTransient<IAlquilerService, AlquilerService>();

@@ -11,9 +11,10 @@ namespace RentCar.Application.Contract
         Task<ServiceResult> GetById(int id);
         Task<ServiceResult> GetByBrand(string brand);
         Task<ServiceResult> GetByYear(int year);
+        Task<ServiceResult> GetByCategory(int category);
+        Task<ServiceResult> GetByYearRange(int from, int to);
         Task<CarAddResponse> SaveCar(CarAddDto carAddDto);
         Task<CarAddResponse> ModifyCar(CarUpdateDto carUpdateDto);
         Task<ServiceResult> Delete(int id);
-        Task<ServiceResult> GetByCategoria(int categoriaid);
     }
 }

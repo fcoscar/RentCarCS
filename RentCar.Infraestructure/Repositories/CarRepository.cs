@@ -25,10 +25,20 @@ namespace RentCar.Infraestructure.Repositories
         {
             return await this.context.Car.Where(c => c.Year == year).ToListAsync();
         }
+        public async Task<IEnumerable<Car>> GetCarsByYearRange(int from, int to)
+        {
+            return await this.context.Car.Where(c => c.Year > from && c.Year < to).ToListAsync();
+        }
 
         public override async Task Save(Car entity)
         {
             await base.Save(entity);
+            await base.SaveChanges();
+        }
+
+        public override async Task Update(Car entity)
+        {
+            await base.Update(entity);
             await base.SaveChanges();
         }
 
