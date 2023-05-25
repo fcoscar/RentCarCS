@@ -1,9 +1,7 @@
 using System;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.DependencyInjection;
-using Microsoft.Extensions.Logging;
 using RentCar.Application.Contract;
-using RentCar.Application.Dtos.Alquiler;
 using RentCar.Application.Services;
 using RentCar.Infraestructure.Context;
 using RentCar.Infraestructure.Interfaces;
