@@ -1,20 +1,20 @@
 {
   "format": 1,
   "restore": {
-    "C:\\Users\\batmw\\RiderProjects\\RentCar\\RentCar.domain\\RentCar.domain.csproj": {}
+    "C:\\Users\\Oscar\\RiderProjects\\RentCarCS\\RentCar.domain\\RentCar.domain.csproj": {}
   },
   "projects": {
-    "C:\\Users\\batmw\\RiderProjects\\RentCar\\RentCar.domain\\RentCar.domain.csproj": {
+    "C:\\Users\\Oscar\\RiderProjects\\RentCarCS\\RentCar.domain\\RentCar.domain.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\batmw\\RiderProjects\\RentCar\\RentCar.domain\\RentCar.domain.csproj",
+        "projectUniqueName": "C:\\Users\\Oscar\\RiderProjects\\RentCarCS\\RentCar.domain\\RentCar.domain.csproj",
         "projectName": "RentCar.domain",
-        "projectPath": "C:\\Users\\batmw\\RiderProjects\\RentCar\\RentCar.domain\\RentCar.domain.csproj",
-        "packagesPath": "C:\\Users\\batmw\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\batmw\\RiderProjects\\RentCar\\RentCar.domain\\obj\\",
+        "projectPath": "C:\\Users\\Oscar\\RiderProjects\\RentCarCS\\RentCar.domain\\RentCar.domain.csproj",
+        "packagesPath": "C:\\Users\\Oscar\\.nuget\\packages\\",
+        "outputPath": "C:\\Users\\Oscar\\RiderProjects\\RentCarCS\\RentCar.domain\\obj\\",
         "projectStyle": "PackageReference",
         "configFilePaths": [
-          "C:\\Users\\batmw\\AppData\\Roaming\\NuGet\\NuGet.Config"
+          "C:\\Users\\Oscar\\AppData\\Roaming\\NuGet\\NuGet.Config"
         ],
         "originalTargetFrameworks": [
           "netstandard2.1"
