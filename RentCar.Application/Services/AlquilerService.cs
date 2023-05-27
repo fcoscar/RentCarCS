@@ -1,10 +1,12 @@
 using System;
+using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 using Microsoft.Extensions.Logging;
 using RentCar.Application.Contract;
 using RentCar.Application.Core;
 using RentCar.Application.Dtos.Alquiler;
+using RentCar.Application.Models;
 using RentCar.Application.Responses;
 using RentCar.domain.Entity;
 using RentCar.Infraestructure.Interfaces;
@@ -31,18 +33,7 @@ namespace RentCar.Application.Services
             ServiceResult result = new ServiceResult();
             try
             {
-                var query = (from alquiler in (await this.alquilerRepository.GetAll())
-                    join car in await this.carRepository.GetAll() on alquiler.CarId equals car.Id
-                        select new Models.AlquierGetModel()
-                        {
-                            Id = alquiler.Id,
-                            ReservationTime = alquiler.ReservationTime,
-                            TotalPrice = alquiler.TotalPrice,
-                            From = alquiler.From,
-                            To = alquiler.To,
-                            Car = car.Id
-                        }).ToList();
-                result.Data = query;
+                result.Data = await GetAlquileres();
             }
             catch (Exception e)
             {
@@ -56,7 +47,18 @@ namespace RentCar.Application.Services
 
         public async Task<ServiceResult> GetById(int id)
         {
-            throw new System.NotImplementedException();
+            var result = new ServiceResult();
+            try
+            {
+                result.Data =  await GetAlquileres(id);
+            }
+            catch (Exception e)
+            {
+                result.Succes = false;
+                result.Message = "Error obtneniendo alquiler por id";
+                logger.Log(LogLevel.Error, $"{result.Message}", e.ToString());
+            }
+            return result;
         }
 
         public async Task<AlquilerAddResponse> SaveAlquiler(AlquilerDto alquilerAddDto)
@@ -91,5 +93,32 @@ namespace RentCar.Application.Services
             }
             return alquilerAddResponse;
         }
+
+        private async Task<List<AlquierGetModel>> GetAlquileres(int? id = null)
+        {
+            List<AlquierGetModel> ListAlquilers = new List<AlquierGetModel>();
+            try
+            {
+                ListAlquilers = (from alquiler in (await this.alquilerRepository.GetAll())
+                    join car in await this.carRepository.GetAll() on alquiler.CarId equals car.Id
+                    where alquiler.Id == id || !id.HasValue
+                    select new AlquierGetModel()
+                    {
+                        Id = alquiler.Id,
+                        ReservationTime = alquiler.ReservationTime,
+                        TotalPrice = alquiler.TotalPrice,
+                        From = alquiler.From,
+                        To = alquiler.To,
+                        Car = car.Id
+                    }).ToList();
+            }
+            catch (Exception e)
+            {
+                ListAlquilers = null;
+                logger.Log(LogLevel.Error, "Error obtniendo alquileres", e.ToString());
+            }
+            return ListAlquilers;
+        }
+        
     }
 }

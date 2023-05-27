@@ -21,6 +21,7 @@ namespace RentCar.IOC.Dependencies
             //Services
             services.AddTransient<ICarService, CarService>();
             services.AddTransient<IAlquilerService, AlquilerService>();
+            services.AddTransient<IUserService, UserService>();
         }
     
         public static void AddContextDependecy(this IServiceCollection services, string connString)
