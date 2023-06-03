@@ -18,4 +18,8 @@
       <ProjectReference Include="..\RentCar.web\RentCar.web.csproj" />
     </ItemGroup>
 
+    <ItemGroup>
+      <_ContentIncludedByDefault Remove="Pages\Car\Index.cshtml" />
+    </ItemGroup>
+
 </Project>

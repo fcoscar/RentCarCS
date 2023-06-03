@@ -6,4 +6,18 @@
         <ImplicitUsings>enable</ImplicitUsings>
     </PropertyGroup>
 
+    <ItemGroup>
+      <Folder Include="ApiService\" />
+      <Folder Include="Areas\Index\Controllers\" />
+      <Folder Include="Areas\Index\Data\" />
+      <Folder Include="Areas\Index\Models\" />
+      <Folder Include="Areas\Index\Views\" />
+      <Folder Include="Models\Requests\" />
+    </ItemGroup>
+
+    <ItemGroup>
+      <PackageReference Include="Microsoft.VisualStudio.Web.CodeGeneration.Design" Version="6.0.13" />
+      <PackageReference Include="Newtonsoft.Json" Version="13.0.3" />
+    </ItemGroup>
+
 </Project>

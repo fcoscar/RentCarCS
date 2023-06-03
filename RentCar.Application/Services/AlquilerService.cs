@@ -50,7 +50,7 @@ namespace RentCar.Application.Services
             var result = new ServiceResult();
             try
             {
-                result.Data =  await GetAlquileres(id);
+                result.Data = (await GetAlquileres(id)).FirstOrDefault();
             }
             catch (Exception e)
             {

@@ -1,8 +1,6 @@
 using Microsoft.AspNetCore.Mvc;
 using RentCar.Application.Contract;
 using RentCar.Application.Dtos.User;
-using RentCar.domain.Entity;
-using RentCar.Infraestructure.Interfaces;
 
 namespace RentCar.API.Controllers;
 [ApiController]
@@ -29,7 +27,7 @@ public class UserController : ControllerBase
         return Ok(users);
     }
 
-    [HttpPost]
+    [HttpPost("SaveUser")]
     public async Task<IActionResult> Post([FromBody] UserDto user)
     {
         await this.userService.SaveUser(user);

@@ -49,7 +49,7 @@ namespace RentCar.Application.Services
             ServiceResult result = new ServiceResult();
             try
             {
-                result.Data = await GetCars(Id:id);
+                result.Data = (await GetCars(Id: id)).FirstOrDefault();
             }
             catch (Exception e)
             {

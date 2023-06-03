@@ -25,7 +25,7 @@ public class AlquilerController : ControllerBase
         var alquiler = await this.alquilerService.GetById(id);
         return Ok(alquiler);
     }
-    [HttpPost]
+    [HttpPost("SaveAlquiler")]
     public async Task<IActionResult> Post([FromBody] AlquilerDto alquiler)
     {
         await this.alquilerService.SaveAlquiler(alquiler);

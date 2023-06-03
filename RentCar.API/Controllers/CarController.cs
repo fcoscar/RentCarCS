@@ -56,7 +56,7 @@ public class CarController : ControllerBase
         var cars = await this.carService.GetByYearRange(from, to);
         return Ok(cars);
     }
-    [HttpPost]
+    [HttpPost("SaveCar")]
     public async Task<IActionResult> Post([FromBody] CarAddDto carAddDto)
     {
         var result = await this.carService.SaveCar(carAddDto);
@@ -65,7 +65,7 @@ public class CarController : ControllerBase
         return Ok();
     }
 
-    [HttpPut]
+    [HttpPut("UpdateCar")]
     public async Task<IActionResult> Put([FromBody] CarUpdateDto carUpdateDto)
     {
         var result = await this.carService.ModifyCar(carUpdateDto);

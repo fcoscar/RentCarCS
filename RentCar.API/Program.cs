@@ -1,5 +1,3 @@
-using Microsoft.EntityFrameworkCore;
-using RentCar.Infraestructure.Context;
 using RentCar.IOC.Dependencies;
 
 var builder = WebApplication.CreateBuilder(args);

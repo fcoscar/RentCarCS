@@ -10,7 +10,9 @@ using RentCar.Application.Contract;
 using RentCar.Application.Core;
 using RentCar.Application.Dtos.Car;
 using RentCar.Application.Dtos.User;
+using RentCar.Application.Models;
 using RentCar.Application.Responses;
+using RentCar.domain.Entity;
 using RentCar.Infraestructure.Interfaces;
 
 namespace RentCar.Application.Services
@@ -41,7 +43,6 @@ namespace RentCar.Application.Services
                 result.Message = "Error obteniedo usuarios";
                 logger.Log(LogLevel.Error, $"{result.Message}", e.ToString());
             }
-
             return result;
         }
 
@@ -50,7 +51,7 @@ namespace RentCar.Application.Services
             ServiceResult result = new ServiceResult();
             try
             {
-                result.Data = await GetUser(id);
+                result.Data = (await GetUser(id)).FirstOrDefault();
             }
             catch (Exception e)
             {
@@ -62,27 +63,49 @@ namespace RentCar.Application.Services
             return result;
         }
 
-        public Task<AlquilerAddResponse> SaveUser(UserDto userDto)
+        public async Task<ServiceResult> SaveUser(UserDto userDto)
         {
-            throw new System.NotImplementedException();
+            ServiceResult result = new ServiceResult();
+            try
+            {
+                User user = new User()
+                {
+                    FirstName = userDto.FirstName,
+                    LastName = userDto.LastName,
+                    Username = userDto.Username,
+                    Password = userDto.Password,
+                    Mail = userDto.Mail,
+                    DocType = userDto.DocType,
+                    NumDoc = userDto.NumDoc,
+                    IsAdmin = userDto.IsAdmin,
+                    IdUsuarioCreacion = userDto.IdUsuario,
+                    FechaCreacion = userDto.Fecha,
+                };
+                await this.userRepository.Save(user);
+            }
+            catch (Exception e)
+            {
+                result.Message = "Error agregando usuario";
+                result.Succes = false;
+                logger.Log(LogLevel.Error, $"{result.Message}", e.ToString());
+            }
+
+            return result;
         }
 
-        private async Task<List<UserDto>> GetUser(int? id = null)
+        private async Task<List<UserGetModel>> GetUser(int? id = null)
         {
-            List<UserDto> ListUsers = new List<UserDto>();
+            List<UserGetModel> ListUsers = new List<UserGetModel>();
             try
             {
                 ListUsers = (from users in (await this.userRepository.GetAll())
-                    join cars in await this.carRepository.GetAll() on users.Id equals cars.Id
-                    join alqs in await this.alquilerRepository.GetAll() on users.Id equals alqs.IdUsuarioCreacion
-                    where users.Id == id || id.HasValue
-                    select new UserDto()
+                    where users.Id == id || !id.HasValue
+                    select new UserGetModel()
                     {
                         Id = users.Id,
                         FirstName = users.FirstName,
                         LastName = users.LastName,
                         Username = users.Username,
-                        Password = users.Password,
                         Mail = users.Mail,
                         DocType = users.DocType,
                         NumDoc = users.NumDoc,
@@ -92,8 +115,8 @@ namespace RentCar.Application.Services
             }
             catch (Exception e)
             {
-                Console.WriteLine(e);
-                throw;
+                ListUsers = null;
+                logger.Log(LogLevel.Error, "Error obteniendo usuarios", e.ToString());
             }
             return ListUsers;
         }

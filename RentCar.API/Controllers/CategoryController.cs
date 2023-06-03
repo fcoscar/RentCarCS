@@ -32,7 +32,7 @@ public class CategoryController : ControllerBase
         Console.WriteLine(categories);
         return Ok(categories);
     }
-    [HttpPost]
+    [HttpPost("SaveCategory")]
     public async Task<IActionResult> Post([FromBody] Category category)
     {
         await categoryRepository.Save(category);
