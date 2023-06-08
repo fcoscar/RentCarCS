@@ -16,7 +16,7 @@ public class UserController : ControllerBase
     [HttpGet]
     public async Task<IActionResult> Get()
     {
-        var users = await this.userService.Get();
+        var users = await this.userService.GetUsers();
         return Ok(users);
     }
     
@@ -28,7 +28,7 @@ public class UserController : ControllerBase
     }
 
     [HttpPost("SaveUser")]
-    public async Task<IActionResult> Post([FromBody] UserDto user)
+    public async Task<IActionResult> Post([FromBody] UserAddDto user)
     {
         await this.userService.SaveUser(user);
         return Ok();

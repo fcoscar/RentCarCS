@@ -144,6 +144,7 @@ namespace RentCar.Application.Services
 
                 Car car = carAddDto.ConvertCarAddDtoToCar();
                 await this.carRepository.Save(car);
+                carAddResponse.Id = car.Id;
             }
             catch (Exception e)
             {
@@ -211,7 +212,8 @@ namespace RentCar.Application.Services
                         Pasajeros = cars.Pasajeros,
                         Descripcion = cars.Descripcion,
                         PricePerDay = cars.PricePerDay,
-                        Categoria = cat.Nombre
+                        Categoria = cat.Nombre,
+                        CategoriaId = cat.Id
                     }).ToList();
             }
             catch (Exception e)

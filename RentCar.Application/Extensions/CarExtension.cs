@@ -19,7 +19,8 @@ namespace RentCar.Application.Extensions
                 IdUsuarioCreacion = carAddDto.IdUsuario,
                 FechaCreacion = DateTime.Now,
                 Eliminado = false,
-                IsBusy = false
+                IsBusy = false,
+                CategoriaId = carAddDto.CategoriaId
             };
         }
     }

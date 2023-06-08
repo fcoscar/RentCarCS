@@ -10,5 +10,6 @@ namespace RentCar.Application.Models
         public string? Descripcion { get; set; }
         public decimal PricePerDay { get; set; }
         public string Categoria { get; set; }
+        public int CategoriaId { get; set; }
     }
 }

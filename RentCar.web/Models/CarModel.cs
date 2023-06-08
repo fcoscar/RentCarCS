@@ -10,4 +10,5 @@ public class CarModel
     public string descripcion { get; set; }
     public decimal pricePerDay { get; set; }
     public string categoria { get; set; }
+    public int categoriaId { get; set; }
 }

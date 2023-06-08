@@ -7,8 +7,8 @@ namespace RentCar.Application.Contract
 {
     public interface IUserService
     {
-        Task<ServiceResult> Get();
+        Task<ServiceResult> GetUsers();
         Task<ServiceResult> GetById(int id);
-        Task<ServiceResult> SaveUser(UserDto userDto);
+        Task<ServiceResult> SaveUser(UserAddDto userDto);
     }
 }

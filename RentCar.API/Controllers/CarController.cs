@@ -65,7 +65,7 @@ public class CarController : ControllerBase
         return Ok();
     }
 
-    [HttpPut("UpdateCar")]
+    [HttpPost("UpdateCar")]
     public async Task<IActionResult> Put([FromBody] CarUpdateDto carUpdateDto)
     {
         var result = await this.carService.ModifyCar(carUpdateDto);

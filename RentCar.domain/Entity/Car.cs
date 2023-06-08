@@ -12,11 +12,11 @@ namespace RentCar.domain.Entity
         public int Pasajeros { get; set; }
         public string? Descripcion { get; set; }
         public decimal PricePerDay { get; set; }
-        public bool IsBusy { get; set; } = false;
+        public bool? IsBusy { get; set; } = false;
         public DateTime? From { get; set; }
         public DateTime? To { get; set; }
         public DateTime? FechaElimino { get; set; }
-        public bool Eliminado { get; set; } = false;
+        public bool? Eliminado { get; set; } = false;
         public int CategoriaId { get; set; }
     }
 }

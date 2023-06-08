@@ -1,4 +1,6 @@
 using System;
+using System.Collections.Generic;
+using RentCar.Application.Models;
 
 namespace RentCar.Application.Dtos.User
 {
@@ -14,5 +16,6 @@ namespace RentCar.Application.Dtos.User
         public string? NumDoc { get; set; }
         public bool IsAdmin { get; set; }
         public DateTime? FechaCreacion { get; set; }  
+        public List<CarGetModel> Carros { get; set; }
     }
 }

@@ -1,7 +1,12 @@
+using RentCar.web.ApiService.Interfaces;
+using RentCar.web.ApiService.Services;
+
 var builder = WebApplication.CreateBuilder(args);
 
 // Add services to the container.
 builder.Services.AddControllersWithViews();
+builder.Services.AddHttpClient();
+builder.Services.AddTransient<ICarApiService, CarApiService>();
 
 var app = builder.Build();
 
