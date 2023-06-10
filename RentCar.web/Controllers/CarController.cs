@@ -11,6 +11,7 @@ public class CarController : Controller
 {
     private readonly ILogger<CarController> logger;
     private readonly ICarApiService carApiService;
+
     public CarController(IConfiguration configuration, ILogger<CarController> logger,
         ICarApiService carApiService)
     {
@@ -64,7 +65,7 @@ public class CarController : Controller
         var resp = await carApiService.GetCar(id);
         return View(resp.data);
     }
-    
+
     public async Task<ActionResult> Update(int id)
     {
         var car = await carApiService.GetCar(id);
@@ -79,10 +80,10 @@ public class CarController : Controller
             pricePerDay = car.data.pricePerDay,
             categoriaId = (Categories) car.data.categoriaId
         };
-        
+
         return View(carToUpdate);
     }
-    
+
     [HttpPost]
     [ValidateAntiForgeryToken]
     public async Task<ActionResult> Update(CarSaveRequest carToUpdate)
@@ -97,13 +98,13 @@ public class CarController : Controller
             return View();
         }
     }
-    
+
 
     public ActionResult Create()
     {
         return View();
     }
-    
+
     [HttpPost]
     [ValidateAntiForgeryToken]
     public async Task<ActionResult> Create(CarSaveRequest newCar)

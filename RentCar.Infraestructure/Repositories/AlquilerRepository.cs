@@ -9,12 +9,13 @@ namespace RentCar.Infraestructure.Repositories
     public class AlquilerRepository : BaseRepository<Alquiler>, IAlquilerRepository
     {
         private readonly RentCarContext context;
+
         public AlquilerRepository(RentCarContext context) : base(context)
         {
             this.context = context;
         }
 
-        public async override Task Save(Alquiler entity)
+        public override async Task Save(Alquiler entity)
         {
             await base.Save(entity);
             await base.SaveChanges();

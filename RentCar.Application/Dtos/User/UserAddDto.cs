@@ -13,6 +13,6 @@ namespace RentCar.Application.Dtos.User
         public string? DocType { get; set; }
         public string? NumDoc { get; set; }
         public bool IsAdmin { get; set; }
-        public DateTime FechaCreacion { get; set; }  
+        public DateTime FechaCreacion { get; set; }
     }
 }

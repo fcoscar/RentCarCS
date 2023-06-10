@@ -13,21 +13,25 @@ namespace RentCar.Infraestructure.Repositories
     public class CarRepository : BaseRepository<Car>, ICarRepository
     {
         private readonly RentCarContext context;
+
         public CarRepository(RentCarContext context) : base(context)
         {
             this.context = context;
         }
+
         public async Task<IEnumerable<Car>> GetCarsByBrand(string brand)
         {
-            return await this.context.Car.Where(c => c.Marca == brand).ToListAsync();
+            return await context.Car.Where(c => c.Marca == brand).ToListAsync();
         }
+
         public async Task<IEnumerable<Car>> GetCarsByYear(int year)
         {
-            return await this.context.Car.Where(c => c.Year == year).ToListAsync();
+            return await context.Car.Where(c => c.Year == year).ToListAsync();
         }
+
         public async Task<IEnumerable<Car>> GetCarsByYearRange(int from, int to)
         {
-            return await this.context.Car.Where(c => c.Year > from && c.Year < to).ToListAsync();
+            return await context.Car.Where(c => c.Year > from && c.Year < to).ToListAsync();
         }
 
         public override async Task Save(Car entity)
@@ -44,7 +48,7 @@ namespace RentCar.Infraestructure.Repositories
 
         public override async Task Delete(int id)
         {
-            if (await this.context.Car.AnyAsync(cd => cd.Id == id))
+            if (await context.Car.AnyAsync(cd => cd.Id == id))
             {
                 await base.Delete(id);
                 await base.SaveChanges();

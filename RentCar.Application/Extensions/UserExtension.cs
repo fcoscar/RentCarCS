@@ -7,7 +7,7 @@ namespace RentCar.Application.Extensions
     {
         public static UserDto ConvertUserToUserDto(this User user)
         {
-            return new UserDto()
+            return new UserDto
             {
                 Id = user.Id,
                 FirstName = user.FirstName,
@@ -17,14 +17,14 @@ namespace RentCar.Application.Extensions
                 DocType = user.DocType,
                 NumDoc = user.NumDoc,
                 IsAdmin = user.IsAdmin,
-                FechaCreacion = user.FechaCreacion,
-               // Carros = user.
+                FechaCreacion = user.FechaCreacion
+                // Carros = user.
             };
         }
 
         public static User ConvertUserAddDtoToUser(this UserAddDto user)
         {
-            return new User()
+            return new User
             {
                 //Id = user.Id,
                 FirstName = user.FirstName,
@@ -35,7 +35,7 @@ namespace RentCar.Application.Extensions
                 DocType = user.DocType,
                 NumDoc = user.NumDoc,
                 IsAdmin = user.IsAdmin,
-                FechaCreacion = user.FechaCreacion,
+                FechaCreacion = user.FechaCreacion
             };
         }
     }

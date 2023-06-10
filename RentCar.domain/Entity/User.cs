@@ -17,6 +17,7 @@ namespace RentCar.domain.Entity
         public string Mail { get; set; }
         public string? DocType { get; set; }
         public string? NumDoc { get; set; }
+
         public bool IsAdmin { get; set; }
         //public ICollection<UserCar> UserCar { get; set; }
     }

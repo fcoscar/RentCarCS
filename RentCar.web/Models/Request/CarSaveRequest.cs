@@ -12,7 +12,6 @@ public class CarSaveRequest
     public string descripcion { get; set; }
     public decimal pricePerDay { get; set; }
     public Categories categoriaId { get; set; }
-    
 }
 
 public enum Categories
@@ -21,5 +20,5 @@ public enum Categories
     Jeepeta = 2,
     Camioneta = 3,
     SportCoupe = 4,
-    Motores = 5,
+    Motores = 5
 }

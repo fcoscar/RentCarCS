@@ -38,44 +38,43 @@
         <th>
             Actions
         </th>
-        
+
     </tr>
     </thead>
     <tbody>
-        @foreach (var item in Model)
-        {
-            <tr>
-                <td>
-                    @Html.DisplayFor(modelItem => item.id)
-                </td>
-                <td>
-                    @Html.DisplayFor(modelItem => item.marca)
-                </td>
-                <td>
-                    @Html.DisplayFor(modelItem => item.modelo)
-                </td>
-                <td>
-                    @Html.DisplayFor(modelItem => item.year)
-                </td>
-                <td>
-                    @Html.DisplayFor(modelItem => item.pasajeros)
-                </td>
-                <td>
-                    @Html.DisplayFor(modelItem => item.descripcion)
-                </td>
-                <td>
-                    @Html.DisplayFor(modelItem => item.pricePerDay)
-                </td>
-                <td>
-                    @Html.DisplayFor(modelItem => item.categoria)
-                </td>                
-                <td>
-                    @Html.ActionLink("Edit", "Update", new { id=item.id }) |
-                    @Html.ActionLink("Details", "Details", new {  id=item.id }) |
-                    @Html.ActionLink("Delete", "Delete", new {  id= item.id })
-                </td>
-            </tr>
-        }
+    @foreach (var item in Model)
+    {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.id)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.marca)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.modelo)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.year)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.pasajeros)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.descripcion)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.pricePerDay)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.categoria)
+            </td>
+            <td>
+                @Html.ActionLink("Edit", "Update", new {id = item.id}) |
+                @Html.ActionLink("Details", "Details", new {id = item.id}) |
+                @* @Html.ActionLink("Delete", "Delete", new {id = item.id}) *@
+            </td>
+        </tr>
+    }
     </tbody>
 </table>
-

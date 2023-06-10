@@ -12,18 +12,20 @@ public class CarApiService : ICarApiService
     private readonly IConfiguration configuration;
     private readonly ILogger<CarApiService> logger;
     private readonly string baseUrl;
-    public CarApiService(IHttpClientFactory clientFactory, 
+
+    public CarApiService(IHttpClientFactory clientFactory,
         IConfiguration configuration,
         ILogger<CarApiService> logger)
     {
         this.clientFactory = clientFactory;
         this.configuration = configuration;
         this.logger = logger;
-        this.baseUrl = this.configuration["ApiConfig:urlBase"]; //appsetting.json
+        baseUrl = this.configuration["ApiConfig:urlBase"]; //appsetting.json
     }
+
     public async Task<CarListResponse?> GetCars()
     {
-        CarListResponse? carList = new CarListResponse();
+        var carList = new CarListResponse();
         try
         {
             using (var httpClient = clientFactory.CreateClient())
@@ -32,7 +34,7 @@ public class CarApiService : ICarApiService
                 {
                     if (response.IsSuccessStatusCode)
                     {
-                        string resp = await response.Content.ReadAsStringAsync();
+                        var resp = await response.Content.ReadAsStringAsync();
                         carList = JsonConvert.DeserializeObject<CarListResponse>(resp);
                     }
                 }
@@ -50,15 +52,14 @@ public class CarApiService : ICarApiService
 
     public async Task<CarGetResponse> GetCar(int id)
     {
-
-        CarGetResponse carGet = new CarGetResponse();
+        var carGet = new CarGetResponse();
         try
         {
             using (var httpClient = clientFactory.CreateClient())
             {
                 using (var response = await httpClient.GetAsync($"{baseUrl}/Car/{id}"))
                 {
-                    string resp = await response.Content.ReadAsStringAsync();
+                    var resp = await response.Content.ReadAsStringAsync();
                     carGet = JsonConvert.DeserializeObject<CarGetResponse>(resp);
                 }
             }
@@ -75,18 +76,17 @@ public class CarApiService : ICarApiService
 
     public async Task<CarAddResponse> SaveCar(CarSaveRequest newCar)
     {
-        CarAddResponse result = new CarAddResponse();
+        var result = new CarAddResponse();
         try
         {
             using (var httpClient = clientFactory.CreateClient())
             {
-                newCar.fecha = DateTime.Now;
-                StringContent request = new StringContent(JsonConvert.SerializeObject(newCar), Encoding.UTF8, "application/json");
+                var request = new StringContent(JsonConvert.SerializeObject(newCar), Encoding.UTF8, "application/json");
                 using (var response = await httpClient.PostAsync($"{baseUrl}/Car/SaveCar", request))
                 {
                     if (response.IsSuccessStatusCode)
                     {
-                        string resp = await response.Content.ReadAsStringAsync();
+                        var resp = await response.Content.ReadAsStringAsync();
                         result = JsonConvert.DeserializeObject<CarAddResponse>(resp);
                     }
                 }
@@ -98,23 +98,25 @@ public class CarApiService : ICarApiService
             result.succes = false;
             logger.Log(LogLevel.Error, $"{result.message}", e.ToString());
         }
+
         return result;
     }
 
     public async Task<BaseResponse> UpdateCar(CarSaveRequest carToUpdate)
     {
-        BaseResponse result = new BaseResponse();
+        var result = new BaseResponse();
         try
         {
             using (var httpClient = clientFactory.CreateClient())
             {
                 //carToUpdate.fecha = DateTime.Now;
-                StringContent request = new StringContent(JsonConvert.SerializeObject(carToUpdate), Encoding.UTF8, "application/json");
+                var request = new StringContent(JsonConvert.SerializeObject(carToUpdate), Encoding.UTF8,
+                    "application/json");
                 using (var response = await httpClient.PostAsync($"{baseUrl}/Car/UpdateCar", request))
                 {
                     if (response.IsSuccessStatusCode)
                     {
-                        string resp = await response.Content.ReadAsStringAsync();
+                        var resp = await response.Content.ReadAsStringAsync();
                         result = JsonConvert.DeserializeObject<CarAddResponse>(resp);
                     }
                 }
@@ -126,6 +128,7 @@ public class CarApiService : ICarApiService
             result.succes = false;
             logger.Log(LogLevel.Error, $"{result.message}", e.ToString());
         }
+
         return result;
     }
 }
