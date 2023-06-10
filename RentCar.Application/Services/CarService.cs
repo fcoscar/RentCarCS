@@ -17,15 +17,18 @@ namespace RentCar.Application.Services
     public class CarService : ICarService
     {
         private readonly ICarRepository carRepository;
+        private readonly IUserRepository userRepository;
         private readonly ICategoryRepository categoryRepository;
         private readonly ILogger<CarService> logger;
         public CarService(ICarRepository carRepository,
             ICategoryRepository categoryRepository,
+            IUserRepository userRepository,
             ILogger<CarService> logger)
         {
             this.carRepository = carRepository;
             this.categoryRepository = categoryRepository;
             this.logger = logger;
+            this.userRepository = userRepository;
         }
         public async Task<ServiceResult> Get()
         {
@@ -197,6 +200,7 @@ namespace RentCar.Application.Services
             {
                 Listcars = (from cars in (await this.carRepository.GetAll())
                     join cat in await this.categoryRepository.GetAll() on cars.CategoriaId equals cat.Id
+                    join user in await this.userRepository.GetAll() on cars.IdUsuarioCreacion equals user.Id
                     where cars.Id == Id || !Id.HasValue
                     where cars.CategoriaId == Category || !Category.HasValue
                     where cars.Marca == Brand || Brand == null
@@ -213,7 +217,8 @@ namespace RentCar.Application.Services
                         Descripcion = cars.Descripcion,
                         PricePerDay = cars.PricePerDay,
                         Categoria = cat.Nombre,
-                        CategoriaId = cat.Id
+                        CategoriaId = cat.Id,
+                        User = user.ConvertUserToUserGetModel()
                     }).ToList();
             }
             catch (Exception e)

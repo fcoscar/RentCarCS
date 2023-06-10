@@ -8,7 +8,7 @@ builder.Services.AddControllersWithViews();
 builder.Services.AddHttpClient();
 builder.Services.AddTransient<ICarApiService, CarApiService>();
 builder.Services.AddTransient<IAlquilerApiService, AlquilerApiService>();
-
+builder.Services.AddTransient<IUserApiService, UserApiService>();
 var app = builder.Build();
 
 // Configure the HTTP request pipeline.
