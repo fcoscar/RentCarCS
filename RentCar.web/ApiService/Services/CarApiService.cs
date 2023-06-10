@@ -78,7 +78,7 @@ public class CarApiService : ICarApiService
         CarAddResponse result = new CarAddResponse();
         try
         {
-            using (var httpClient = this.clientFactory.CreateClient())
+            using (var httpClient = clientFactory.CreateClient())
             {
                 newCar.fecha = DateTime.Now;
                 StringContent request = new StringContent(JsonConvert.SerializeObject(newCar), Encoding.UTF8, "application/json");

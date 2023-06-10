@@ -80,7 +80,7 @@ public class UserApiService : IUserApiService
             using (var httpClient = clientFactory.CreateClient())
             {
                 userNew.IsAdmin = false;
-                userNew.FechaCreacion = DateTime.Now;
+                //userNew.FechaCreacion = DateTime.Now;
                 StringContent request = new StringContent(JsonConvert.SerializeObject(userNew), Encoding.UTF8, "application/json");
                 using(var response = await httpClient.PostAsync($"{baseUrl}/User/SaveUser", request))
                 {
