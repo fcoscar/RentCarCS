@@ -1,11 +1,8 @@
 using System.Text;
 using Newtonsoft.Json;
-using RentCar.domain.Entity;
-using RentCar.Infraestructure.Models;
 using RentCar.web.ApiService.Interfaces;
 using RentCar.web.Models.Request;
 using RentCar.web.Models.Responses;
-using UserModel = RentCar.web.Models.UserModel;
 
 namespace RentCar.web.ApiService.Services;
 
