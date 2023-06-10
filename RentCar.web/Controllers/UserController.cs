@@ -1,6 +1,5 @@
 using Microsoft.AspNetCore.Mvc;
 using RentCar.web.ApiService.Interfaces;
-using RentCar.web.Models.Request;
 
 namespace RentCar.web.Controllers;
 
@@ -19,24 +18,5 @@ public class UserController : Controller
     {
         var resp = await userApiService.GetUsers();
         return View(resp.data);
-    }
-
-    public ActionResult Create()
-    {
-        return View();
-    }
-    [HttpPost]
-    [ValidateAntiForgeryToken]
-    public async Task<ActionResult> Create(UserSaveRequest newUser)
-    {
-        try
-        {
-            var resp = await userApiService.SaveUser(newUser);
-            return RedirectToAction(nameof(Index));
-        }
-        catch (Exception e)
-        {
-            return View();
-        }
     }
 }
