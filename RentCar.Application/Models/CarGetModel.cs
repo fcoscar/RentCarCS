@@ -1,3 +1,5 @@
+using RentCar.domain.Entity;
+
 namespace RentCar.Application.Models
 {
     public class CarGetModel
@@ -11,5 +13,7 @@ namespace RentCar.Application.Models
         public decimal PricePerDay { get; set; }
         public string? Categoria { get; set; }
         public int CategoriaId { get; set; }
+        public UserGetModel User { get; set; }
+
     }
 }
