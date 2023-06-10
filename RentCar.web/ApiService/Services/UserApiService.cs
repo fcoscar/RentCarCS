@@ -1,7 +1,11 @@
+using System.Text;
 using Newtonsoft.Json;
+using RentCar.domain.Entity;
 using RentCar.Infraestructure.Models;
 using RentCar.web.ApiService.Interfaces;
+using RentCar.web.Models.Request;
 using RentCar.web.Models.Responses;
+using UserModel = RentCar.web.Models.UserModel;
 
 namespace RentCar.web.ApiService.Services;
 
@@ -43,5 +47,57 @@ public class UserApiService : IUserApiService
         }
         
         return userList;
+    }
+
+    public async Task<UserResponse> GetUser(int id)
+    {
+        UserResponse user = new UserResponse();
+        try
+        {
+            using (var httpClient = clientFactory.CreateClient())
+            {
+                using (var response = await httpClient.GetAsync($"{baseUrl}/User/{id}"))
+                {
+                    string resp = await response.Content.ReadAsStringAsync();
+                    user = JsonConvert.DeserializeObject<UserResponse>(resp);
+                }
+            }
+        }
+        catch (Exception e)
+        {
+            user.message = "Error obteniendo usuario por id";
+            user.succes = false;
+            logger.Log(LogLevel.Error, $"{user.message}", e.ToString());
+        }
+        return user;
+    }
+
+    public async  Task<UserAddResponse> SaveUser(UserSaveRequest userNew)
+    {
+        UserAddResponse result = new UserAddResponse();
+        try
+        {
+            using (var httpClient = clientFactory.CreateClient())
+            {
+                userNew.IsAdmin = false;
+                userNew.FechaCreacion = DateTime.Now;
+                StringContent request = new StringContent(JsonConvert.SerializeObject(userNew), Encoding.UTF8, "application/json");
+                using(var response = await httpClient.PostAsync($"{baseUrl}/User/SaveUser", request))
+                {
+                    if (response.IsSuccessStatusCode)
+                    {
+                        string resp = await response.Content.ReadAsStringAsync();
+                        result = JsonConvert.DeserializeObject<UserAddResponse>(resp);
+                    }
+                }
+            }
+        }
+        catch (Exception e)
+        {
+            result.message = "Error guardando usuario";
+            result.succes = false;
+            logger.Log(LogLevel.Error, $"{result.message}", e.ToString());
+        }
+        return result;
     }
 }

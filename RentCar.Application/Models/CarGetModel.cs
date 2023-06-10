@@ -14,6 +14,5 @@ namespace RentCar.Application.Models
         public string? Categoria { get; set; }
         public int CategoriaId { get; set; }
         public UserGetModel User { get; set; }
-
     }
 }

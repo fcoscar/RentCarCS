@@ -1,6 +1,11 @@
+using RentCar.web.Models.Request;
+using RentCar.web.Models.Responses;
+
 namespace RentCar.web.ApiService.Interfaces;
 
-public class IUserApiService
+public interface IUserApiService
 {
-    //public Task<>
+    public Task<UserListResponse> GetUsers();
+    public Task<UserResponse> GetUser(int id);
+    public Task<UserAddResponse> SaveUser(UserSaveRequest userNew);
 }
