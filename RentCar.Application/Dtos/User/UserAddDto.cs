@@ -4,7 +4,7 @@ namespace RentCar.Application.Dtos.User
 {
     public class UserAddDto
     {
-        public int Id { get; set; }
+        //public int Id { get; set; }
         public string FirstName { get; set; }
         public string LastName { get; set; }
         public string Username { get; set; }

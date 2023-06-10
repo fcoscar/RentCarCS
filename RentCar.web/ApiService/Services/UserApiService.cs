@@ -1,6 +1,8 @@
+using System.Text;
 using Newtonsoft.Json;
 using RentCar.Infraestructure.Models;
 using RentCar.web.ApiService.Interfaces;
+using RentCar.web.Models.Request;
 using RentCar.web.Models.Responses;
 
 namespace RentCar.web.ApiService.Services;
@@ -43,5 +45,34 @@ public class UserApiService : IUserApiService
         }
         
         return userList;
+    }
+
+    public async Task<UserAddResponse> SaveUser(UserSaveRequest newUser)
+    {
+        UserAddResponse result = new UserAddResponse();
+        try
+        {
+            using (var httpClient = clientFactory.CreateClient())
+            {
+                newUser.FechaCreacion = DateTime.Now;
+                newUser.IsAdmin = false;
+                StringContent request = new StringContent(JsonConvert.SerializeObject(newUser),Encoding.UTF8, "application/json");
+                using (var response = await httpClient.PostAsync($"{baseUrl}/User/SaveUser", request))
+                {
+                    if (response.IsSuccessStatusCode)
+                    {
+                        string resp = await response.Content.ReadAsStringAsync();
+                        result = JsonConvert.DeserializeObject<UserAddResponse>(resp);
+                    }
+                }
+            }
+        }
+        catch (Exception e)
+        {
+            result.message = "Error creando usuario";
+            result.succes = false;
+            logger.Log(LogLevel.Error, $"{result.message}", e.ToString());
+        }
+        return result;
     }
 }
