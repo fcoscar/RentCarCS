@@ -11,9 +11,11 @@ using RentCar.Application.Core;
 using RentCar.Application.Dtos.Car;
 using RentCar.Application.Dtos.User;
 using RentCar.Application.Extensions;
+using RentCar.Application.Models;
 using RentCar.Application.Responses;
 using RentCar.domain.Entity;
 using RentCar.Infraestructure.Interfaces;
+using RentCar.Infraestructure.Repositories;
 
 namespace RentCar.Application.Services
 {
@@ -102,7 +104,7 @@ namespace RentCar.Application.Services
                         NumDoc = users.NumDoc,
                         IsAdmin = users.IsAdmin,
                         FechaCreacion = users.FechaCreacion,
-                        //Carros = carros.ToList()
+                        Carros = carros.Select(c => c.ConvertCarToCarGetModel()).ToList()
                     }).ToList();
             }
             catch (Exception e)
