@@ -18,8 +18,8 @@ namespace RentCar.Application.Services
         private readonly IAlquilerRepository alquilerRepository;
         private readonly ICarRepository carRepository;
         private readonly ILogger<AlquilerService> logger;
-        
-        public AlquilerService(IAlquilerRepository alquilerRepository, 
+
+        public AlquilerService(IAlquilerRepository alquilerRepository,
             ICarRepository carRepository,
             ILogger<AlquilerService> logger)
         {
@@ -27,10 +27,10 @@ namespace RentCar.Application.Services
             this.carRepository = carRepository;
             this.logger = logger;
         }
-        
+
         public async Task<ServiceResult> Get()
         {
-            ServiceResult result = new ServiceResult();
+            var result = new ServiceResult();
             try
             {
                 result.Data = await GetAlquileres();
@@ -39,7 +39,7 @@ namespace RentCar.Application.Services
             {
                 result.Succes = false;
                 result.Message = "Error obteniendo Alquileres";
-                this.logger.Log(LogLevel.Error, $"{result.Message}", e.ToString());
+                logger.Log(LogLevel.Error, $"{result.Message}", e.ToString());
             }
 
             return result;
@@ -58,17 +58,18 @@ namespace RentCar.Application.Services
                 result.Message = "Error obtneniendo alquiler por id";
                 logger.Log(LogLevel.Error, $"{result.Message}", e.ToString());
             }
+
             return result;
         }
 
         public async Task<AlquilerAddResponse> SaveAlquiler(AlquilerDto alquilerAddDto)
         {
-            AlquilerAddResponse alquilerAddResponse = new AlquilerAddResponse();
+            var alquilerAddResponse = new AlquilerAddResponse();
             try
             {
-                var car = await this.carRepository.GetEntityById(alquilerAddDto.CarId);
+                var car = await carRepository.GetEntityById(alquilerAddDto.CarId);
                 var reservationTime = (alquilerAddDto.To.Date - alquilerAddDto.From.Date).Days + 1;
-                Alquiler alquiler = new Alquiler()
+                var alquiler = new Alquiler
                 {
                     ReservationTime = reservationTime,
                     IdUsuarioCreacion = alquilerAddDto.IdUsuario,
@@ -81,27 +82,28 @@ namespace RentCar.Application.Services
                 car.From = alquilerAddDto.From;
                 car.To = alquilerAddDto.To;
                 car.IsBusy = true;
-                await this.carRepository.SaveChanges();
-                await this.alquilerRepository.Save(alquiler);
+                await carRepository.SaveChanges();
+                await alquilerRepository.Save(alquiler);
             }
             catch (Exception e)
             {
                 alquilerAddResponse.Message = "Error agregando Alquiler";
                 alquilerAddResponse.Succes = false;
-                this.logger.Log(LogLevel.Error, $"{alquilerAddResponse.Message}", e.ToString());
+                logger.Log(LogLevel.Error, $"{alquilerAddResponse.Message}", e.ToString());
             }
+
             return alquilerAddResponse;
         }
 
         private async Task<List<AlquierGetModel>> GetAlquileres(int? id = null)
         {
-            List<AlquierGetModel> ListAlquilers = new List<AlquierGetModel>();
+            var ListAlquilers = new List<AlquierGetModel>();
             try
             {
-                ListAlquilers = (from alquiler in (await this.alquilerRepository.GetAll())
-                    join car in await this.carRepository.GetAll() on alquiler.CarId equals car.Id
+                ListAlquilers = (from alquiler in await alquilerRepository.GetAll()
+                    join car in await carRepository.GetAll() on alquiler.CarId equals car.Id
                     where alquiler.Id == id || !id.HasValue
-                    select new AlquierGetModel()
+                    select new AlquierGetModel
                     {
                         Id = alquiler.Id,
                         ReservationTime = alquiler.ReservationTime,
@@ -116,8 +118,8 @@ namespace RentCar.Application.Services
                 ListAlquilers = null;
                 logger.Log(LogLevel.Error, "Error obtniendo alquileres", e.ToString());
             }
+
             return ListAlquilers;
         }
-        
     }
 }

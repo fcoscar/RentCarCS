@@ -4,8 +4,9 @@ namespace RentCar.Application.Core
     {
         public ServiceResult()
         {
-            this.Succes = true;
+            Succes = true;
         }
+
         public string Message { get; set; }
         public bool Succes { get; set; }
         public dynamic Data { get; set; }

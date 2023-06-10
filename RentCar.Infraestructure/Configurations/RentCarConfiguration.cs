@@ -29,7 +29,7 @@ namespace RentCar.Infraestructure.Configurations
                 // entity.HasOne<Car>(e => e.Car)
                 //     .WithMany(g => g.Alquilers)
                 //     .HasForeignKey(s => s.Id);
-                entity.Property(e =>e.TotalPrice)
+                entity.Property(e => e.TotalPrice)
                     .HasColumnType("decimal(5,3)");
             });
 
@@ -60,6 +60,5 @@ namespace RentCar.Infraestructure.Configurations
                     .HasDefaultValueSql("(getdate())");
             });
         }
-        
     }
 }

@@ -8,8 +8,9 @@ namespace RentCar.Application.Extensions
     public static class CarExtension
     {
         public static Car ConvertCarAddDtoToCar(this CarAddDto carAddDto)
-        {                                       //metodo de extension
-            return new Car()
+        {
+            //metodo de extension
+            return new Car
             {
                 Marca = carAddDto.Marca,
                 Modelo = carAddDto.Modelo,
@@ -27,7 +28,7 @@ namespace RentCar.Application.Extensions
 
         public static CarGetModel ConvertCarToCarGetModel(this Car car)
         {
-            return new CarGetModel()
+            return new CarGetModel
             {
                 Id = car.Id,
                 Marca = car.Marca,

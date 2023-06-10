@@ -11,8 +11,8 @@ namespace RentCar.Infraestructure.Repositories
 {
     public class UserRepository : BaseRepository<User>, IUserRepository
     {
-
         private readonly RentCarContext context;
+
         public UserRepository(RentCarContext context) : base(context)
         {
             this.context = context;
@@ -23,13 +23,12 @@ namespace RentCar.Infraestructure.Repositories
             await base.Save(entity);
             await base.SaveChanges();
         }
-        
+
         public async Task<UserCarModel> GetUserCar(int userId)
         {
-            UserCarModel userCarModel = new UserCarModel();
+            var userCarModel = new UserCarModel();
             try
             {
-                
             }
             catch (Exception e)
             {

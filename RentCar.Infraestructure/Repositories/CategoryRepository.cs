@@ -13,6 +13,7 @@ namespace RentCar.Infraestructure.Repositories
     public class CategoryRepository : BaseRepository<Category>, ICategoryRepository
     {
         private readonly RentCarContext context;
+
         public CategoryRepository(RentCarContext context) : base(context)
         {
             this.context = context;
@@ -20,18 +21,18 @@ namespace RentCar.Infraestructure.Repositories
 
         public async Task<IEnumerable<Category>> GetCategoryByName(string name)
         {
-            return await this.context.Category.Where(c => c.Nombre == name).ToListAsync();
+            return await context.Category.Where(c => c.Nombre == name).ToListAsync();
         }
 
-        public async override Task Save(Category entity)
+        public override async Task Save(Category entity)
         {
             await base.Save(entity);
             await base.SaveChanges();
         }
 
-        public async override Task Delete(int id)
+        public override async Task Delete(int id)
         {
-            if (await this.context.Category.AnyAsync(cd => cd.Id == id))
+            if (await context.Category.AnyAsync(cd => cd.Id == id))
             {
                 await base.Delete(id);
                 await base.SaveChanges();

@@ -11,7 +11,7 @@ public class AlquilerController : Controller
     {
         this.alquilerApiService = alquilerApiService;
     }
-    
+
     public async Task<ActionResult> Index()
     {
         var resp = await alquilerApiService.GetAlquileres();
@@ -23,5 +23,4 @@ public class AlquilerController : Controller
         var alquiler = await alquilerApiService.GetAlquiler(id);
         return View(alquiler.data);
     }
-
 }

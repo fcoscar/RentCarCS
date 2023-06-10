@@ -9,7 +9,6 @@ using RentCar.Application.Dtos.Car;
 using RentCar.Application.Extensions;
 using RentCar.Application.Models;
 using RentCar.Application.Responses;
-using RentCar.domain.Entity;
 using RentCar.Infraestructure.Interfaces;
 
 namespace RentCar.Application.Services
@@ -17,9 +16,10 @@ namespace RentCar.Application.Services
     public class CarService : ICarService
     {
         private readonly ICarRepository carRepository;
-        private readonly IUserRepository userRepository;
         private readonly ICategoryRepository categoryRepository;
         private readonly ILogger<CarService> logger;
+        private readonly IUserRepository userRepository;
+
         public CarService(ICarRepository carRepository,
             ICategoryRepository categoryRepository,
             IUserRepository userRepository,
@@ -30,9 +30,10 @@ namespace RentCar.Application.Services
             this.logger = logger;
             this.userRepository = userRepository;
         }
+
         public async Task<ServiceResult> Get()
         {
-            ServiceResult result = new ServiceResult();
+            var result = new ServiceResult();
             try
             {
                 result.Data = await GetCars();
@@ -41,7 +42,7 @@ namespace RentCar.Application.Services
             {
                 result.Succes = false;
                 result.Message = "Error Obteniendo los carros";
-                this.logger.Log(LogLevel.Error ,$"{result.Message}", e.ToString());
+                logger.Log(LogLevel.Error, $"{result.Message}", e.ToString());
             }
 
             return result;
@@ -49,73 +50,78 @@ namespace RentCar.Application.Services
 
         public async Task<ServiceResult> GetById(int id)
         {
-            ServiceResult result = new ServiceResult();
+            var result = new ServiceResult();
             try
             {
-                result.Data = (await GetCars(Id: id)).FirstOrDefault();
+                result.Data = (await GetCars(id)).FirstOrDefault();
             }
             catch (Exception e)
             {
                 result.Succes = false;
                 result.Message = "Error Obteniendo carro por Id";
-                logger.Log(LogLevel.Error ,$"{result.Message}", e.ToString());
+                logger.Log(LogLevel.Error, $"{result.Message}", e.ToString());
             }
+
             return result;
         }
 
         public async Task<ServiceResult> GetByBrand(string brand)
         {
-            ServiceResult result = new ServiceResult();
+            var result = new ServiceResult();
             try
             {
-                result.Data = await GetCars(Brand:brand);
+                result.Data = await GetCars(Brand: brand);
             }
             catch (Exception e)
             {
                 result.Message = "Error Obteniendo carro por marca";
                 result.Succes = false;
-                logger.Log(LogLevel.Error,$"{result.Message}", e.ToString());
+                logger.Log(LogLevel.Error, $"{result.Message}", e.ToString());
             }
+
             return result;
         }
 
         public async Task<ServiceResult> GetByYearRange(int since, int to)
         {
-            ServiceResult result = new ServiceResult();
+            var result = new ServiceResult();
             try
             {
-                result.Data = await GetCars(Since:since,To:to);
+                result.Data = await GetCars(Since: since, To: to);
             }
             catch (Exception e)
             {
                 result.Succes = false;
                 result.Message = "Error obtniendo carros por rango de anos";
-                this.logger.Log(LogLevel.Error, $"{result.Message}", e.ToString());
+                logger.Log(LogLevel.Error, $"{result.Message}", e.ToString());
             }
+
             return result;
         }
+
         public async Task<ServiceResult> GetByYear(int year)
         {
-            ServiceResult result = new ServiceResult();
+            var result = new ServiceResult();
             try
             {
-                result.Data = await GetCars(Year:year);
+                result.Data = await GetCars(Year: year);
             }
             catch (Exception e)
             {
                 result.Message = "Error Obteniendo carro por año";
                 result.Succes = false;
-                logger.Log(LogLevel.Error,$"{result.Message}", e.ToString());
+                logger.Log(LogLevel.Error, $"{result.Message}", e.ToString());
             }
+
             return result;
         }
 
         public async Task<ServiceResult> GetByCategory(int categoriaId)
         {
-            ServiceResult result = new ServiceResult();
+            var result = new ServiceResult();
             try
             {
-                result.Data = await GetCars(Category:categoriaId);
+                result.Data = await GetCars(Category: categoriaId);
             }
             catch (Exception e)
             {
@@ -123,12 +129,13 @@ namespace RentCar.Application.Services
                 result.Message = "Error obteniendo carro por categoria";
                 logger.Log(LogLevel.Error, $"{result.Message}", e.ToString());
             }
+
             return result;
         }
 
         public async Task<CarAddResponse> SaveCar(CarAddDto carAddDto)
         {
-            CarAddResponse carAddResponse = new CarAddResponse();
+            var carAddResponse = new CarAddResponse();
             try
             {
                 if (string.IsNullOrEmpty(carAddDto.Modelo))
@@ -145,25 +152,26 @@ namespace RentCar.Application.Services
                     return carAddResponse;
                 }
 
-                Car car = carAddDto.ConvertCarAddDtoToCar();
-                await this.carRepository.Save(car);
+                var car = carAddDto.ConvertCarAddDtoToCar();
+                await carRepository.Save(car);
                 carAddResponse.Id = car.Id;
             }
             catch (Exception e)
             {
                 carAddResponse.Succes = false;
                 carAddResponse.Message = "Error Actualizando carro";
-                logger.Log(LogLevel.Error ,$"{carAddResponse.Message}", e.ToString());
+                logger.Log(LogLevel.Error, $"{carAddResponse.Message}", e.ToString());
             }
+
             return carAddResponse;
         }
 
         public async Task<ServiceResult> ModifyCar(CarUpdateDto carUpdateDto)
         {
-            ServiceResult carAddResponse = new ServiceResult();
+            var carAddResponse = new ServiceResult();
             try
             {
-                Car car = await this.carRepository.GetEntityById(carUpdateDto.Id);
+                var car = await carRepository.GetEntityById(carUpdateDto.Id);
                 car.Marca = carUpdateDto.Marca;
                 car.Modelo = carUpdateDto.Modelo;
                 car.Year = carUpdateDto.Year;
@@ -176,38 +184,39 @@ namespace RentCar.Application.Services
                 car.Eliminado = carUpdateDto.Eliminado;
                 car.CategoriaId = carUpdateDto.CategoriaId;
                 car.FechaMod = DateTime.Now;
-                await this.carRepository.Update(car);
+                await carRepository.Update(car);
             }
             catch (Exception e)
             {
                 carAddResponse.Succes = false;
                 carAddResponse.Message = "Error Agregando carro";
-                logger.Log(LogLevel.Error ,$"{carAddResponse.Message}", e.ToString());
+                logger.Log(LogLevel.Error, $"{carAddResponse.Message}", e.ToString());
             }
+
             return carAddResponse;
         }
 
         public Task<ServiceResult> Delete(int id)
         {
-            throw new System.NotImplementedException();
+            throw new NotImplementedException();
         }
 
-        private async Task<List<CarGetModel>> GetCars(int? Id = null, string? Brand = null, int? Year = null, 
-                                                        int? Since = null, int? To = null, int? Category = null)
+        private async Task<List<CarGetModel>> GetCars(int? Id = null, string? Brand = null, int? Year = null,
+            int? Since = null, int? To = null, int? Category = null)
         {
-            List<CarGetModel> Listcars = new List<CarGetModel>();
+            var Listcars = new List<CarGetModel>();
             try
             {
-                Listcars = (from cars in (await this.carRepository.GetAll())
-                    join cat in await this.categoryRepository.GetAll() on cars.CategoriaId equals cat.Id
-                    join user in await this.userRepository.GetAll() on cars.IdUsuarioCreacion equals user.Id
+                Listcars = (from cars in await carRepository.GetAll()
+                    join cat in await categoryRepository.GetAll() on cars.CategoriaId equals cat.Id
+                    join user in await userRepository.GetAll() on cars.IdUsuarioCreacion equals user.Id
                     where cars.Id == Id || !Id.HasValue
                     where cars.CategoriaId == Category || !Category.HasValue
                     where cars.Marca == Brand || Brand == null
                     where cars.Year == Year || !Year.HasValue
                     where cars.Year >= Since || !Since.HasValue
                     where cars.Year <= To || !To.HasValue
-                    select new CarGetModel()
+                    select new CarGetModel
                     {
                         Id = cars.Id,
                         Marca = cars.Marca,
@@ -224,8 +233,9 @@ namespace RentCar.Application.Services
             catch (Exception e)
             {
                 Listcars = null;
-                this.logger.Log(LogLevel.Error, "Error obteniendo carros", e.ToString());
+                logger.Log(LogLevel.Error, "Error obteniendo carros", e.ToString());
             }
+
             return Listcars;
         }
     }

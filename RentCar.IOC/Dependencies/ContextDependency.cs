@@ -11,7 +11,7 @@ namespace RentCar.IOC.Dependencies
 {
     public static class ContextDependency
     {
-        public static void AddRentCarDependency(this IServiceCollection services) 
+        public static void AddRentCarDependency(this IServiceCollection services)
         {
             //Repositories
             services.AddScoped<ICarRepository, CarRepository>();
@@ -23,7 +23,7 @@ namespace RentCar.IOC.Dependencies
             services.AddTransient<IAlquilerService, AlquilerService>();
             services.AddTransient<IUserService, UserService>();
         }
-    
+
         public static void AddContextDependecy(this IServiceCollection services, string connString)
         {
             services.AddDbContext<RentCarContext>(

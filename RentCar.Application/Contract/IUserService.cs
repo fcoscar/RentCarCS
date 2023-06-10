@@ -1,7 +1,6 @@
 using System.Threading.Tasks;
 using RentCar.Application.Core;
 using RentCar.Application.Dtos.User;
-using RentCar.Application.Responses;
 
 namespace RentCar.Application.Contract
 {

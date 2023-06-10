@@ -11,18 +11,19 @@ public class AlquilerApiService : IAlquilerApiService
     private readonly ILogger<AlquilerApiService> logger;
     private readonly IConfiguration configuration;
     private readonly string baseUrl;
-    
-    public AlquilerApiService(IHttpClientFactory clientFactory, IConfiguration configuration, ILogger<AlquilerApiService> logger)
+
+    public AlquilerApiService(IHttpClientFactory clientFactory, IConfiguration configuration,
+        ILogger<AlquilerApiService> logger)
     {
         this.logger = logger;
         this.configuration = configuration;
         this.clientFactory = clientFactory;
         baseUrl = this.configuration["ApiConfig:urlBase"];
     }
-    
+
     public async Task<AlquilerListResponse> GetAlquileres()
     {
-        AlquilerListResponse alquilerList = new AlquilerListResponse();
+        var alquilerList = new AlquilerListResponse();
         try
         {
             using (var httpClient = clientFactory.CreateClient())
@@ -31,7 +32,7 @@ public class AlquilerApiService : IAlquilerApiService
                 {
                     if (response.IsSuccessStatusCode)
                     {
-                        string resp = await response.Content.ReadAsStringAsync();
+                        var resp = await response.Content.ReadAsStringAsync();
                         alquilerList = JsonConvert.DeserializeObject<AlquilerListResponse>(resp);
                     }
                 }
@@ -49,15 +50,15 @@ public class AlquilerApiService : IAlquilerApiService
 
     public async Task<AlquilerResponse> GetAlquiler(int id)
     {
-        AlquilerResponse alquiler = new AlquilerResponse();
+        var alquiler = new AlquilerResponse();
         try
         {
             using (var httpClient = clientFactory.CreateClient())
             {
                 using (var response = await httpClient.GetAsync($"{baseUrl}/Alquiler/{id}"))
                 {
-                    string resp = await response.Content.ReadAsStringAsync();
-                    alquiler = JsonConvert.DeserializeObject<AlquilerResponse>(resp);    
+                    var resp = await response.Content.ReadAsStringAsync();
+                    alquiler = JsonConvert.DeserializeObject<AlquilerResponse>(resp);
                 }
             }
         }
@@ -67,6 +68,7 @@ public class AlquilerApiService : IAlquilerApiService
             alquiler.succes = false;
             logger.Log(LogLevel.Error, $"{alquiler.message}", e.ToString());
         }
+
         return alquiler;
     }
 }

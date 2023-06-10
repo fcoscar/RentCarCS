@@ -1,5 +1,3 @@
-using RentCar.domain.Entity;
-
 namespace RentCar.Application.Models
 {
     public class CarGetModel

@@ -9,44 +9,44 @@
 <h1>Editar producto: @Model.marca @Model.modelo</h1>
 
 
-<hr />
+<hr/>
 <div class="row">
     <div class="col-md-4">
         <form asp-action="Update">
             <div asp-validation-summary="ModelOnly" class="text-danger"></div>
-             <input type="hidden" asp-for="Id" />
+            <input type="hidden" asp-for="Id"/>
             <div class="form-group">
                 <label asp-for="marca" class="control-label"></label>
-                <input asp-for="marca" class="form-control" />
+                <input asp-for="marca" class="form-control"/>
                 <span asp-validation-for="marca" class="text-danger"></span>
             </div>
             <div class="form-group">
                 <label asp-for="modelo" class="control-label"></label>
-                <input asp-for="modelo" class="form-control" />
+                <input asp-for="modelo" class="form-control"/>
                 <span asp-validation-for="modelo" class="text-danger"></span>
             </div>
             <div class="form-group">
                 <label asp-for="year" class="control-label"></label>
-                <input asp-for="year" class="form-control" />
+                <input asp-for="year" class="form-control"/>
                 <span asp-validation-for="year" class="text-danger"></span>
             </div>
             <div class="form-group">
                 <label asp-for="descripcion" class="control-label"></label>
-                <input asp-for="descripcion" class="form-control" />
+                <input asp-for="descripcion" class="form-control"/>
                 <span asp-validation-for="descripcion" class="text-danger"></span>
             </div>
-             <div class="form-group">
-                 <label asp-for="pasajeros" class="control-label"></label>
-                 <input asp-for="pasajeros" class="form-control" />
-                 <span asp-validation-for="pasajeros" class="text-danger"></span>
-             </div>
-             <div class="form-group">
-                 <label asp-for="categoriaId" class="control-label">Categoria</label> 
-                 @Html.DropDownListFor(u => u.categoriaId,
-                     new SelectList(Enum.GetValues(typeof(Categories))), "Selecciona una categoria", new {@class = "form-control"})
-             
-             </div>
-             
+            <div class="form-group">
+                <label asp-for="pasajeros" class="control-label"></label>
+                <input asp-for="pasajeros" class="form-control"/>
+                <span asp-validation-for="pasajeros" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="categoriaId" class="control-label">Categoria</label>
+                @Html.DropDownListFor(u => u.categoriaId,
+                    new SelectList(Enum.GetValues(typeof(Categories))), "Selecciona una categoria", new {@class = "form-control"})
+
+            </div>
+
             @*  <div class="form-group"> *@
             @*     <label asp-for="categoriaId" class="control-label"></label> *@
             @*     <input asp-for="categoriaId" class="form-control" /> *@
@@ -54,11 +54,11 @@
             @* </div> *@
             <div class="form-group">
                 <label asp-for="pricePerDay" class="control-label"></label>
-                <input asp-for="pricePerDay" class="form-control" />
+                <input asp-for="pricePerDay" class="form-control"/>
                 <span asp-validation-for="pricePerDay" class="text-danger"></span>
             </div>
             <div class="form-group">
-                <input type="submit" value="Save" class="btn btn-primary" />
+                <input type="submit" value="Save" class="btn btn-primary"/>
             </div>
         </form>
     </div>
@@ -69,5 +69,5 @@
 </div>
 
 @section Scripts {
-    @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+    @{ await Html.RenderPartialAsync("_ValidationScriptsPartial"); }
 }

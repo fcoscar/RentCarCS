@@ -7,7 +7,7 @@ namespace RentCar.Application.Extensions
     {
         public static UserGetModel ConvertUserToUserGetModel(this User user)
         {
-            return new UserGetModel()
+            return new UserGetModel
             {
                 Id = user.Id,
                 FirstName = user.FirstName,

@@ -1,7 +1,5 @@
 using System.Text;
 using Newtonsoft.Json;
-using RentCar.domain.Entity;
-using RentCar.Infraestructure.Models;
 using RentCar.web.ApiService.Interfaces;
 using RentCar.web.Models.Request;
 using RentCar.web.Models.Responses;
@@ -25,16 +23,17 @@ public class UserApiService : IUserApiService
         this.logger = logger;
         baseUrl = this.configuration["ApiConfig:urlBase"];
     }
+
     public async Task<UserListResponse> GetUsers()
     {
-        UserListResponse userList = new UserListResponse();
+        var userList = new UserListResponse();
         try
         {
             using (var httpClient = clientFactory.CreateClient())
             {
                 using (var response = await httpClient.GetAsync($"{baseUrl}/User"))
                 {
-                    string resp = await response.Content.ReadAsStringAsync();
+                    var resp = await response.Content.ReadAsStringAsync();
                     userList = JsonConvert.DeserializeObject<UserListResponse>(resp);
                 }
             }
@@ -45,20 +44,20 @@ public class UserApiService : IUserApiService
             userList.message = "Error obteniendo usuarios";
             logger.Log(LogLevel.Error, $"{userList.message}", e.ToString());
         }
-        
+
         return userList;
     }
 
     public async Task<UserResponse> GetUser(int id)
     {
-        UserResponse user = new UserResponse();
+        var user = new UserResponse();
         try
         {
             using (var httpClient = clientFactory.CreateClient())
             {
                 using (var response = await httpClient.GetAsync($"{baseUrl}/User/{id}"))
                 {
-                    string resp = await response.Content.ReadAsStringAsync();
+                    var resp = await response.Content.ReadAsStringAsync();
                     user = JsonConvert.DeserializeObject<UserResponse>(resp);
                 }
             }
@@ -69,24 +68,25 @@ public class UserApiService : IUserApiService
             user.succes = false;
             logger.Log(LogLevel.Error, $"{user.message}", e.ToString());
         }
+
         return user;
     }
 
-    public async  Task<UserAddResponse> SaveUser(UserSaveRequest userNew)
+    public async Task<UserAddResponse> SaveUser(UserSaveRequest userNew)
     {
-        UserAddResponse result = new UserAddResponse();
+        var result = new UserAddResponse();
         try
         {
             using (var httpClient = clientFactory.CreateClient())
             {
                 userNew.IsAdmin = false;
-                userNew.FechaCreacion = DateTime.Now;
-                StringContent request = new StringContent(JsonConvert.SerializeObject(userNew), Encoding.UTF8, "application/json");
-                using(var response = await httpClient.PostAsync($"{baseUrl}/User/SaveUser", request))
+                var request = new StringContent(JsonConvert.SerializeObject(userNew), Encoding.UTF8,
+                    "application/json");
+                using (var response = await httpClient.PostAsync($"{baseUrl}/User/SaveUser", request))
                 {
                     if (response.IsSuccessStatusCode)
                     {
-                        string resp = await response.Content.ReadAsStringAsync();
+                        var resp = await response.Content.ReadAsStringAsync();
                         result = JsonConvert.DeserializeObject<UserAddResponse>(resp);
                     }
                 }
@@ -98,6 +98,7 @@ public class UserApiService : IUserApiService
             result.succes = false;
             logger.Log(LogLevel.Error, $"{result.message}", e.ToString());
         }
+
         return result;
     }
 }
