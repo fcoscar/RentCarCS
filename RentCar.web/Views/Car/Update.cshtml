@@ -1,3 +1,5 @@
+@using RentCar.web.Models.Request
+@using Microsoft.AspNetCore.Mvc.TagHelpers
 @model RentCar.web.Models.Request.CarSaveRequest
 
 @{
@@ -33,16 +35,23 @@
                 <input asp-for="descripcion" class="form-control" />
                 <span asp-validation-for="descripcion" class="text-danger"></span>
             </div>
-            <div class="form-group">
-                <label asp-for="pasajeros" class="control-label"></label>
-                <input asp-for="pasajeros" class="form-control" />
-                <span asp-validation-for="pasajeros" class="text-danger"></span>
-            </div>
              <div class="form-group">
-                <label asp-for="categoriaId" class="control-label"></label>
-                <input asp-for="categoriaId" class="form-control" />
-                <span asp-validation-for="categoriaId" class="text-danger"></span>
-            </div>
+                 <label asp-for="pasajeros" class="control-label"></label>
+                 <input asp-for="pasajeros" class="form-control" />
+                 <span asp-validation-for="pasajeros" class="text-danger"></span>
+             </div>
+             <div class="form-group">
+                 <label asp-for="categoriaId" class="control-label">Categoria</label> 
+                 @Html.DropDownListFor(u => u.categoriaId,
+                     new SelectList(Enum.GetValues(typeof(Categories))), "Selecciona una categoria", new {@class = "form-control"})
+             
+             </div>
+             
+            @*  <div class="form-group"> *@
+            @*     <label asp-for="categoriaId" class="control-label"></label> *@
+            @*     <input asp-for="categoriaId" class="form-control" /> *@
+            @*     <span asp-validation-for="categoriaId" class="text-danger"></span> *@
+            @* </div> *@
             <div class="form-group">
                 <label asp-for="pricePerDay" class="control-label"></label>
                 <input asp-for="pricePerDay" class="form-control" />

@@ -1,8 +1,6 @@
-using RentCar.web.Models.Responses;
-
 namespace RentCar.web.ApiService.Interfaces;
 
-public interface IUserApiService
+public class IUserApiService
 {
-    public Task<UserListResponse> GetUsers();
+    //public Task<>
 }

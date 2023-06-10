@@ -77,7 +77,7 @@ public class CarController : Controller
             pasajeros = car.data.pasajeros,
             descripcion = car.data.descripcion,
             pricePerDay = car.data.pricePerDay,
-            categoriaId = car.data.categoriaId
+            categoriaId = (Categories) car.data.categoriaId
         };
         
         return View(carToUpdate);
