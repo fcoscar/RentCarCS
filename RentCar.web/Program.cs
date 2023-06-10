@@ -7,6 +7,7 @@ var builder = WebApplication.CreateBuilder(args);
 builder.Services.AddControllersWithViews();
 builder.Services.AddHttpClient();
 builder.Services.AddTransient<ICarApiService, CarApiService>();
+builder.Services.AddTransient<IAlquilerApiService, AlquilerApiService>();
 
 var app = builder.Build();
 

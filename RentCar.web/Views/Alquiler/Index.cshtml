@@ -1,0 +1,50 @@
+@model IEnumerable<AlquilerModel>
+
+@{
+    ViewData["Title"] = "Index";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+<h1>Index</h1>
+<table class="table">
+    <thead>
+    <tr>
+        <th>@Html.DisplayNameFor(model => model.id)</th>
+        <th>@Html.DisplayNameFor(model => model.reservationTime)</th>
+        <th>@Html.DisplayNameFor(model => model.from)</th>
+        <th>@Html.DisplayNameFor(model => model.to)</th>
+        <th>@Html.DisplayNameFor(model => model.car)</th>
+        <th>@Html.DisplayNameFor(model => model.totalPrice)</th>
+        <th>Actions</th>
+    </tr>
+    </thead>
+    <tbody>
+    @foreach (var item in Model)
+    {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.id)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.reservationTime)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.from)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.to)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.car)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.totalPrice)
+            </td>
+                            <td>
+                                @* @Html.ActionLink("Edit", "Update", new { id=item.id }) | *@
+                                @Html.ActionLink("Details", "Details", new {  id=item.id }) |
+                                @* @Html.ActionLink("Delete", "Delete", new {  id= item.id }) *@
+                            </td>
+        </tr>
+    }
+    </tbody>
+</table>

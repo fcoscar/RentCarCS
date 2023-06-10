@@ -35,6 +35,9 @@
         <th>
             @Html.DisplayNameFor(model => model.categoria)
         </th>
+        <th>
+            Actions
+        </th>
         
     </tr>
     </thead>
@@ -70,9 +73,7 @@
                     @Html.ActionLink("Edit", "Update", new { id=item.id }) |
                     @Html.ActionLink("Details", "Details", new {  id=item.id }) |
                     @Html.ActionLink("Delete", "Delete", new {  id= item.id })
-                </td>                
-                
-                                
+                </td>
             </tr>
         }
     </tbody>

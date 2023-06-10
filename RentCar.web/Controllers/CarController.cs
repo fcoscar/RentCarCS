@@ -11,12 +11,9 @@ public class CarController : Controller
 {
     private readonly ILogger<CarController> logger;
     private readonly ICarApiService carApiService;
-    private readonly IConfiguration configuration;
-    private readonly HttpClientHandler clientHandler = new HttpClientHandler();
     public CarController(IConfiguration configuration, ILogger<CarController> logger,
         ICarApiService carApiService)
     {
-        this.configuration = configuration;
         this.logger = logger;
         this.carApiService = carApiService;
     }

@@ -1,5 +1,6 @@
 using System;
 using RentCar.Application.Dtos.Car;
+using RentCar.Application.Models;
 using RentCar.domain.Entity;
 
 namespace RentCar.Application.Extensions
@@ -21,6 +22,21 @@ namespace RentCar.Application.Extensions
                 Eliminado = false,
                 IsBusy = false,
                 CategoriaId = carAddDto.CategoriaId
+            };
+        }
+
+        public static CarGetModel ConvertCarToCarGetModel(this Car car)
+        {
+            return new CarGetModel()
+            {
+                Id = car.Id,
+                Marca = car.Marca,
+                Modelo = car.Modelo,
+                Year = car.Year,
+                Pasajeros = car.Pasajeros,
+                Descripcion = car.Descripcion,
+                PricePerDay = car.PricePerDay,
+                CategoriaId = car.CategoriaId
             };
         }
     }
