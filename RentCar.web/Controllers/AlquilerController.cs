@@ -1,5 +1,6 @@
 using Microsoft.AspNetCore.Mvc;
 using RentCar.web.ApiService.Interfaces;
+using RentCar.web.Models.Request;
 
 namespace RentCar.web.Controllers;
 
@@ -22,5 +23,24 @@ public class AlquilerController : Controller
     {
         var alquiler = await alquilerApiService.GetAlquiler(id);
         return View(alquiler.data);
+    }
+
+    public ActionResult Create()
+    {
+        return View();
+    }
+    [HttpPost]
+    [ValidateAntiForgeryToken]
+    public async Task<ActionResult> Create(AlquilerAddResquest newAlquiler)
+    {
+        try
+        {
+            var resp = alquilerApiService.SaveAlquiler(newAlquiler);
+            return RedirectToAction(nameof(Index));
+        }
+        catch (Exception e)
+        {
+            return View();
+        }
     }
 }
