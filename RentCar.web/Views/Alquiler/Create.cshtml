@@ -1,5 +1,84 @@
-@model AlquilerModel
+@model RentCar.web.Models.Request.AlquilerAddResquest
 
 @{
-    Layout = null;
+    ViewData["Title"] = "Alquilar";
+}
+<h1>AlquilarCarro</h1>
+<hr/>
+<div class="row">
+    <div class="col-md-4">
+        <form asp-action="Create">
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+            <div class="form-group">
+                <label asp-for="From" class="control-label">Desde</label>
+                <input asp-for="From" type="date" pattern="\d{2}-\d{2}-\d{4}" id="from" class="form-control"/>
+                <span asp-validation-for="From" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="To" class="control-label">Hasta</label>
+                <input asp-for="To" type="date" pattern="\d{4}-\d{2}-\d{2}" id="to" class="form-control"/>
+                <span asp-validation-for="To" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="CarId" class="control-label">Car</label>
+                @* @Html.EditorFor(a => a.CarId, new { htmlAtributtes  = new { @class = "form-control", placeholder = @Model.CarId }}) *@
+                <input asp-for="CarId" class="form-control" disabled/>
+                <span asp-validation-for="CarId" class="text-danger"></span> 
+            </div>
+            <div class="form-group">
+                <label asp-for="PricePerDay" class="control-label"></label> 
+                <input asp-for="PricePerDay" id="per-day" class="form-control" disabled/>
+                <span asp-validation-for="PricePerDay" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="TotalPrice" class="control-label"></label> 
+                <input asp-for="TotalPrice" id="total" class="form-control" disabled/>
+                <span asp-validation-for="TotalPrice" class="text-danger"></span>
+            </div>
+            
+            @* <div class="form-group"> *@
+            @*     <label asp-for="categoriaId" class="control-label">Categoria</label> *@
+            @*     @Html.DropDownListFor(c => c.categoriaId, *@
+            @*         new SelectList(Enum.GetValues(typeof(Categories))), "Selecciona una categoria", new {@class = "form-control"}) *@
+            @* *@
+            @* </div> *@
+            @* <div class="form-group"> *@
+            @*     <label asp-for="categoriaId" class="control-label">Categoria</label> *@
+            @*     <input asp-for="categoriaId" class="form-control" /> *@
+            @*     <span asp-validation-for="categoriaId " class="text-danger"></span> *@
+            @* </div> *@
+            <div>
+                
+            </div>
+            <div class="form-group">
+                <input type="submit" value="Create" class="btn btn-primary"/>
+            </div>
+        </form>
+    </div>
+</div>
+
+<div>
+    <a asp-action="Index">Back to List</a>
+</div>
+
+@section Scripts
+{
+    @{ await Html.RenderPartialAsync("_ValidationScriptsPartial"); }
+
+    <script type="text/javascript">
+    let from = document.getElementById('from')
+    let to = document.getElementById('to')
+    
+    from.addEventListener('input', onTypeTodo)
+    to.addEventListener('input', onTypeTodo) 
+    function onTypeTodo(){
+        let pricePerDay = document.getElementById('per-day').value
+        let total = document.getElementById('total')
+        let date1 = new Date(from.value)
+        let date2 = new Date(to.value)
+        let totalDays = (date2.getTime() - date1.getTime()) / (1000*3600*24)              
+        total.value = (totalDays * pricePerDay)
+    }
+        
+    </script>
 }

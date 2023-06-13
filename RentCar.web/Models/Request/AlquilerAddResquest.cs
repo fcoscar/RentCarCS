@@ -10,4 +10,5 @@ public class AlquilerAddResquest
     public int CarId { get; set; }
     public DateTime Fecha { get; set; }
     public int? IdUsuarioCreacion { get; set; }
+    public decimal PricePerDay { get; set; }
 }
