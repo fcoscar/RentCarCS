@@ -79,13 +79,13 @@
     let to = document.getElementById('to')
     let pricePerDay = document.getElementById('per-day').value
     
-    from.addEventListener('input', onTypeTodo)
-    to.addEventListener('input', onTypeTodo) 
+    from.addEventListener('input', onChangeDate)
+    to.addEventListener('input', onChangeDate) 
     
     let today = new Date().toISOString().split('T')[0]
     from.setAttribute('min', today)
     
-    function onTypeTodo(){
+    function onChangeDate(){
         to.setAttribute('min',new Date(from.value).toISOString().split('T')[0])
         
         let total = document.getElementById('total')
