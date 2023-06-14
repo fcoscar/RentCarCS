@@ -51,7 +51,8 @@
             <td>
                 @foreach (var cars in item.Carros)
                 {
-                    @Html.DisplayFor(car => cars.id)
+                    @Html.ActionLink($"{cars.id}","Details", "Car", new {id = cars.id})
+                    <a></a> 
                 }
             </td>
 

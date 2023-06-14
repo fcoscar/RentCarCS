@@ -68,16 +68,14 @@ namespace RentCar.Application.Services
             try
             {
                 var car = await carRepository.GetEntityById(alquilerAddDto.CarId);
-                var reservationTime = (alquilerAddDto.To.Date - alquilerAddDto.From.Date).Days + 1;
                 var alquiler = new Alquiler
                 {
-                    ReservationTime = reservationTime,
-                    IdUsuarioCreacion = alquilerAddDto.IdUsuario,
+                    ReservationTime = alquilerAddDto.ReservationTime,
+                    IdUsuarioCreacion = alquilerAddDto.IdUsuarioCreacion,
                     From = alquilerAddDto.From,
                     To = alquilerAddDto.To,
                     CarId = alquilerAddDto.CarId,
-                    FechaCreacion = DateTime.Now,
-                    TotalPrice = car.PricePerDay * reservationTime
+                    TotalPrice = alquilerAddDto.TotalPrice
                 };
                 car.From = alquilerAddDto.From;
                 car.To = alquilerAddDto.To;

@@ -31,15 +31,17 @@ public class AlquilerController : Controller
     {
         var car = await carApiService.GetCar(id);
         
-        var alquiler = new AlquilerAddResquest()
+        var newAlquiler = new AlquilerAddResquest()
         {
             From = DateTime.Now,
             To = DateTime.Now.AddDays(1),
             CarId = car.data.id,
             PricePerDay = car.data.pricePerDay,
-            TotalPrice = car.data.pricePerDay
+            TotalPrice = car.data.pricePerDay,
+            IdUsuarioCreacion = 1,
+            ReservationTime = 1
         };
-        return View(alquiler);
+        return View(newAlquiler);
     }
     [HttpPost]
     [ValidateAntiForgeryToken]
@@ -47,7 +49,7 @@ public class AlquilerController : Controller
     {
         try
         {
-            var resp = alquilerApiService.SaveAlquiler(newAlquiler);
+            var resp = await alquilerApiService.SaveAlquiler(newAlquiler);
             return RedirectToAction(nameof(Index));
         }
         catch (Exception e)

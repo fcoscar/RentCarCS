@@ -22,19 +22,31 @@
             <div class="form-group">
                 <label asp-for="CarId" class="control-label">Car</label>
                 @* @Html.EditorFor(a => a.CarId, new { htmlAtributtes  = new { @class = "form-control", placeholder = @Model.CarId }}) *@
-                <input asp-for="CarId" class="form-control" disabled/>
+                <input asp-for="CarId" class="form-control" />
                 <span asp-validation-for="CarId" class="text-danger"></span> 
             </div>
             <div class="form-group">
                 <label asp-for="PricePerDay" class="control-label"></label> 
-                <input asp-for="PricePerDay" id="per-day" class="form-control" disabled/>
+                <input asp-for="PricePerDay" id="per-day" class="form-control" />
                 <span asp-validation-for="PricePerDay" class="text-danger"></span>
             </div>
             <div class="form-group">
+                <label asp-for="ReservationTime" class="control-label"></label> 
+                <input asp-for="ReservationTime" id="total-time" class="form-control" />
+                <span asp-validation-for="ReservationTime" class="text-danger"></span>
+            </div>
+            
+            <div class="form-group">
                 <label asp-for="TotalPrice" class="control-label"></label> 
-                <input asp-for="TotalPrice" id="total" class="form-control" disabled/>
+                <input asp-for="TotalPrice" id="total" class="form-control" />
                 <span asp-validation-for="TotalPrice" class="text-danger"></span>
             </div>
+            <div class="form-group">
+                <label asp-for="IdUsuarioCreacion" class="control-label"></label> 
+                <input asp-for="IdUsuarioCreacion" class="form-control" />
+                <span asp-validation-for="IdUsuarioCreacion" class="text-danger"></span>
+            </div>
+            
             
             @* <div class="form-group"> *@
             @*     <label asp-for="categoriaId" class="control-label">Categoria</label> *@
@@ -47,9 +59,6 @@
             @*     <input asp-for="categoriaId" class="form-control" /> *@
             @*     <span asp-validation-for="categoriaId " class="text-danger"></span> *@
             @* </div> *@
-            <div>
-                
-            </div>
             <div class="form-group">
                 <input type="submit" value="Create" class="btn btn-primary"/>
             </div>
@@ -78,8 +87,8 @@
         let date1 = new Date(from.value)
         let date2 = new Date(to.value)
         let totalDays = (date2.getTime() - date1.getTime()) / (1000*3600*24)              
+        document.getElementById('total-time').value = totalDays
         total.value = (totalDays * pricePerDay)
     }
-        
     </script>
 }
