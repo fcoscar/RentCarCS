@@ -74,15 +74,20 @@
 {
     @{ await Html.RenderPartialAsync("_ValidationScriptsPartial"); }
 
-    <script type="text/javascript">
-        
+    <script type="text/javascript">       
     let from = document.getElementById('from')
     let to = document.getElementById('to')
     let pricePerDay = document.getElementById('per-day').value
     
     from.addEventListener('input', onTypeTodo)
     to.addEventListener('input', onTypeTodo) 
-    function onTypeTodo(){        
+    
+    let today = new Date().toISOString().split('T')[0]
+    from.setAttribute('min', today)
+    
+    function onTypeTodo(){
+        to.setAttribute('min',new Date(from.value).toISOString().split('T')[0])
+        
         let total = document.getElementById('total')
         let date1 = new Date(from.value)
         let date2 = new Date(to.value)
