@@ -32,7 +32,11 @@ public class AlquilerController : ControllerBase
     [HttpPost("SaveAlquiler")]
     public async Task<IActionResult> Post([FromBody] AlquilerDto alquiler)
     {
-        await alquilerService.SaveAlquiler(alquiler);
-        return Ok();
+        var result = await alquilerService.SaveAlquiler(alquiler);
+        if (!result.Succes)
+        {
+            return BadRequest();
+        }
+        return Ok(result);
     }
 }

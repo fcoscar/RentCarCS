@@ -50,7 +50,7 @@ public class AlquilerController : Controller
         try
         {
             var resp = await alquilerApiService.SaveAlquiler(newAlquiler);
-            return RedirectToAction(nameof(Index));
+            return RedirectToAction(nameof(Details), new { id = resp.Id});
         }
         catch (Exception e)
         {

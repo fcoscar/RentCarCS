@@ -112,7 +112,7 @@ public class CarController : Controller
         try
         {
             var resp = await carApiService.SaveCar(newCar);
-            return RedirectToAction(nameof(Index));
+            return RedirectToAction(nameof(Details), new { id = resp.Id});
         }
         catch (Exception e)
         {

@@ -13,4 +13,5 @@ public class AlquilerResponse : BaseResponse
 public class AlquilerAddRespoonse : BaseResponse
 {
     public int Id { get; set; }
+    public AlquilerModel data { get; set; }
 }

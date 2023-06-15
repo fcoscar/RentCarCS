@@ -69,7 +69,7 @@ public class CarController : ControllerBase
         var result = await carService.SaveCar(carAddDto);
         if (!result.Succes)
             return BadRequest(result);
-        return Ok();
+        return Ok(result);
     }
 
     [HttpPost("UpdateCar")]

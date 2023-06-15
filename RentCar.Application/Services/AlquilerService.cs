@@ -82,6 +82,7 @@ namespace RentCar.Application.Services
                 car.IsBusy = true;
                 await carRepository.SaveChanges();
                 await alquilerRepository.Save(alquiler);
+                alquilerAddResponse.Id = alquiler.Id;
             }
             catch (Exception e)
             {
