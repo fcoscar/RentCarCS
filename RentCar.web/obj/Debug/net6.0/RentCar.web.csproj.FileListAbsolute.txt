@@ -54,15 +54,6 @@ C:\Users\Oscar\RiderProjects\RentCarCS\RentCar.web\bin\Debug\net6.0\Newtonsoft.J
 C:\Users\Oscar\RiderProjects\RentCarCS\RentCar.web\obj\Debug\net6.0\RentCar.web.csproj.CopyComplete
 C:\Users\batmw\RiderProjects\RentCar\RentCar.web\bin\Debug\net6.0\Newtonsoft.Json.dll
 C:\Users\batmw\RiderProjects\RentCar\RentCar.web\obj\Debug\net6.0\RentCar.web.csproj.CopyComplete
-C:\Users\batmw\RiderProjects\RentCar\RentCar.web\bin\Debug\net6.0\Microsoft.EntityFrameworkCore.dll
-C:\Users\batmw\RiderProjects\RentCar\RentCar.web\bin\Debug\net6.0\Microsoft.EntityFrameworkCore.Abstractions.dll
-C:\Users\batmw\RiderProjects\RentCar\RentCar.web\bin\Debug\net6.0\Microsoft.EntityFrameworkCore.Relational.dll
-C:\Users\batmw\RiderProjects\RentCar\RentCar.web\bin\Debug\net6.0\MySqlConnector.dll
-C:\Users\batmw\RiderProjects\RentCar\RentCar.web\bin\Debug\net6.0\Pomelo.EntityFrameworkCore.MySql.dll
-C:\Users\batmw\RiderProjects\RentCar\RentCar.web\bin\Debug\net6.0\RentCar.domain.dll
-C:\Users\batmw\RiderProjects\RentCar\RentCar.web\bin\Debug\net6.0\RentCar.Infraestructure.dll
-C:\Users\batmw\RiderProjects\RentCar\RentCar.web\bin\Debug\net6.0\RentCar.Infraestructure.pdb
-C:\Users\batmw\RiderProjects\RentCar\RentCar.web\bin\Debug\net6.0\RentCar.domain.pdb
 C:\Users\Oscar\RiderProjects\RentCarCS\RentCar.web\bin\Debug\net6.0\Microsoft.EntityFrameworkCore.dll
 C:\Users\Oscar\RiderProjects\RentCarCS\RentCar.web\bin\Debug\net6.0\Microsoft.EntityFrameworkCore.Abstractions.dll
 C:\Users\Oscar\RiderProjects\RentCarCS\RentCar.web\bin\Debug\net6.0\Microsoft.EntityFrameworkCore.Relational.dll

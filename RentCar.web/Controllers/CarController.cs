@@ -81,7 +81,7 @@ public class CarController : Controller
             categoriaId = (Categories) car.data.categoriaId
         };
 
-        return View();
+        return View(carToUpdate);
     }
 
     [HttpPost]

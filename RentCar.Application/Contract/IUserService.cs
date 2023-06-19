@@ -1,6 +1,8 @@
 using System.Threading.Tasks;
 using RentCar.Application.Core;
 using RentCar.Application.Dtos.User;
+using RentCar.Application.Models;
+using RentCar.Application.Responses;
 
 namespace RentCar.Application.Contract
 {
@@ -8,6 +10,7 @@ namespace RentCar.Application.Contract
     {
         Task<ServiceResult> GetUsers();
         Task<ServiceResult> GetById(int id);
-        Task<ServiceResult> SaveUser(UserAddDto userDto);
+        Task<ServiceResult> GetUserLogInfo(GetUserInfo userInfo);
+        Task<UserAddResponse> SaveUser(UserAddDto userDto);
     }
 }

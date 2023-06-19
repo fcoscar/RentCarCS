@@ -1,6 +1,7 @@
 using Microsoft.AspNetCore.Mvc;
 using RentCar.Application.Contract;
 using RentCar.Application.Dtos.User;
+using RentCar.Application.Models;
 
 namespace RentCar.API.Controllers;
 
@@ -27,6 +28,13 @@ public class UserController : ControllerBase
     {
         var users = await userService.GetById(id);
         return Ok(users);
+    }
+
+    [HttpPost("LogIn")]
+    public async Task<IActionResult> LogIn([FromBody] GetUserInfo userInfo)
+    {
+        var user = await userService.GetUserLogInfo(userInfo);
+        return Ok(user);
     }
 
     [HttpPost("SaveUser")]

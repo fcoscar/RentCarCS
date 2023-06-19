@@ -1,5 +1,6 @@
 using RentCar.Application.Dtos.User;
 using RentCar.domain.Entity;
+using RentCar.Infraestructure.Core;
 
 namespace RentCar.Application.Extensions
 {
@@ -30,7 +31,7 @@ namespace RentCar.Application.Extensions
                 FirstName = user.FirstName,
                 LastName = user.LastName,
                 Username = user.Username,
-                Password = user.Password,
+                Password = Encript.GetSHA512(user.Password),
                 Mail = user.Mail,
                 DocType = user.DocType,
                 NumDoc = user.NumDoc,

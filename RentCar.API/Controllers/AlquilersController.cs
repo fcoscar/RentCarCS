@@ -1,3 +1,5 @@
+using Microsoft.AspNetCore.Authentication.JwtBearer;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using RentCar.Application.Contract;
 using RentCar.Application.Dtos.Alquiler;
@@ -6,6 +8,7 @@ namespace RentCar.API.Controllers;
 
 [ApiController]
 [Route("api/[controller]")]
+[Authorize(AuthenticationSchemes = JwtBearerDefaults.AuthenticationScheme)]
 public class AlquilerController : ControllerBase
 {
     private readonly IAlquilerService alquilerService;

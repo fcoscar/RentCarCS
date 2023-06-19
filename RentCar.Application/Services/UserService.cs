@@ -7,6 +7,10 @@ using RentCar.Application.Contract;
 using RentCar.Application.Core;
 using RentCar.Application.Dtos.User;
 using RentCar.Application.Extensions;
+using RentCar.Application.Models;
+using RentCar.Application.Responses;
+using RentCar.domain.Entity;
+using RentCar.Infraestructure.Core;
 using RentCar.Infraestructure.Interfaces;
 
 namespace RentCar.Application.Services
@@ -61,13 +65,30 @@ namespace RentCar.Application.Services
             return result;
         }
 
-        public async Task<ServiceResult> SaveUser(UserAddDto userDto)
+        public async Task<ServiceResult> GetUserLogInfo(GetUserInfo userInfo)
         {
             var result = new ServiceResult();
             try
             {
+                result.Data = await userRepository.GetUser(userInfo.mail,  userInfo.password);
+            }
+            catch (Exception e)
+            {
+                result.Message = "Error obteniendo info para iniciar sesion";
+                result.Succes = false;
+                logger.Log(LogLevel.Error, $"{result.Message} {e.Message}", e.ToString());
+            }
+            return result;
+        }
+
+        public async Task<UserAddResponse> SaveUser(UserAddDto userDto)
+        {
+            var result = new UserAddResponse();
+            try
+            {
                 var user = userDto.ConvertUserAddDtoToUser();
                 await userRepository.Save(user);
+                result.Id = user.Id;
             }
             catch (Exception e)
             {
@@ -77,6 +98,15 @@ namespace RentCar.Application.Services
             }
 
             return result;
+        }
+
+        private TokenInfo GetTokenInfo(User user)
+        {
+            TokenInfo tokenInfo = new TokenInfo();
+            
+            //var tokenHandler = 
+            
+            return tokenInfo;
         }
 
         private async Task<List<UserDto>> GetUser(int? id = null)

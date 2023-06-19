@@ -1,6 +1,9 @@
 using System;
 using System.Collections.Generic;
+using System.Linq;
 using System.Threading.Tasks;
+using Microsoft.EntityFrameworkCore;
+using Microsoft.Extensions.Logging;
 using RentCar.domain.Entity;
 using RentCar.Infraestructure.Context;
 using RentCar.Infraestructure.Core;
@@ -11,10 +14,12 @@ namespace RentCar.Infraestructure.Repositories
 {
     public class UserRepository : BaseRepository<User>, IUserRepository
     {
+        private ILogger<UserRepository> logger;
         private readonly RentCarContext context;
 
-        public UserRepository(RentCarContext context) : base(context)
+        public UserRepository(RentCarContext context, ILogger<UserRepository> logger) : base(context)
         {
+            this.logger = logger;
             this.context = context;
         }
 
@@ -24,19 +29,30 @@ namespace RentCar.Infraestructure.Repositories
             await base.SaveChanges();
         }
 
-        public async Task<UserCarModel> GetUserCar(int userId)
+        public async Task<UserModel> GetUser(string mail, string pwd)
         {
-            var userCarModel = new UserCarModel();
+            var userModel = new UserModel();
             try
             {
+                User user = await context.User.SingleOrDefaultAsync(us => us.Mail == mail && us.Password == Encript.GetSHA512(pwd));
+                userModel = new UserModel()
+                {
+                    Id = user.Id,
+                    FirstName = user.FirstName,
+                    LastName = user.LastName,
+                    Username = user.Username,
+                    Mail = user.Mail,
+                    DocType = user.DocType,
+                    NumDoc = user.NumDoc,
+                    IsAdmin = user.IsAdmin
+                };
             }
             catch (Exception e)
             {
-                Console.WriteLine(e);
-                throw;
+                logger.Log(LogLevel.Error, e.Message, e.ToString());
             }
 
-            return userCarModel;
+            return userModel;
         }
     }
 }

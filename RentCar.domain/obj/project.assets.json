@@ -8,19 +8,19 @@
     ".NETStandard,Version=v2.1": []
   },
   "packageFolders": {
-    "C:\\Users\\Oscar\\.nuget\\packages\\": {}
+    "C:\\Users\\batmw\\.nuget\\packages\\": {}
   },
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "C:\\Users\\Oscar\\RiderProjects\\RentCarCS\\RentCar.domain\\RentCar.domain.csproj",
+      "projectUniqueName": "C:\\Users\\batmw\\RiderProjects\\RentCar\\RentCar.domain\\RentCar.domain.csproj",
       "projectName": "RentCar.domain",
-      "projectPath": "C:\\Users\\Oscar\\RiderProjects\\RentCarCS\\RentCar.domain\\RentCar.domain.csproj",
-      "packagesPath": "C:\\Users\\Oscar\\.nuget\\packages\\",
-      "outputPath": "C:\\Users\\Oscar\\RiderProjects\\RentCarCS\\RentCar.domain\\obj\\",
+      "projectPath": "C:\\Users\\batmw\\RiderProjects\\RentCar\\RentCar.domain\\RentCar.domain.csproj",
+      "packagesPath": "C:\\Users\\batmw\\.nuget\\packages\\",
+      "outputPath": "C:\\Users\\batmw\\RiderProjects\\RentCar\\RentCar.domain\\obj\\",
       "projectStyle": "PackageReference",
       "configFilePaths": [
-        "C:\\Users\\Oscar\\AppData\\Roaming\\NuGet\\NuGet.Config"
+        "C:\\Users\\batmw\\AppData\\Roaming\\NuGet\\NuGet.Config"
       ],
       "originalTargetFrameworks": [
         "netstandard2.1"

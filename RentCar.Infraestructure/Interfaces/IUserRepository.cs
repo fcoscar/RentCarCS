@@ -8,6 +8,6 @@ namespace RentCar.Infraestructure.Interfaces
 {
     public interface IUserRepository : IBaseRepository<User>
     {
-        Task<UserCarModel> GetUserCar(int userId);
+        Task<UserModel> GetUser(string mail, string pwd);
     }
 }
