@@ -1,4 +1,5 @@
 using Microsoft.AspNetCore.Authentication;
+using Microsoft.AspNetCore.Cors;
 using Microsoft.AspNetCore.Mvc;
 using RentCar.Application.Contract;
 using RentCar.Application.Dtos.Car;
@@ -7,6 +8,8 @@ namespace RentCar.API.Controllers;
 
 [ApiController]
 [Route("api/[controller]")]
+[EnableCors("AllowAll")]
+
 public class CarController : ControllerBase
 {
     private readonly ICarService carService;
