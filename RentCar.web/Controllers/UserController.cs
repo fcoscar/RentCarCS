@@ -1,11 +1,12 @@
 using System.ComponentModel;
 using Microsoft.AspNetCore.Mvc;
 using RentCar.web.ApiService.Interfaces;
+using RentCar.web.ApiService.Services;
 using RentCar.web.Models.Request;
 
 namespace RentCar.web.Controllers;
 
-public class UserController : Controller
+public class UserController : BaseController
 {
     private readonly IUserApiService userApiService;
     private readonly ILogger<UserController> logger;
@@ -34,7 +35,7 @@ public class UserController : Controller
         try
         {
             var resp = await userApiService.SaveUser(newUser);
-            return RedirectToAction(nameof(Index));
+            return RedirectToAction(nameof(Login));
         }
         catch (Exception e)
         {
@@ -53,12 +54,22 @@ public class UserController : Controller
         try
         {
             var resp = await userApiService.Login(loginRequest);
-            return RedirectToAction(nameof(Index));
+            //resp.data.Token;
+            base.SetSessionUser(resp.data.Token, resp.data.IsAdmin, resp.data.UserId);
+            return RedirectToAction(nameof(Index), "Car");
         }
         catch (Exception e)
         {
             Console.WriteLine(e);
             throw;
         }
+    }
+
+    public async Task<IActionResult> Logout()
+    {
+        base.HttpContext.Session.Remove("userId");
+        base.HttpContext.Session.Remove("isAdmin");
+        base.HttpContext.Session.Remove("token");
+        return RedirectToAction(nameof(Index), "Car");
     }
 }

@@ -33,6 +33,7 @@ public class AlquilerController : ControllerBase
     }
 
     [HttpPost("SaveAlquiler")]
+    [Authorize(AuthenticationSchemes = JwtBearerDefaults.AuthenticationScheme)]
     public async Task<IActionResult> Post([FromBody] AlquilerDto alquiler)
     {
         var result = await alquilerService.SaveAlquiler(alquiler);

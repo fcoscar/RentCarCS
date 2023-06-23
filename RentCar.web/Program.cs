@@ -9,6 +9,8 @@ builder.Services.AddHttpClient();
 builder.Services.AddTransient<ICarApiService, CarApiService>();
 builder.Services.AddTransient<IAlquilerApiService, AlquilerApiService>();
 builder.Services.AddTransient<IUserApiService, UserApiService>();
+builder.Services.AddSession();
+builder.Services.AddHttpContextAccessor();
 var app = builder.Build();
 
 // Configure the HTTP request pipeline.
@@ -25,6 +27,8 @@ app.UseStaticFiles();
 app.UseRouting();
 
 app.UseAuthorization();
+
+app.UseSession();
 
 app.MapControllerRoute(
     "default",

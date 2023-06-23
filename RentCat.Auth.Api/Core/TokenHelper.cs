@@ -30,7 +30,8 @@ public static class TokenHelper
         var token = tokenHandler.CreateToken(tokenDescriptor);
         tokenInfo.FechaExp = (DateTime)tokenDescriptor.Expires;
         tokenInfo.Token = tokenHandler.WriteToken(token);
-        
+        tokenInfo.UserId = user.Id;
+        tokenInfo.IsAdmin = user.IsAdmin;
         return tokenInfo;
     }
 }

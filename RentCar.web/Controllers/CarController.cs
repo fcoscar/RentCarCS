@@ -7,7 +7,7 @@ using RentCar.web.Models.Responses;
 
 namespace RentCar.web.Controllers;
 
-public class CarController : Controller
+public class CarController : BaseController
 {
     private readonly ILogger<CarController> logger;
     private readonly ICarApiService carApiService;
@@ -111,6 +111,7 @@ public class CarController : Controller
     {
         try
         {
+            newCar.idUsuario = base.GetSessionUserId();
             var resp = await carApiService.SaveCar(newCar);
             return RedirectToAction(nameof(Details), new { id = resp.Id});
         }

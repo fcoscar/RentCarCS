@@ -1,13 +1,24 @@
 @model IEnumerable<CarModel>
+@inject IHttpContextAccessor Accessor
+
 @{
     ViewData["Title"] = "Index";
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
+@{
+    int? userId = Accessor.HttpContext.Session.GetInt32("userId");
+    string isAdmin = Accessor.HttpContext.Session.GetString("isAdmin");
+}
+
 
 <h1>Index</h1>
-<p>
-    <a asp-action="Create">Create New</a>
-</p>
+@if (userId != null)
+{
+    <p>
+        <a asp-action="Create">Create New</a>
+    </p>   
+}
+
 <table class="table">
     <thead>
     <tr>
@@ -70,7 +81,12 @@
                 @Html.DisplayFor(modelItem => item.categoria)
             </td>
             <td>
-                @Html.ActionLink("Edit", "Update", new {id = item.id}) |
+                
+                @if (userId == item.user.Id || 
+                     isAdmin == "true")
+                {
+                    @Html.ActionLink("Edit", "Update", new {id = item.id})  
+                } 
                 @Html.ActionLink("Details", "Details", new {id = item.id}) |
                 @Html.ActionLink("Alquilar", "Create","Alquiler", new {id = item.id})
             </td>

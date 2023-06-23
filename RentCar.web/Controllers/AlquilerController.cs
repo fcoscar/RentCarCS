@@ -4,7 +4,7 @@ using RentCar.web.Models.Request;
 
 namespace RentCar.web.Controllers;
 
-public class AlquilerController : Controller
+public class AlquilerController : BaseController
 {
     private readonly IAlquilerApiService alquilerApiService;
     private readonly ICarApiService carApiService;
@@ -38,7 +38,7 @@ public class AlquilerController : Controller
             CarId = car.data.id,
             PricePerDay = car.data.pricePerDay,
             TotalPrice = car.data.pricePerDay,
-            IdUsuarioCreacion = 1,
+            IdUsuarioCreacion = base.GetSessionUserId(),
             ReservationTime = 1
         };
         return View(newAlquiler);

@@ -1,4 +1,6 @@
 using Microsoft.AspNetCore.Authentication;
+using Microsoft.AspNetCore.Authentication.JwtBearer;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Cors;
 using Microsoft.AspNetCore.Mvc;
 using RentCar.Application.Contract;
@@ -67,6 +69,7 @@ public class CarController : ControllerBase
     }
 
     [HttpPost("SaveCar")]
+    [Authorize(AuthenticationSchemes = JwtBearerDefaults.AuthenticationScheme)]
     public async Task<IActionResult> Post([FromBody] CarAddDto carAddDto)
     {
         var result = await carService.SaveCar(carAddDto);
@@ -76,6 +79,7 @@ public class CarController : ControllerBase
     }
 
     [HttpPost("UpdateCar")]
+    [Authorize(AuthenticationSchemes = JwtBearerDefaults.AuthenticationScheme)]
     public async Task<IActionResult> Put([FromBody] CarUpdateDto carUpdateDto)
     {
         var result = await carService.ModifyCar(carUpdateDto);
@@ -85,6 +89,7 @@ public class CarController : ControllerBase
     }
 
     [HttpDelete("{id:int}")]
+    [Authorize(AuthenticationSchemes = JwtBearerDefaults.AuthenticationScheme)]
     public async Task<IActionResult> Delete(int id)
     {
         await carService.Delete(id);

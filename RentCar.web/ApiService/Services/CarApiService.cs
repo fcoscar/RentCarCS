@@ -12,6 +12,7 @@ public class CarApiService : ICarApiService
     private readonly IConfiguration configuration;
     private readonly ILogger<CarApiService> logger;
     private readonly string baseUrl;
+    private string token;
 
     public CarApiService(IHttpClientFactory clientFactory,
         IConfiguration configuration,
@@ -21,6 +22,7 @@ public class CarApiService : ICarApiService
         this.configuration = configuration;
         this.logger = logger;
         baseUrl = this.configuration["ApiConfig:urlBase"]; //appsetting.json
+        token = new HttpContextAccessor().HttpContext.Session.GetString("token");
     }
 
     public async Task<CarListResponse?> GetCars()
@@ -81,6 +83,7 @@ public class CarApiService : ICarApiService
         {
             using (var httpClient = clientFactory.CreateClient())
             {
+                httpClient.DefaultRequestHeaders.Add("Authorization", $"Bearer {new HttpContextAccessor().HttpContext.Session.GetString("token")}");
                 var request = new StringContent(JsonConvert.SerializeObject(newCar), Encoding.UTF8, "application/json");
                 using (var response = await httpClient.PostAsync($"{baseUrl}/Car/SaveCar", request))
                 {

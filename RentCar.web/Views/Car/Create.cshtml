@@ -47,7 +47,6 @@
                 <label asp-for="categoriaId" class="control-label">Categoria</label>
                 @Html.DropDownListFor(c => c.categoriaId,
                     new SelectList(Enum.GetValues(typeof(Categories))), "Selecciona una categoria", new {@class = "form-control"})
-
             </div>
             @* <div class="form-group"> *@
             @*     <label asp-for="categoriaId" class="control-label">Categoria</label> *@
@@ -59,11 +58,11 @@
                 <input asp-for="pricePerDay" class="form-control"/>
                 <span asp-validation-for="pricePerDay" class="text-danger"></span>
             </div>
-            <div class="form-group">
-                <label asp-for="idUsuario" class="control-label">Usuario</label>
-                <input asp-for="idUsuario" class="form-control"/>
-                <span asp-validation-for="idUsuario" class="text-danger"></span>
-            </div>
+            @* <div class="form-group"> *@
+            @*     <label asp-for="idUsuario" class="control-label">Usuario</label> *@
+            @*     <input asp-for="idUsuario" class="form-control"/> *@
+            @*     <span asp-validation-for="idUsuario" class="text-danger"></span> *@
+            @* </div> *@
             <div class="form-group">
                 <input type="submit" value="Create" class="btn btn-primary"/>
             </div>

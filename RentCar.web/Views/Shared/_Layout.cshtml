@@ -1,4 +1,6 @@
-﻿<!DOCTYPE html>
+﻿@inject IHttpContextAccessor Accessor
+
+<!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="utf-8"/>
@@ -28,13 +30,30 @@
                     <li class="nav-item">
                         <a class="nav-link text-dark" asp-area="" asp-controller="Car" asp-action="Index">Carros</a>
                     </li>
-                    <li class="nav-item">
-                        <a class="nav-link text-dark" asp-area="" asp-controller="Alquiler" asp-action="Index">Alquileres</a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link text-dark" asp-area="" asp-controller="User" asp-action="Index">Usuarios</a>
-                    </li>
-
+                    @if (@Accessor.HttpContext.Session.GetInt32("userId") == null)
+                    {
+                        <li class="nav-item">
+                            <a class="nav-link text-dark" asp-area="" asp-controller="User" asp-action="Login">Log In</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link text-dark" asp-area="" asp-controller="User" asp-action="Create">Create Account</a>
+                        </li>
+                    }
+                    else
+                    {
+                        if (@Accessor.HttpContext.Session.GetString("isAdmin") == "true")
+                        {
+                            <li class="nav-item">
+                                <a class="nav-link text-dark" asp-area="" asp-controller="Alquiler" asp-action="Index">Alquileres</a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link text-dark" asp-area="" asp-controller="User" asp-action="Index">Usuarios</a>
+                            </li>
+                        } 
+                        <li class="nav-item">
+                            <a class="nav-link text-dark" asp-area="" asp-controller="User" asp-action="Logout">Log out</a>
+                        </li>
+                    }
 
                 </ul>
             </div>

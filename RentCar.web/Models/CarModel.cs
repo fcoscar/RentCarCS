@@ -1,3 +1,5 @@
+using RentCar.web.Models.Responses;
+
 namespace RentCar.web.Models;
 
 public class CarModel
@@ -11,4 +13,5 @@ public class CarModel
     public decimal pricePerDay { get; set; }
     public string categoria { get; set; }
     public int categoriaId { get; set; }
+    public UserSimpleModel user { get; set; }
 }
