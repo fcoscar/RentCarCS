@@ -12,6 +12,7 @@ public class UserApiService : IUserApiService
     private readonly IConfiguration configuration;
     private readonly ILogger<UserApiService> logger;
     private readonly string baseUrl;
+    private readonly string authUrl;
 
     public UserApiService(IHttpClientFactory clientFactory,
         IConfiguration configuration,
@@ -21,6 +22,7 @@ public class UserApiService : IUserApiService
         this.configuration = configuration;
         this.logger = logger;
         baseUrl = this.configuration["ApiConfig:urlBase"];
+        authUrl = this.configuration["ApiConfig:urlAuth"];
     }
     public async Task<UserListResponse> GetUsers()
     {
@@ -69,7 +71,7 @@ public class UserApiService : IUserApiService
         return user;
     }
 
-    public async  Task<UserAddResponse> SaveUser(UserSaveRequest userNew)
+    public async Task<UserAddResponse> SaveUser(UserSaveRequest userNew)
     {
         UserAddResponse result = new UserAddResponse();
         try
@@ -79,7 +81,7 @@ public class UserApiService : IUserApiService
                 userNew.IsAdmin = false;
                 //userNew.FechaCreacion = DateTime.Now;
                 StringContent request = new StringContent(JsonConvert.SerializeObject(userNew), Encoding.UTF8, "application/json");
-                using(var response = await httpClient.PostAsync($"{baseUrl}/User/SaveUser", request))
+                using(var response = await httpClient.PostAsync($"{authUrl}/CreateUser", request))
                 {
                     if (response.IsSuccessStatusCode)
                     {
@@ -95,6 +97,34 @@ public class UserApiService : IUserApiService
             result.succes = false;
             logger.Log(LogLevel.Error, $"{result.message}", e.ToString());
         }
+        return result;
+    }
+
+    public async Task<LoginResponse> Login(LoginRequest loginRequest)
+    {
+        LoginResponse result = new LoginResponse();
+        try
+        {
+            using (var httpClient = clientFactory.CreateClient())
+            {
+                StringContent request = new StringContent(JsonConvert.SerializeObject(loginRequest), Encoding.UTF8, "application/json");
+                using (var response = await httpClient.PostAsync($"{authUrl}/Login", request))
+                {
+                    if (response.IsSuccessStatusCode)
+                    {
+                        string resp = await response.Content.ReadAsStringAsync();
+                        result = JsonConvert.DeserializeObject<LoginResponse>(resp);
+                    }
+                }
+            }
+        }
+        catch (Exception e)
+        {
+            result.message = "Error guardando usuario";
+            result.succes = false;
+            logger.Log(LogLevel.Error, $"{result.message}", e.ToString());
+        }
+
         return result;
     }
 }

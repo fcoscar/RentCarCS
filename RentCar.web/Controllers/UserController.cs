@@ -41,4 +41,24 @@ public class UserController : Controller
             return View();
         }
     }
+
+    public ActionResult Login()
+    {
+        return View();
+    }
+    [HttpPost]
+    [ValidateAntiForgeryToken]
+    public async Task<ActionResult> Login(LoginRequest loginRequest)
+    {
+        try
+        {
+            var resp = await userApiService.Login(loginRequest);
+            return RedirectToAction(nameof(Index));
+        }
+        catch (Exception e)
+        {
+            Console.WriteLine(e);
+            throw;
+        }
+    }
 }
