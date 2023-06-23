@@ -65,29 +65,30 @@
         </form>
     </div>
 </div>
-
 <div>
     <a asp-action="Index">Back to List</a>
 </div>
+
 
 @section Scripts
 {
     @{ await Html.RenderPartialAsync("_ValidationScriptsPartial"); }
 
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.4/jquery.min.js"></script>
+
     <script type="text/javascript">       
     let from = document.getElementById('from')
     let to = document.getElementById('to')
     let pricePerDay = document.getElementById('per-day').value
-    
+
     from.addEventListener('input', onChangeDate)
     to.addEventListener('input', onChangeDate) 
-    
+
     let today = new Date().toISOString().split('T')[0]
     from.setAttribute('min', today)
     
     function onChangeDate(){
         to.setAttribute('min',new Date(from.value).toISOString().split('T')[0])
-        
         let total = document.getElementById('total')
         let date1 = new Date(from.value)
         let date2 = new Date(to.value)
