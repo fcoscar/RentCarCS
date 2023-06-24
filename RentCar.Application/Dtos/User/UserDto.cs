@@ -4,7 +4,7 @@ using RentCar.Application.Models;
 
 namespace RentCar.Application.Dtos.User
 {
-    public class UserDto : DtoBase
+    public class UserDto
     {
         public int Id { get; set; }
         public string FirstName { get; set; }
@@ -17,5 +17,6 @@ namespace RentCar.Application.Dtos.User
         public bool IsAdmin { get; set; }
         public DateTime? FechaCreacion { get; set; }
         public List<CarGetModel> Carros { get; set; }
+        public List<AlquierGetModel> Alquileres { get; set; }
     }
 }

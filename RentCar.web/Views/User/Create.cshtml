@@ -1,3 +1,4 @@
+@using RentCar.web.Models.Request
 @model RentCar.web.Models.Request.UserSaveRequest
 
 @{
@@ -30,7 +31,7 @@
             </div>
             <div class="form-group">
                 <label asp-for="Mail" class="control-label">Mail</label>
-                <input asp-for="Mail" class="form-control"/>
+                <input asp-for="Mail" type="email" class="form-control"/>
                 <span asp-validation-for="Mail" class="text-danger"></span>
             </div>
 
@@ -46,7 +47,8 @@
             @* </div> *@
             <div class="form-group">
                 <label asp-for="DocType" class="control-label">Tipo de Documento</label>
-                <input asp-for="DocType" class="form-control"/>
+                @Html.DropDownListFor(u => u.DocType,
+                    new SelectList(Enum.GetNames(typeof(Docs))), "Seleccione un tipo de documento",new {@class = "form-control"})
                 <span asp-validation-for="DocType" class="text-danger"></span>
             </div>
             <div class="form-group">

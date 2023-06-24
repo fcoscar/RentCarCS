@@ -23,6 +23,12 @@ public class UserController : BaseController
         return View(resp.data);
     }
 
+    public async Task<ActionResult> Details(int id)
+    {
+        var resp = await userApiService.GetUser(id);
+        return View(resp.data);
+    }
+
     public ActionResult Create()
     {
         return View();
@@ -32,15 +38,14 @@ public class UserController : BaseController
     [ValidateAntiForgeryToken]
     public async Task<ActionResult> Create(UserSaveRequest newUser)
     {
-        try
-        {
+            newUser.FechaCreacion = DateTime.Now;
             var resp = await userApiService.SaveUser(newUser);
+            if (!resp.succes)
+            {
+                ViewBag.Message = resp.message;
+                return View();
+            }
             return RedirectToAction(nameof(Login));
-        }
-        catch (Exception e)
-        {
-            return View();
-        }
     }
 
     public ActionResult Login()
@@ -51,18 +56,16 @@ public class UserController : BaseController
     [ValidateAntiForgeryToken]
     public async Task<ActionResult> Login(LoginRequest loginRequest)
     {
-        try
-        {
+
             var resp = await userApiService.Login(loginRequest);
+            if (!resp.succes)
+            {
+                ViewBag.Message = resp.message;
+                return RedirectToAction(nameof(Login));
+            }
             //resp.data.Token;
             base.SetSessionUser(resp.data.Token, resp.data.IsAdmin, resp.data.UserId);
             return RedirectToAction(nameof(Index), "Car");
-        }
-        catch (Exception e)
-        {
-            Console.WriteLine(e);
-            throw;
-        }
     }
 
     public async Task<IActionResult> Logout()

@@ -2,14 +2,15 @@ namespace RentCar.web.Models;
 
 public class UserModel
 {
-    public int Id { get; set; }
-    public string FirstName { get; set; }
-    public string LastName { get; set; }
-    public string Username { get; set; }
-    public string Password { get; set; }
-    public string Mail { get; set; }
-    public string? DocType { get; set; }
-    public string? NumDoc { get; set; }
-    public bool IsAdmin { get; set; }
-    public List<CarModel> Carros { get; set; }
+    public int id { get; set; }
+    public string firstName { get; set; }
+    public string lastName { get; set; }
+    public string username { get; set; }
+    public string password { get; set; }
+    public string mail { get; set; }
+    public string? docType { get; set; }
+    public string? numDoc { get; set; }
+    public bool isAdmin { get; set; }
+    public List<CarModel> carros { get; set; }
+    public List<AlquilerModel> alquileres { get; set; }
 }

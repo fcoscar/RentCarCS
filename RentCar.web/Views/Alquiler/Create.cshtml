@@ -84,9 +84,9 @@
     from.addEventListener('input', onChangeDate)
     to.addEventListener('input', onChangeDate) 
 
-    let today = new Date().toISOString().split('T')[0]
-    from.setAttribute('min', today)
     
+    let today = new Date()
+    from.setAttribute('min', today.toISOString().split('T')[0])    
     function onChangeDate(){
         to.setAttribute('min',new Date(from.value).toISOString().split('T')[0])
         let total = document.getElementById('total')

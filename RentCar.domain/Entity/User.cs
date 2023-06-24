@@ -1,14 +1,15 @@
+using System;
 using System.Collections.Generic;
 using RentCar.domain.Core;
 
 namespace RentCar.domain.Entity
 {
-    public class User : BaseEntity
+    public class User 
     {
-        // public User()
-        // {
-        //     UserCar = new HashSet<UserCar>();
-        // }
+        public User()
+        {
+            FechaCreacion = DateTime.Now;
+        }
         public int Id { get; set; }
         public string FirstName { get; set; }
         public string LastName { get; set; }
@@ -19,6 +20,8 @@ namespace RentCar.domain.Entity
         public string? NumDoc { get; set; }
 
         public bool IsAdmin { get; set; }
+        public DateTime FechaCreacion { get; set; }
+        public DateTime? FechaMod { get; set; }
         //public ICollection<UserCar> UserCar { get; set; }
     }
 }

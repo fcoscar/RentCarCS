@@ -12,7 +12,7 @@ public class UserResponse : BaseResponse
 
 public class UserAddResponse : BaseResponse
 {
-    public int Id { get; set; }
+    
 }
 
 public class LoginResponse : BaseResponse

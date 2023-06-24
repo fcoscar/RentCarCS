@@ -53,7 +53,7 @@ namespace RentCar.Application.Services
             var result = new ServiceResult();
             try
             {
-                result.Data = await GetUser(id);
+                result.Data = (await GetUser(id)).FirstOrDefault();
             }
             catch (Exception e)
             {
@@ -86,9 +86,9 @@ namespace RentCar.Application.Services
             var result = new UserAddResponse();
             try
             {
-                var user = userDto.ConvertUserAddDtoToUser();
+                User user;
+                user = userDto.ConvertUserAddDtoToUser();
                 await userRepository.Save(user);
-                result.Id = user.Id;
             }
             catch (Exception e)
             {
@@ -99,16 +99,7 @@ namespace RentCar.Application.Services
 
             return result;
         }
-
-        private TokenInfo GetTokenInfo(User user)
-        {
-            TokenInfo tokenInfo = new TokenInfo();
-            
-            //var tokenHandler = 
-            
-            return tokenInfo;
-        }
-
+        
         private async Task<List<UserDto>> GetUser(int? id = null)
         {
             var ListUsers = new List<UserDto>();
@@ -116,6 +107,7 @@ namespace RentCar.Application.Services
             {
                 ListUsers = (from users in await userRepository.GetAll()
                     join cars in await carRepository.GetAll() on users.Id equals cars.IdUsuarioCreacion into carros
+                    join aqls in await alquilerRepository.GetAll() on users.Id equals aqls.IdUsuarioCreacion into rents
                     //join alqs in await this.alquilerRepository.GetAll() on users.Id equals alqs.IdUsuarioCreacion
                     where users.Id == id || !id.HasValue
                     select new UserDto
@@ -130,7 +122,9 @@ namespace RentCar.Application.Services
                         NumDoc = users.NumDoc,
                         IsAdmin = users.IsAdmin,
                         FechaCreacion = users.FechaCreacion,
-                        Carros = carros.Select(c => c.ConvertCarToCarGetModel()).ToList()
+                        Carros = carros.Select(c => c.ConvertCarToCarGetModel()).ToList(),
+                        Alquileres = rents.Select(a => a.ConvertAlquilerToAlguilerGetModel()).ToList()
+                        
                     }).ToList();
             }
             catch (Exception e)

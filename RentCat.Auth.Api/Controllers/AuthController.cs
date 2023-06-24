@@ -23,7 +23,7 @@ public class AuthController : ControllerBase
     public async Task<IActionResult> CreateUser([FromBody] UserAddDto user)
     {
         var result = await userService.SaveUser(user);
-        return Ok(result.Id);
+        return Ok(result);
     }
     [HttpPost("LogIn")]
     public async Task<IActionResult> LogIn([FromBody] GetUserInfo userInfo)

@@ -11,14 +11,14 @@
 <table class="table">
     <thead>
     <tr>
-        <th>@Html.DisplayNameFor(model => model.Id)</th>
-        <th>@Html.DisplayNameFor(model => model.FirstName)</th>
-        <th>@Html.DisplayNameFor(model => model.LastName)</th>
-        <th>@Html.DisplayNameFor(model => model.Username)</th>
-        <th>@Html.DisplayNameFor(model => model.Mail)</th>
-        <th>@Html.DisplayNameFor(model => model.DocType)</th>
-        <th>@Html.DisplayNameFor(model => model.NumDoc)</th>
-        <th>@Html.DisplayNameFor(model => model.Carros)</th>
+        <th>@Html.DisplayNameFor(model => model.id)</th>
+        <th>@Html.DisplayNameFor(model => model.firstName)</th>
+        <th>@Html.DisplayNameFor(model => model.lastName)</th>
+        <th>@Html.DisplayNameFor(model => model.username)</th>
+        <th>@Html.DisplayNameFor(model => model.mail)</th>
+        <th>@Html.DisplayNameFor(model => model.docType)</th>
+        <th>@Html.DisplayNameFor(model => model.numDoc)</th>
+        <th>@Html.DisplayNameFor(model => model.carros)</th>
         @* <th>@Html.DisplayNameFor(model => model.Carros)</th> *@
         @* <th>Actions</th> *@
     </tr>
@@ -28,28 +28,28 @@
     {
         <tr>
             <td>
-                @Html.DisplayFor(modelItem => item.Id)
+                @Html.DisplayFor(modelItem => item.id)
             </td>
             <td>
-                @Html.DisplayFor(modelItem => item.FirstName)
+                @Html.DisplayFor(modelItem => item.firstName)
             </td>
             <td>
-                @Html.DisplayFor(modelItem => item.LastName)
+                @Html.DisplayFor(modelItem => item.lastName)
             </td>
             <td>
-                @Html.DisplayFor(modelItem => item.Username)
+                @Html.DisplayFor(modelItem => item.username)
             </td>
             <td>
-                @Html.DisplayFor(modelItem => item.Mail)
+                @Html.DisplayFor(modelItem => item.mail)
             </td>
             <td>
-                @Html.DisplayFor(modelItem => item.DocType)
+                @Html.DisplayFor(modelItem => item.docType)
             </td>
             <td>
-                @Html.DisplayFor(modelItem => item.NumDoc)
+                @Html.DisplayFor(modelItem => item.numDoc)
             </td>
             <td>
-                @foreach (var cars in item.Carros)
+                @foreach (var cars in item.carros)
                 {
                     @Html.ActionLink($"{cars.id}","Details", "Car", new {id = cars.id})
                     <a></a> 

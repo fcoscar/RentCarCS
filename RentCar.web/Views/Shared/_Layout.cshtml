@@ -51,6 +51,9 @@
                             </li>
                         } 
                         <li class="nav-item">
+                            @Html.ActionLink("Perfil", "Details","User" , new {id = @Accessor.HttpContext.Session.GetInt32("userId")})
+                        </li>
+                        <li class="nav-item">
                             <a class="nav-link text-dark" asp-area="" asp-controller="User" asp-action="Logout">Log out</a>
                         </li>
                     }

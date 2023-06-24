@@ -12,3 +12,9 @@ public class UserSaveRequest
     public bool IsAdmin { get; set; }
     public DateTime FechaCreacion { get; set; }
 }
+
+public enum Docs
+{
+    Pasaporte,
+    Cedula
+}

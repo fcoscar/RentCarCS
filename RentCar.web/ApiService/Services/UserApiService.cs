@@ -120,7 +120,7 @@ public class UserApiService : IUserApiService
         }
         catch (Exception e)
         {
-            result.message = "Error guardando usuario";
+            result.message = "Error iniciando sesion usuario";
             result.succes = false;
             logger.Log(LogLevel.Error, $"{result.message}", e.ToString());
         }
