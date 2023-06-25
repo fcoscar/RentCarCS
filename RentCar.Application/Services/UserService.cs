@@ -108,7 +108,6 @@ namespace RentCar.Application.Services
                 ListUsers = (from users in await userRepository.GetAll()
                     join cars in await carRepository.GetAll() on users.Id equals cars.IdUsuarioCreacion into carros
                     join aqls in await alquilerRepository.GetAll() on users.Id equals aqls.IdUsuarioCreacion into rents
-                    //join alqs in await this.alquilerRepository.GetAll() on users.Id equals alqs.IdUsuarioCreacion
                     where users.Id == id || !id.HasValue
                     select new UserDto
                     {

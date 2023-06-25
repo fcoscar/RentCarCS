@@ -31,6 +31,7 @@ public class UserApiService : IUserApiService
         {
             using (var httpClient = clientFactory.CreateClient())
             {
+                httpClient.DefaultRequestHeaders.Add("Authorization", $"Bearer {new HttpContextAccessor().HttpContext.Session.GetString("token")}");
                 using (var response = await httpClient.GetAsync($"{baseUrl}/User"))
                 {
                     string resp = await response.Content.ReadAsStringAsync();
@@ -60,6 +61,11 @@ public class UserApiService : IUserApiService
                     string resp = await response.Content.ReadAsStringAsync();
                     user = JsonConvert.DeserializeObject<UserResponse>(resp);
                 }
+            }
+
+            foreach (var car in user.data.carros)
+            {
+                car.categoria = Enum.GetName(typeof(Categories), car.categoriaId);
             }
         }
         catch (Exception e)

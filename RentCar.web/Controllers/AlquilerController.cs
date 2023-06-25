@@ -27,6 +27,16 @@ public class AlquilerController : BaseController
         return View(alquiler.data);
     }
 
+    public async Task<ActionResult> Update(int id)
+    {
+        var alq = await alquilerApiService.GetAlquiler(id);
+        var alqToUpdate = new AlquilerAddResquest()
+        {
+            
+        };
+        return View(alqToUpdate);
+    }
+
     public async Task<ActionResult> Create(int id)
     {
         var car = await carApiService.GetCar(id);

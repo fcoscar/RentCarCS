@@ -82,6 +82,7 @@ public class AlquilerApiService : IAlquilerApiService
         {
             using (var httpClient = clientFactory.CreateClient())
             {
+                httpClient.DefaultRequestHeaders.Add("Authorization", $"Bearer {new HttpContextAccessor().HttpContext.Session.GetString("token")}");
                 StringContent request = new StringContent(JsonConvert.SerializeObject(newAlquiler), Encoding.UTF8, "application/json");
                 using (var response = await httpClient.PostAsync($"{baseUrl}/Alquiler/SaveAlquiler",request))
                 {

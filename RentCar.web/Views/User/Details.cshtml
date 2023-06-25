@@ -71,6 +71,9 @@
             <th>
                 Categoria
             </th>
+            <th>
+                Actions
+            </th>
         </tr>
         </thead>
         <tbody>
@@ -97,6 +100,10 @@
                 </td>
                 <td>
                     @Html.DisplayFor(c => car.categoria)
+                </td>
+                <td>
+                    @Html.ActionLink("Edit", "Update", "Car", new {id = car.id}) |
+                    @Html.ActionLink("Details", "Details", "Car", new {id = car.id})
                 </td>
             </tr>
         }

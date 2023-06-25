@@ -59,6 +59,7 @@ public class CarApiService : ICarApiService
         {
             using (var httpClient = clientFactory.CreateClient())
             {
+                httpClient.DefaultRequestHeaders.Add("Authorization", $"Bearer {new HttpContextAccessor().HttpContext.Session.GetString("token")}");
                 using (var response = await httpClient.GetAsync($"{baseUrl}/Car/{id}"))
                 {
                     var resp = await response.Content.ReadAsStringAsync();
@@ -113,6 +114,7 @@ public class CarApiService : ICarApiService
             using (var httpClient = clientFactory.CreateClient())
             {
                 //carToUpdate.fecha = DateTime.Now;
+                httpClient.DefaultRequestHeaders.Add("Authorization", $"Bearer {new HttpContextAccessor().HttpContext.Session.GetString("token")}");
                 var request = new StringContent(JsonConvert.SerializeObject(carToUpdate), Encoding.UTF8,
                     "application/json");
                 using (var response = await httpClient.PostAsync($"{baseUrl}/Car/UpdateCar", request))

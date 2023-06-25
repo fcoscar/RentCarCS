@@ -37,7 +37,7 @@ namespace RentCar.Application.Extensions
                 Pasajeros = car.Pasajeros,
                 Descripcion = car.Descripcion,
                 PricePerDay = car.PricePerDay,
-                CategoriaId = car.CategoriaId
+                CategoriaId = car.CategoriaId,
             };
         }
     }
