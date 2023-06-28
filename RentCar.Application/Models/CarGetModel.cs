@@ -1,3 +1,5 @@
+using System.Collections.Generic;
+
 namespace RentCar.Application.Models
 {
     public class CarGetModel
@@ -11,6 +13,9 @@ namespace RentCar.Application.Models
         public decimal PricePerDay { get; set; }
         public string? Categoria { get; set; }
         public int CategoriaId { get; set; }
+        public string Combustible { get; set; }
+        public string Location { get; set; }
         public UserGetModel User { get; set; }
+        public List<AlquierGetModel> Alqs { get; set; }
     }
 }

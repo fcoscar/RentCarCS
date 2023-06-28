@@ -32,6 +32,7 @@ public static class TokenHelper
         tokenInfo.Token = tokenHandler.WriteToken(token);
         tokenInfo.UserId = user.Id;
         tokenInfo.IsAdmin = user.IsAdmin;
+        tokenInfo.FirstName = user.FirstName;
         return tokenInfo;
     }
 }

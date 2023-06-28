@@ -14,7 +14,8 @@ namespace RentCar.Application.Extensions
                 TotalPrice = alquiler.TotalPrice,
                 From = alquiler.From,
                 To = alquiler.To,
-                Car = alquiler.CarId
+                Car = alquiler.CarId,
+                Status = alquiler.Status
             };
         }
     }

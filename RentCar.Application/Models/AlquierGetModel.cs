@@ -10,5 +10,6 @@ namespace RentCar.Application.Models
         public DateTime From { get; set; }
         public DateTime To { get; set; }
         public int Car { get; set; }
+        public string Status { get; set; }
     }
 }

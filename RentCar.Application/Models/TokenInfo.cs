@@ -8,5 +8,6 @@ namespace RentCar.Application.Models
         public DateTime FechaExp { get; set; }
         public int UserId { get; set; }
         public bool IsAdmin { get; set; }
+        public string FirstName { get; set; }
     }
 }

@@ -19,16 +19,19 @@ namespace RentCar.Application.Services
         private readonly ICategoryRepository categoryRepository;
         private readonly ILogger<CarService> logger;
         private readonly IUserRepository userRepository;
+        private readonly IAlquilerRepository alquilerRepository;
 
         public CarService(ICarRepository carRepository,
             ICategoryRepository categoryRepository,
             IUserRepository userRepository,
+            IAlquilerRepository alquilerRepository,
             ILogger<CarService> logger)
         {
             this.carRepository = carRepository;
             this.categoryRepository = categoryRepository;
             this.logger = logger;
             this.userRepository = userRepository;
+            this.alquilerRepository = alquilerRepository;
         }
 
         public async Task<ServiceResult> Get()
@@ -210,6 +213,7 @@ namespace RentCar.Application.Services
                 Listcars = (from cars in await carRepository.GetAll()
                     join cat in await categoryRepository.GetAll() on cars.CategoriaId equals cat.Id
                     join user in await userRepository.GetAll() on cars.IdUsuarioCreacion equals user.Id
+                    join alq in await alquilerRepository.GetAll() on cars.Id equals alq.CarId into rents
                     where cars.Id == Id || !Id.HasValue
                     where cars.CategoriaId == Category || !Category.HasValue
                     where cars.Marca == Brand || Brand == null
@@ -227,7 +231,10 @@ namespace RentCar.Application.Services
                         PricePerDay = cars.PricePerDay,
                         Categoria = cat.Nombre,
                         CategoriaId = cat.Id,
-                        User = user.ConvertUserToUserGetModel()
+                        Combustible = cars.Combustible,
+                        Location = cars.Location,
+                        User = user.ConvertUserToUserGetModel(),
+                        Alqs = rents.Select(r => r.ConvertAlquilerToAlguilerGetModel()).ToList()
                     }).ToList();
             }
             catch (Exception e)

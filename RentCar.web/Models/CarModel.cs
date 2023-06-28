@@ -14,4 +14,5 @@ public class CarModel
     public string categoria { get; set; }
     public int categoriaId { get; set; }
     public UserSimpleModel user { get; set; }
+    public List<AlquilerModel> alqs { get; set; }
 }

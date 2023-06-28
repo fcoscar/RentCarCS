@@ -70,7 +70,7 @@ namespace RentCar.Application.Services
             var result = new ServiceResult();
             try
             {
-                result.Data = await userRepository.GetUser(userInfo.mail,  userInfo.password);
+                result.Data = await userRepository.GetUser(userInfo.mail, userInfo.password);
             }
             catch (Exception e)
             {

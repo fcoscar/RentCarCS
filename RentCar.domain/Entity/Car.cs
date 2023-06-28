@@ -18,5 +18,7 @@ namespace RentCar.domain.Entity
         public DateTime? FechaElimino { get; set; }
         public bool? Eliminado { get; set; } = false;
         public int CategoriaId { get; set; }
+        public string? Combustible { get; set; }
+        public string? Location { get; set; }
     }
 }

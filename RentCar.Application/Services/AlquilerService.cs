@@ -75,7 +75,11 @@ namespace RentCar.Application.Services
                     From = alquilerAddDto.From,
                     To = alquilerAddDto.To,
                     CarId = alquilerAddDto.CarId,
-                    TotalPrice = alquilerAddDto.TotalPrice
+                    TotalPrice = alquilerAddDto.TotalPrice,
+                    Status = 
+                        DateTime.Now < alquilerAddDto.From ? "Reservado" : 
+                        DateTime.Now > alquilerAddDto.To ? "Terminado" :
+                        "Activo"
                 };
                 car.From = alquilerAddDto.From;
                 car.To = alquilerAddDto.To;

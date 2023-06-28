@@ -15,6 +15,17 @@ builder.Services.AddSwaggerGen();
 builder.Services.AddContextDependecy(builder.Configuration.GetConnectionString("RentCarContext"));
 builder.Services.AddRentCarDependency();
 
+builder.Services.AddCors(options =>
+{
+    options.AddPolicy("AllowAll", app =>
+    {
+        app
+            .AllowAnyOrigin()
+            .AllowAnyMethod()
+            .AllowAnyHeader();
+    });
+});
+
 var key = Encoding.ASCII.GetBytes(builder.Configuration["TokenInfo:SigningKey"]);
 
 builder.Services.AddAuthentication(jb =>
@@ -48,7 +59,7 @@ if (app.Environment.IsDevelopment())
 app.UseHttpsRedirection();
 
 app.UseAuthorization();
-
+app.UseCors();
 app.MapControllers();
 
 app.Run();

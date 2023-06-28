@@ -1,3 +1,4 @@
+using Microsoft.AspNetCore.Cors;
 using Microsoft.AspNetCore.Mvc;
 using RentCar.Application.Contract;
 using RentCar.Application.Dtos.User;
@@ -8,6 +9,7 @@ using RentCat.Auth.Api.Core;
 namespace RentCat.Auth.Api.Controllers;
 [Route("api/[controller]")]
 [ApiController]
+[EnableCors("AllowAll")]
 public class AuthController : ControllerBase
 {
     private readonly IUserService userService;
