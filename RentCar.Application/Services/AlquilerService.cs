@@ -62,6 +62,22 @@ namespace RentCar.Application.Services
             return result;
         }
 
+        public async Task<ServiceResult> GetByCarId(int carId)
+        {
+            var result = new ServiceResult();
+            try
+            {
+                result.Data = await GetAlquileres(carId: carId);
+            }
+            catch (Exception e)
+            {
+                result.Succes = false;
+                result.Message = "Error obtneniendo alquiler por id de carro";
+                logger.Log(LogLevel.Error, $"{result.Message}", e.ToString());
+            }
+            return result;
+        }
+
         public async Task<AlquilerAddResponse> SaveAlquiler(AlquilerDto alquilerAddDto)
         {
             var alquilerAddResponse = new AlquilerAddResponse();
@@ -98,7 +114,8 @@ namespace RentCar.Application.Services
                         return alquilerAddResponse;
                     }
                 }
-                
+
+                car.From = alquilerAddDto.From;
                 var alquiler = new Alquiler
                 {
                     ReservationTime = alquilerAddDto.ReservationTime,
@@ -107,12 +124,8 @@ namespace RentCar.Application.Services
                     To = alquilerAddDto.To,
                     CarId = alquilerAddDto.CarId,
                     TotalPrice = alquilerAddDto.TotalPrice,
-                    Status = 
-                        DateTime.Now < alquilerAddDto.From ? "Reservado" : 
-                        DateTime.Now > alquilerAddDto.To ? "Terminado" :
-                        "Activo"
+                    Status = "Reservado"
                 };
-                car.From = alquilerAddDto.From;
                 car.To = alquilerAddDto.To;
                 car.IsBusy = true;
                 await carRepository.SaveChanges();
@@ -148,7 +161,7 @@ namespace RentCar.Application.Services
             return result;
         }
 
-        private async Task<List<AlquierGetModel>> GetAlquileres(int? id = null)
+        private async Task<List<AlquierGetModel>> GetAlquileres(int? id = null, int? carId = null)
         {
             var ListAlquilers = new List<AlquierGetModel>();
             try
@@ -156,6 +169,7 @@ namespace RentCar.Application.Services
                 ListAlquilers = (from alquiler in await alquilerRepository.GetAll()
                     join car in await carRepository.GetAll() on alquiler.CarId equals car.Id
                     where alquiler.Id == id || !id.HasValue
+                    where alquiler.CarId == carId || !carId.HasValue
                     select new AlquierGetModel
                     {
                         Id = alquiler.Id,

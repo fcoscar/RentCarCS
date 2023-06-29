@@ -199,6 +199,24 @@ namespace RentCar.Application.Services
             return carAddResponse;
         }
 
+        public async Task<ServiceResult> ModifyCarFromTo(CarUpdateFromTo carUpdateFromTo)
+        {
+            var result = new ServiceResult();
+            try
+            {
+                var car = await carRepository.GetEntityById(carUpdateFromTo.Id);
+                car.From = carUpdateFromTo.From;
+                car.To = carUpdateFromTo.To;
+                await carRepository.Update(car);
+            }
+            catch (Exception e)
+            {
+                result.Succes = false;
+                result.Message = "Error actualizando fecha carro";
+                logger.Log(LogLevel.Error, $"{result.Message}", e.ToString());
+            }
+            return result;
+        }
         public Task<ServiceResult> Delete(int id)
         {
             throw new NotImplementedException();
@@ -231,6 +249,8 @@ namespace RentCar.Application.Services
                         PricePerDay = cars.PricePerDay,
                         Categoria = cat.Nombre,
                         CategoriaId = cat.Id,
+                        From = cars.From,
+                        To = cars.To,
                         Combustible = cars.Combustible,
                         Location = cars.Location,
                         User = user.ConvertUserToUserGetModel(),
