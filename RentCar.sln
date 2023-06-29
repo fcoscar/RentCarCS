@@ -14,6 +14,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "RentCar.Application", "Rent
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "RentCat.Auth.Api", "RentCat.Auth.Api\RentCat.Auth.Api.csproj", "{68C2A27F-EFE5-4B8D-8721-ECAD36368291}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "WorkerService", "WorkerService\WorkerService.csproj", "{E6E2C172-C39B-487F-A545-6E1C4F6482BC}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -48,5 +50,9 @@ Global
 		{68C2A27F-EFE5-4B8D-8721-ECAD36368291}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{68C2A27F-EFE5-4B8D-8721-ECAD36368291}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{68C2A27F-EFE5-4B8D-8721-ECAD36368291}.Release|Any CPU.Build.0 = Release|Any CPU
+		{E6E2C172-C39B-487F-A545-6E1C4F6482BC}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{E6E2C172-C39B-487F-A545-6E1C4F6482BC}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{E6E2C172-C39B-487F-A545-6E1C4F6482BC}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{E6E2C172-C39B-487F-A545-6E1C4F6482BC}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 EndGlobal
