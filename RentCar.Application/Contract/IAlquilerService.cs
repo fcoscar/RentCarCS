@@ -10,5 +10,6 @@ namespace RentCar.Application.Contract
         Task<ServiceResult> Get();
         Task<ServiceResult> GetById(int id);
         Task<AlquilerAddResponse> SaveAlquiler(AlquilerDto alquilerAddDto);
+        Task<AlquilerAddResponse> ModifyAlq(AlquilerUpdateDto alquler);
     }
 }

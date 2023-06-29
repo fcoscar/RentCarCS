@@ -39,7 +39,18 @@ public class AlquilerController : ControllerBase
         var result = await alquilerService.SaveAlquiler(alquiler);
         if (!result.Succes)
         {
-            return BadRequest();
+            return BadRequest(result);
+        }
+        return Ok(result);
+    }
+    [HttpPost("UpdateAlquiler")]
+    [Authorize(AuthenticationSchemes = JwtBearerDefaults.AuthenticationScheme)]
+    public async Task<IActionResult> Put([FromBody] AlquilerUpdateDto alquiler)
+    {
+        var result = await alquilerService.ModifyAlq(alquiler);
+        if (!result.Succes)
+        {
+            return BadRequest(result);
         }
         return Ok(result);
     }

@@ -68,6 +68,37 @@ namespace RentCar.Application.Services
             try
             {
                 var car = await carRepository.GetEntityById(alquilerAddDto.CarId);
+                // Obtener el inicio y final de todas los alquiler existentes en la base de datos para obtner todas las fechas entre ellas
+                var prevAlqs = await alquilerRepository.GetAlqsByCarId(car.Id);
+                var prevAlqsDates = new List<List<DateTime>>();
+                foreach (var alq in prevAlqs)
+                {
+                    var dateRange = new List<DateTime>(){alq.From, alq.To};
+                    prevAlqsDates.Add(dateRange);
+                }
+                
+                var prevDates = await GetDatesBetween((DateTime)car.From , (DateTime) car.To);
+                foreach (var dateRange in prevAlqsDates)
+                {
+                    var newDateRange = await GetDatesBetween(dateRange[0], dateRange[1]);
+                    foreach (var date in newDateRange)
+                    {
+                        if(!prevDates.Contains(date)) prevDates.Add(date);
+                    }
+                }
+
+                var newAlqDateRange = await GetDatesBetween(alquilerAddDto.From, alquilerAddDto.To);
+                
+                foreach (var date in newAlqDateRange)
+                {
+                    if (prevDates.Contains(date))
+                    {
+                        alquilerAddResponse.Message = "Selecciona otro rango de dias";
+                        alquilerAddResponse.Succes = false;
+                        return alquilerAddResponse;
+                    }
+                }
+                
                 var alquiler = new Alquiler
                 {
                     ReservationTime = alquilerAddDto.ReservationTime,
@@ -98,6 +129,25 @@ namespace RentCar.Application.Services
             return alquilerAddResponse;
         }
 
+        public async Task<AlquilerAddResponse> ModifyAlq(AlquilerUpdateDto alquiler)
+        {
+            var result = new AlquilerAddResponse();
+            try
+            {
+                var alqToUpdate = await alquilerRepository.GetEntityById(alquiler.Id);
+                alqToUpdate.Status = alquiler.Status;
+                await alquilerRepository.Update(alqToUpdate);
+            }
+            catch(Exception e)
+            {
+                result.Message = "Error agregando Alquiler";
+                result.Succes = false;
+                logger.Log(LogLevel.Error, $"{result.Message}", e.ToString());
+
+            }
+            return result;
+        }
+
         private async Task<List<AlquierGetModel>> GetAlquileres(int? id = null)
         {
             var ListAlquilers = new List<AlquierGetModel>();
@@ -124,5 +174,16 @@ namespace RentCar.Application.Services
 
             return ListAlquilers;
         }
+        
+        private async Task<List<DateTime>> GetDatesBetween(DateTime start, DateTime end)
+        {
+            var datesList = new List<DateTime>();
+            for (DateTime date = start; date <= end; date = date.AddDays(1))
+            {
+                datesList.Add(date);
+            }
+            return  datesList;
+        }
     }
+
 }

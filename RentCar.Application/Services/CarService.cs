@@ -210,7 +210,7 @@ namespace RentCar.Application.Services
             var Listcars = new List<CarGetModel>();
             try
             {
-                Listcars = (from cars in await carRepository.GetAll()
+                Listcars = (from cars in (await carRepository.GetAll())
                     join cat in await categoryRepository.GetAll() on cars.CategoriaId equals cat.Id
                     join user in await userRepository.GetAll() on cars.IdUsuarioCreacion equals user.Id
                     join alq in await alquilerRepository.GetAll() on cars.Id equals alq.CarId into rents
