@@ -12,9 +12,9 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "RentCar.API", "RentCar.API\
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "RentCar.Application", "RentCar.Application\RentCar.Application.csproj", "{2547CA6A-3128-496C-B940-4026B2D8FF51}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "RentCat.Auth.Api", "RentCat.Auth.Api\RentCat.Auth.Api.csproj", "{68C2A27F-EFE5-4B8D-8721-ECAD36368291}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "RentCar.Auth.Api", "RentCar.Auth.Api\RentCar.Auth.Api.csproj", "{68C2A27F-EFE5-4B8D-8721-ECAD36368291}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "WorkerService", "WorkerService\WorkerService.csproj", "{E6E2C172-C39B-487F-A545-6E1C4F6482BC}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "RentCar.WorkerService", "RentCar.WorkerService\RentCar.WorkerService.csproj", "{E6E2C172-C39B-487F-A545-6E1C4F6482BC}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
