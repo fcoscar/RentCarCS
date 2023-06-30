@@ -84,7 +84,7 @@ namespace RentCar.Application.Services
             try
             {
                 var car = await carRepository.GetEntityById(alquilerAddDto.CarId);
-                // Obtener el inicio y final de todas los alquiler existentes en la base de datos para obtner todas las fechas entre ellas
+                // Obtener el inicio y final de todos los alquileres existentes en la base de datos para obtner todas las fechas entre ellas
                 var prevAlqs = await alquilerRepository.GetAlqsByCarId(car.Id);
                 var prevAlqsDates = new List<List<DateTime>>();
                 foreach (var alq in prevAlqs)

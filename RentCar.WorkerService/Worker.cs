@@ -1,7 +1,6 @@
 using RentCar.Application.Contract;
 using RentCar.Application.Dtos.Alquiler;
 using RentCar.Application.Dtos.Car;
-using RentCar.Application.Services;
 
 namespace RentCar.WorkerService;
 
