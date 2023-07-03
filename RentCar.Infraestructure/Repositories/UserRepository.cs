@@ -14,7 +14,7 @@ namespace RentCar.Infraestructure.Repositories
 {
     public class UserRepository : BaseRepository<User>, IUserRepository
     {
-        private ILogger<UserRepository> logger;
+        private readonly ILogger<UserRepository> logger;
         private readonly RentCarContext context;
 
         public UserRepository(RentCarContext context, ILogger<UserRepository> logger) : base(context)

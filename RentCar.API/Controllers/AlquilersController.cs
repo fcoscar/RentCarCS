@@ -22,6 +22,10 @@ public class AlquilerController : ControllerBase
     public async Task<IActionResult> Get()
     {
         var alquileres = await alquilerService.Get();
+        if (!alquileres.Succes)
+        {
+            return BadRequest(alquileres.Message);
+        }
         return Ok(alquileres);
     }
 
@@ -29,6 +33,10 @@ public class AlquilerController : ControllerBase
     public async Task<IActionResult> GetById(int id)
     {
         var alquiler = await alquilerService.GetById(id);
+        if (!alquiler.Succes)
+        {
+            return BadRequest(alquiler.Message);
+        }
         return Ok(alquiler);
     }
 

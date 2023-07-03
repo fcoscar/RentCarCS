@@ -177,7 +177,8 @@ namespace RentCar.Application.Services
                         TotalPrice = alquiler.TotalPrice,
                         From = alquiler.From,
                         To = alquiler.To,
-                        Car = car.Id
+                        Car = car.Id,
+                        Status = alquiler.Status
                     }).ToList();
             }
             catch (Exception e)

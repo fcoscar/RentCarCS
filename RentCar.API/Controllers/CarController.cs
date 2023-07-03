@@ -25,6 +25,10 @@ public class CarController : ControllerBase
     public async Task<IActionResult> Get()
     {
         var cars = await carService.Get();
+        if (!cars.Succes)
+        {
+            return BadRequest(cars.Message);
+        }
         return Ok(cars);
     }
 
@@ -42,6 +46,10 @@ public class CarController : ControllerBase
     {
         //var cars = await this.carRepository.Find(c => c.Marca == brand);
         var cars = await carService.GetByCategory(category);
+        if (!cars.Succes)
+        {
+            return BadRequest(cars.Message);
+        }
         return Ok(cars);
     }
 
@@ -50,6 +58,10 @@ public class CarController : ControllerBase
     {
         //var cars = await this.carRepository.Find(c => c.Marca == brand);
         var cars = await carService.GetByBrand(brand);
+        if (!cars.Succes)
+        {
+            return BadRequest(cars.Message);
+        }
         return Ok(cars);
     }
 
@@ -58,6 +70,10 @@ public class CarController : ControllerBase
     {
         //var cars = await this.carRepository.Find(c => c.Year == year);
         var cars = await carService.GetByYear(year);
+        if (!cars.Succes)
+        {
+            return BadRequest(cars.Message);
+        }
         return Ok(cars);
     }
 
@@ -65,6 +81,10 @@ public class CarController : ControllerBase
     public async Task<IActionResult> GetByYearRange(int from, int to)
     {
         var cars = await carService.GetByYearRange(from, to);
+        if (!cars.Succes)
+        {
+            return BadRequest(cars.Message);
+        }
         return Ok(cars);
     }
 
